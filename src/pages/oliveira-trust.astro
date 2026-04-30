@@ -1,5 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro'
+
+const displayTextStyles = [
+  { label: 'Display XL', name: 'Display/display-xl', node: '1606:31851', size: '72px', weight: '700', lh: '72px', sample: 'Oliveira Trust' },
+  { label: 'Display LG', name: 'Display/display-lg', node: '1606:31846', size: '60px', weight: '700', lh: '60px', sample: 'Oliveira Trust' },
+  { label: 'Display MD', name: 'Display/display-md', node: '1606:31841', size: '48px', weight: '700', lh: '48px', sample: 'Oliveira Trust' },
+  { label: 'Display SM', name: 'Display/display-sm', node: '1606:31836', size: '36px', weight: '700', lh: '40px', sample: 'Oliveira Trust' },
+]
+
+const titleTextStyles = [
+  { label: 'Title H1 Bold', name: 'Title/Bold/title-h1-bold', node: '1606:31831', size: '32px', weight: '700', lh: '40px', sample: 'Oliveira Trust' },
+  { label: 'Title H2 Bold', name: 'Title/Bold/title-h2-bold', node: '1606:31826', size: '24px', weight: '700', lh: '32px', sample: 'Oliveira Trust' },
+  { label: 'Title H3 Bold', name: 'Title/Bold/title-h3-bold', node: '1606:31821', size: '20px', weight: '700', lh: '28px', sample: 'Oliveira Trust' },
+  { label: 'Title H4 Bold', name: 'Title/Bold/title-h4-bold', node: '1606:31816', size: '18px', weight: '700', lh: '24px', sample: 'Oliveira Trust' },
+  { label: 'Title H5 Bold', name: 'Title/Bold/title-h5-bold', node: '415:5157', size: '16px', weight: '700', lh: '20px', sample: 'Oliveira Trust' },
+]
+
+const bodyTextStyles = [
+  { label: 'Body LG Regular', name: 'Body/Regular/body-lg-regular', node: '328:11125', size: '18px', weight: '400', lh: '24px', sample: 'Design systems constroem consistencia entre produto, time e codigo.' },
+  { label: 'Body MD Regular', name: 'Body/Regular/body-md-regular', node: '1606:31809', size: '16px', weight: '400', lh: '20px', sample: 'Design systems constroem consistencia entre produto, time e codigo.' },
+  { label: 'Body SM Regular', name: 'Body/Regular/body-sm-regular', node: '1606:31804', size: '14px', weight: '400', lh: '20px', sample: 'Design systems constroem consistencia entre produto, time e codigo.' },
+]
+
+const captionTextStyles = [
+  { label: 'Caption LG Medium', name: 'Caption/Medium/caption-lg-medium', node: '1606:31805', size: '14px', weight: '600', lh: '16px', sample: 'Token aplicado a rotulos e apoios visuais.' },
+  { label: 'Caption MD Medium', name: 'Caption/Medium/caption-md-medium', node: '1606:31800', size: '12px', weight: '600', lh: '16px', sample: 'Token aplicado a rotulos e apoios visuais.' },
+  { label: 'Caption SM Medium', name: 'Caption/Medium/caption-sm-medium', node: '1797:3740', size: '10px', weight: '600', lh: '12px', sample: 'Token aplicado a rotulos e apoios visuais.' },
+]
+
+const textStyleGroups = [
+  { group: 'Display', count: 4, range: 'display-sm -> display-xl' },
+  { group: 'Title/Regular', count: 5, range: 'title-h5-regular -> title-h1-regular' },
+  { group: 'Title/Medium', count: 5, range: 'title-h5-medium -> title-h1-medium' },
+  { group: 'Title/Bold', count: 5, range: 'title-h5-bold -> title-h1-bold' },
+  { group: 'Body/Regular', count: 3, range: 'body-sm-regular -> body-lg-regular' },
+  { group: 'Body/Medium', count: 3, range: 'body-sm-medium -> body-lg-medium' },
+  { group: 'Body/Bold', count: 3, range: 'body-sm-bold -> body-lg-bold' },
+  { group: 'Caption/Regular', count: 3, range: 'caption-sm-regular -> caption-lg-regular' },
+  { group: 'Caption/Medium', count: 3, range: 'caption-sm-medium -> caption-lg-medium' },
+  { group: 'Caption/Bold', count: 3, range: 'caption-sm-bold -> caption-lg-bold' },
+]
 ---
 
 <Layout whiteNav={true}>
@@ -406,36 +446,47 @@ import Layout from '../layouts/Layout.astro'
           },
           {
             nome: 'Feedback',
-            path: 'colors/feedback',
-            desc: 'Comunicação de estado e resultado de ações',
+            path: 'appearance',
+            desc: 'Variáveis semânticas de feedback e decorative',
             cores: [
-              { token: 'success/light', hex: '#E6FAEF' },
-              { token: 'success/500',  hex: '#00A74E' },
-              { token: 'success/dark',  hex: '#006D31' },
-              { token: 'warning/light', hex: '#FEF7E5' },
-              { token: 'warning/500',  hex: '#F3AF00' },
-              { token: 'warning/dark',  hex: '#AE7300' },
-              { token: 'error/light',   hex: '#FDEEF0' },
-              { token: 'error/500',     hex: '#CC2442' },
-              { token: 'error/dark',    hex: '#A5003B' },
-              { token: 'info/light',    hex: '#E5F7F9' },
-              { token: 'info/500',      hex: '#006383' },
-              { token: 'info/dark',     hex: '#004D66' },
+              { token: 'color-success-surface-soft', hex: '#E6FAEF', dark: '#07461F' },
+              { token: 'color-success-surface-mid', hex: '#006D31', dark: '#92F2AB' },
+              { token: 'color-warning-surface-soft', hex: '#FEF7E5', dark: '#473101' },
+              { token: 'color-warning-surface-mid', hex: '#F3AF00', dark: '#FFCD5E' },
+              { token: 'color-error-surface-soft', hex: '#FDEEF0', dark: '#5C0026' },
+              { token: 'color-error-surface-mid', hex: '#CC2543', dark: '#FF888E' },
+              { token: 'color-pink-surface-soft', hex: '#FCE7F3', dark: '#500724' },
+              { token: 'color-pink-surface-mid', hex: '#BE185D', dark: '#F9A8D4' },
+              { token: 'color-purple-surface-soft', hex: '#F3E8FF', dark: '#3B0764' },
+              { token: 'color-purple-surface-mid', hex: '#7A2FB5', dark: '#ECD3FF' },
             ],
           },
         ].map(grupo => (
           <div>
             <div class="flex items-baseline gap-3 mb-4">
-              <p class="text-xs font-bold tracking-widest uppercase text-neutral-400">{grupo.nome}</p>
-              <code class="text-[10px] text-neutral-300 font-mono">{grupo.path}</code>
-              <p class="text-xs text-neutral-300">{grupo.desc}</p>
+              <p class="text-xs font-bold tracking-widest uppercase text-neutral-500">{grupo.nome}</p>
+              <code class="text-[10px] text-neutral-500 font-mono">{grupo.path}</code>
+              <p class="text-xs text-neutral-500">{grupo.desc}</p>
             </div>
-            <div class="flex gap-1.5">
+            <div class={grupo.path === 'appearance' ? 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5' : 'flex gap-1.5'}>
               {grupo.cores.map(c => (
-                <div class="flex-1 min-w-0 group">
-                  <div class="h-16 rounded-xl border border-neutral-100 mb-2 transition-transform group-hover:-translate-y-1" style={`background:${c.hex}`}></div>
-                  <code class="text-[9px] text-neutral-400 font-mono block truncate">{c.token}</code>
-                  <code class="text-[9px] text-neutral-300 font-mono">{c.hex}</code>
+                <div class={grupo.path === 'appearance' ? 'min-w-0 rounded-xl border border-[#EAECF0] bg-white p-3 transition-transform group hover:-translate-y-1' : 'flex-1 min-w-0 group'}>
+                  {c.dark ? (
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                      <div>
+                        <div class="h-12 rounded-lg border border-neutral-100 mb-1.5" style={`background:${c.hex}`}></div>
+                        <code class="text-[9px] text-neutral-400 font-mono">Light</code>
+                      </div>
+                      <div>
+                        <div class="h-12 rounded-lg border border-neutral-100 mb-1.5" style={`background:${c.dark}`}></div>
+                        <code class="text-[9px] text-neutral-400 font-mono">Dark</code>
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="h-16 rounded-xl border border-neutral-100 mb-2 transition-transform group-hover:-translate-y-1" style={`background:${c.hex}`}></div>
+                  )}
+                  <code class="text-[9px] text-neutral-500 font-mono block truncate">{c.token}</code>
+                  <code class="text-[9px] text-neutral-400 font-mono">{c.dark ? `${c.hex} / ${c.dark}` : c.hex}</code>
                 </div>
               ))}
             </div>
@@ -455,162 +506,149 @@ import Layout from '../layouts/Layout.astro'
         <h2 class="text-4xl font-bold text-neutral-900 leading-tight">Escala tipográfica</h2>
       </div>
 
-      <div class="relative overflow-hidden rounded-[28px] border border-[#EAECF0] bg-white px-8 py-10 shadow-sm md:px-12 md:py-12">
-        <div class="absolute inset-y-0 left-0 w-4 bg-gradient-to-b from-[#D40000] via-[#FF5540] to-[#280000]"></div>
-        <div class="absolute inset-y-0 right-0 w-4 bg-gradient-to-b from-[#006EEF] via-[#4A9DFF] to-[#001A41]"></div>
+      <div class="relative rounded-[28px] border border-[#EAECF0] bg-white px-8 py-10 shadow-sm md:px-12 md:py-12">
+        <div class="space-y-10">
+          <div class="grid gap-10 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start xl:gap-12">
+            <div class="min-w-0">
+              <div class="border-b border-[#EAECF0] pb-6">
+                <p class="text-[11px] font-bold tracking-[0.18em] uppercase text-[#D40000] mb-3">Titles · Headlines</p>
+                <h3 class="text-3xl font-bold text-neutral-900">Sistema editorial de títulos</h3>
+              </div>
 
-        <div class="grid gap-10 xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-12">
-          <div class="min-w-0">
-            <div class="border-b border-[#EAECF0] pb-6">
-              <p class="text-[11px] font-bold tracking-[0.18em] uppercase text-[#D40000] mb-3">Titles · Headlines</p>
-              <h3 class="text-3xl font-bold text-neutral-900">Sistema editorial de títulos</h3>
-            </div>
-
-            <div class="divide-y divide-[#EAECF0]">
-              {[
-                { label: 'Display XL', token: 'display/xl', size: '72px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
-                { label: 'Display LG', token: 'display/lg', size: '60px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
-                { label: 'Display MD', token: 'display/md', size: '48px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
-                { label: 'Display SM', token: 'display/sm', size: '36px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
-                { label: 'Title H1', token: 'title/h1', size: '32px', weight: '700', lh: '40px', tracking: '0%', sample: 'Cardiac Rehab' },
-                { label: 'Title H2', token: 'title/h2', size: '24px', weight: '700', lh: '32px', tracking: '0%', sample: 'Cardiac Rehab' },
-                { label: 'Title H3', token: 'title/h3', size: '20px', weight: '700', lh: '28px', tracking: '0%', sample: 'Cardiac Rehab' },
-                { label: 'Title H4', token: 'title/h4', size: '18px', weight: '700', lh: '24px', tracking: '0%', sample: 'Cardiac Rehab' },
-              ].map(t => (
-                <div class="grid gap-5 py-6 md:grid-cols-[140px_220px_minmax(0,1fr)] md:items-start md:gap-8">
-                  <div>
-                    <p class="text-lg font-semibold text-neutral-900">{t.label}</p>
-                    <code class="mt-2 block text-[10px] text-neutral-300 font-mono">{t.token}</code>
-                  </div>
-                  <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
-                    <p>Font Family: Source Sans Pro</p>
-                    <p>Font Style: {t.weight === '700' ? 'Bold' : 'Regular'}</p>
-                    <p>Font Size: {t.size}</p>
-                    <p>Line Height: {t.lh}</p>
-                    <p>Letter Spacing: {t.tracking}</p>
-                  </div>
-                  <div class="min-w-0">
-                    <p
-                      style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; letter-spacing:${t.tracking}; font-family:'Source Sans Pro',sans-serif`}
-                      class="text-neutral-950 break-words"
-                    >
-                      {t.sample}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div class="grid gap-10 pt-10 lg:grid-cols-2">
-              <div>
-                <div class="border-b border-[#EAECF0] pb-5 mb-6">
-                  <h4 class="text-3xl font-bold text-neutral-900">Paragraphs</h4>
-                </div>
-                <div class="divide-y divide-[#EAECF0]">
-                  {[
-                    { label: 'Body Large', token: 'body/lg', size: '18px', weight: '400', lh: '24px', sample: 'Design systems constroem consistência entre produto, time e código.' },
-                    { label: 'Body Medium', token: 'body/md', size: '16px', weight: '400', lh: '20px', sample: 'Design systems constroem consistência entre produto, time e código.' },
-                    { label: 'Body Small', token: 'body/sm', size: '14px', weight: '400', lh: '20px', sample: 'Design systems constroem consistência entre produto, time e código.' },
-                  ].map(t => (
-                    <div class="grid gap-4 py-5 md:grid-cols-[132px_170px_minmax(0,1fr)] md:gap-6">
-                      <p class="text-base font-semibold text-neutral-900">{t.label}</p>
-                      <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
-                        <p>Size: {t.size}</p>
-                        <p>Weight: {t.weight}</p>
-                        <p>Line Height: {t.lh}</p>
-                      </div>
+              <div class="divide-y divide-[#EAECF0]">
+                {[...displayTextStyles, ...titleTextStyles].map(t => (
+                  <div class="grid gap-5 py-6 md:grid-cols-[140px_220px_minmax(0,1fr)] md:items-start md:gap-8">
+                    <div>
+                      <p class="text-lg font-semibold text-neutral-900">{t.label}</p>
+                      <code class="mt-2 block text-[10px] text-neutral-500 font-mono break-all">{t.name}</code>
+                      <code class="mt-1 block text-[9px] text-neutral-400 font-mono">node {t.node}</code>
+                    </div>
+                    <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
+                      <p>Font Family: Source Sans Pro</p>
+                      <p>Font Weight: {t.weight}</p>
+                      <p>Font Size: {t.size}</p>
+                      <p>Line Height: {t.lh}</p>
+                      <p>Letter Spacing: 0</p>
+                    </div>
+                    <div class="min-w-0">
                       <p
-                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; font-family:'Source Sans Pro',sans-serif`}
-                        class="text-neutral-900"
+                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; letter-spacing:0; font-family:'Source Sans Pro',sans-serif`}
+                        class="text-neutral-950 break-words"
                       >
                         {t.sample}
                       </p>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div class="border-b border-[#EAECF0] pb-5 mb-6">
-                  <h4 class="text-3xl font-bold text-neutral-900">Caption</h4>
-                </div>
-                <div class="divide-y divide-[#EAECF0]">
-                  {[
-                    { label: 'Caption LG', token: 'caption/lg', size: '14px', weight: '400', lh: '16px', sample: 'Token aplicado a rótulos e apoios visuais.' },
-                    { label: 'Caption MD', token: 'caption/md', size: '12px', weight: '400', lh: '16px', sample: 'Token aplicado a rótulos e apoios visuais.' },
-                    { label: 'Caption SM', token: 'caption/sm', size: '10px', weight: '400', lh: '12px', sample: 'Token aplicado a rótulos e apoios visuais.' },
-                  ].map(t => (
-                    <div class="grid gap-4 py-5 md:grid-cols-[132px_170px_minmax(0,1fr)] md:gap-6">
-                      <p class="text-base font-semibold text-neutral-900">{t.label}</p>
-                      <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
-                        <p>Size: {t.size}</p>
-                        <p>Weight: {t.weight}</p>
-                        <p>Line Height: {t.lh}</p>
-                      </div>
-                      <p
-                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; font-family:'Source Sans Pro',sans-serif`}
-                        class="text-neutral-900"
-                      >
-                        {t.sample}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <aside class="xl:sticky xl:top-24 self-start rounded-3xl border border-[#EAECF0] bg-white p-7 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
-            <div class="flex items-center justify-between mb-6">
-              <p class="text-2xl font-bold text-neutral-900">Local styles</p>
-              <div class="w-9 h-9 rounded-full border border-[#EAECF0] flex items-center justify-center text-neutral-500">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="space-y-5">
-              <div>
-                <p class="text-sm text-neutral-400 mb-3">Text styles</p>
-                <div class="space-y-3">
-                  {[
-                    'Display',
-                    'H1',
-                    'H2',
-                    'H3',
-                    'H4',
-                    'Body',
-                    'Caption',
-                    'Button text',
-                  ].map(item => (
-                    <div class="flex items-center justify-between text-neutral-800">
-                      <div class="flex items-center gap-3">
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="text-neutral-300">
-                          <path d="M3 2.2 6 5 3 7.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span class="text-lg">{item}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div class="pt-5 border-t border-[#EAECF0] space-y-3">
-                <p class="text-sm text-neutral-400">Tokens utilitários</p>
-                {[
-                  { label: 'Pesos', value: '400 · 500 · 600 · 700' },
-                  { label: 'Line Height', value: '1.25 · 1.5 · 1.75' },
-                  { label: 'Tracking', value: '-0.02em · 0.08em' },
-                ].map(item => (
-                  <div class="flex items-start justify-between gap-4">
-                    <span class="text-sm text-neutral-500">{item.label}</span>
-                    <code class="text-[11px] text-neutral-400 font-mono text-right">{item.value}</code>
                   </div>
                 ))}
               </div>
             </div>
-          </aside>
+
+            <aside class="rounded-3xl border border-[#EAECF0] bg-white p-7 shadow-[0_20px_50px_rgba(15,23,42,0.08)] xl:sticky xl:top-24">
+              <div class="flex items-center justify-between mb-6">
+                <p class="text-2xl font-bold text-neutral-900">Local styles</p>
+                <div class="w-9 h-9 rounded-full border border-[#EAECF0] flex items-center justify-center text-neutral-500">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="space-y-5">
+                <div>
+                  <p class="text-sm text-neutral-400 mb-3">Text styles</p>
+                  <div class="space-y-3">
+                    {textStyleGroups.map(item => (
+                      <div class="flex items-center justify-between text-neutral-800">
+                        <div class="flex min-w-0 items-center gap-3">
+                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="text-neutral-300">
+                            <path d="M3 2.2 6 5 3 7.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          <div class="min-w-0">
+                            <span class="block text-base font-semibold text-neutral-800">{item.group}</span>
+                            <code class="block truncate text-[10px] text-neutral-500 font-mono">{item.range}</code>
+                          </div>
+                        </div>
+                        <span class="ml-3 rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-semibold text-neutral-500">{item.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="pt-5 border-t border-[#EAECF0] space-y-3">
+                  <p class="text-sm text-neutral-400">Tokens utilitários</p>
+                  {[
+                    { label: 'Pesos', value: '400 · 600 · 700' },
+                    { label: 'Line Height', value: '12px -> 72px' },
+                    { label: 'Tracking', value: '0' },
+                  ].map(item => (
+                    <div class="flex items-start justify-between gap-4">
+                      <span class="text-sm text-neutral-500">{item.label}</span>
+                      <code class="text-[11px] text-neutral-400 font-mono text-right">{item.value}</code>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="grid gap-14 pt-10 xl:grid-cols-2 xl:gap-20">
+              <div class="min-w-0">
+                <div class="border-b border-[#EAECF0] pb-5 mb-6">
+                  <h4 class="text-3xl font-bold text-neutral-900">Paragraphs</h4>
+                </div>
+                <div class="divide-y divide-[#EAECF0]">
+                  {bodyTextStyles.map(t => (
+                    <div class="grid gap-4 py-5 md:grid-cols-[minmax(132px,0.85fr)_minmax(160px,0.9fr)_minmax(0,1.5fr)] md:gap-6">
+                      <div>
+                        <p class="text-base font-semibold text-neutral-900">{t.label}</p>
+                        <code class="mt-2 block text-[9px] text-neutral-500 font-mono break-all">{t.name}</code>
+                      </div>
+                      <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
+                        <p>Size: {t.size}</p>
+                        <p>Weight: {t.weight}</p>
+                        <p>Line Height: {t.lh}</p>
+                        <p>Node: {t.node}</p>
+                      </div>
+                      <p
+                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; font-family:'Source Sans Pro',sans-serif`}
+                        class="text-neutral-900"
+                      >
+                        {t.sample}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="min-w-0">
+                <div class="border-b border-[#EAECF0] pb-5 mb-6">
+                  <h4 class="text-3xl font-bold text-neutral-900">Caption</h4>
+                </div>
+                <div class="divide-y divide-[#EAECF0]">
+                  {captionTextStyles.map(t => (
+                    <div class="grid gap-4 py-5 md:grid-cols-[minmax(132px,0.85fr)_minmax(160px,0.9fr)_minmax(0,1.5fr)] md:gap-6">
+                      <div>
+                        <p class="text-base font-semibold text-neutral-900">{t.label}</p>
+                        <code class="mt-2 block text-[9px] text-neutral-500 font-mono break-all">{t.name}</code>
+                      </div>
+                      <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
+                        <p>Size: {t.size}</p>
+                        <p>Weight: {t.weight}</p>
+                        <p>Line Height: {t.lh}</p>
+                        <p>Node: {t.node}</p>
+                      </div>
+                      <p
+                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; font-family:'Source Sans Pro',sans-serif`}
+                        class="text-neutral-900"
+                      >
+                        {t.sample}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+          </div>
+
         </div>
       </div>
 
@@ -626,7 +664,7 @@ import Layout from '../layouts/Layout.astro'
         <h2 class="text-4xl font-bold text-neutral-900 leading-tight">Espaçamento & Grid</h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid gap-6 lg:grid-cols-3">
 
         <!-- Escala de espaçamento -->
         <div class="bg-[#F9FAFB] rounded-2xl p-8">
@@ -652,51 +690,50 @@ import Layout from '../layouts/Layout.astro'
           </div>
         </div>
 
-        <!-- Border radius + Shadows -->
-        <div class="space-y-4">
-          <div class="bg-[#F9FAFB] rounded-2xl p-8">
-            <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Border radius</p>
-            <div class="flex flex-wrap gap-4">
-              {[
-                { token: 'radius/none',    value: '0px',   r: '0px' },
-                { token: 'radius/sm',      value: '2px',   r: '2px' },
-                { token: 'radius/DEFAULT', value: '4px',   r: '4px' },
-                { token: 'radius/md',      value: '6px',   r: '6px' },
-                { token: 'radius/lg',      value: '8px',   r: '8px' },
-                { token: 'radius/xl',      value: '12px',  r: '12px' },
-                { token: 'radius/2xl',     value: '16px',  r: '16px' },
-                { token: 'radius/3xl',     value: '24px',  r: '24px' },
-                { token: 'radius/4xl',     value: '32px',  r: '32px' },
-                { token: 'radius/full',    value: '999px', r: '999px' },
-              ].map(r => (
-                <div class="text-center">
-                  <div class="w-12 h-12 bg-[#006EEF]/15 border-2 border-[#006EEF]/30 mb-2" style={`border-radius:${r.r}`}></div>
-                  <code class="text-[9px] text-neutral-400 font-mono block">{r.token}</code>
-                  <code class="text-[9px] text-neutral-300 font-mono">{r.value}</code>
-                </div>
-              ))}
-            </div>
+        <!-- Border radius -->
+        <div class="bg-[#F9FAFB] rounded-2xl p-8">
+          <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Border radius</p>
+          <div class="flex flex-wrap gap-4">
+            {[
+              { token: 'radius/none',    value: '0px',   r: '0px' },
+              { token: 'radius/sm',      value: '2px',   r: '2px' },
+              { token: 'radius/DEFAULT', value: '4px',   r: '4px' },
+              { token: 'radius/md',      value: '6px',   r: '6px' },
+              { token: 'radius/lg',      value: '8px',   r: '8px' },
+              { token: 'radius/xl',      value: '12px',  r: '12px' },
+              { token: 'radius/2xl',     value: '16px',  r: '16px' },
+              { token: 'radius/3xl',     value: '24px',  r: '24px' },
+              { token: 'radius/4xl',     value: '32px',  r: '32px' },
+              { token: 'radius/full',    value: '999px', r: '999px' },
+            ].map(r => (
+              <div class="text-center">
+                <div class="w-12 h-12 bg-[#006EEF]/15 border-2 border-[#006EEF]/30 mb-2" style={`border-radius:${r.r}`}></div>
+                <code class="text-[9px] text-neutral-400 font-mono block">{r.token}</code>
+                <code class="text-[9px] text-neutral-300 font-mono">{r.value}</code>
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div class="bg-[#F9FAFB] rounded-2xl p-8">
-            <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Elevação / Sombras</p>
-            <div class="space-y-4">
-              {[
-                { token: 'shadow/sm',   css: '0 1px 2px rgba(0,0,0,0.05)',                                              label: 'Sutil — cards flat' },
-                { token: 'shadow/base', css: '0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.10)',                 label: 'Base — cards padrão' },
-                { token: 'shadow/md',   css: '0 2px 4px -1px rgba(0,0,0,0.06), 0 4px 6px -1px rgba(0,0,0,0.10)',       label: 'Médio — modais' },
-                { token: 'shadow/lg',   css: '0 16px 32px rgba(0,0,0,0.06)',                                            label: 'Alto — dropdowns' },
-                { token: 'shadow/xl',   css: '0 32px 64px rgba(0,0,0,0.16)',                                            label: 'Máximo — overlays' },
-              ].map(s => (
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 bg-white rounded-xl shrink-0" style={`box-shadow:${s.css}`}></div>
-                  <div>
-                    <code class="text-xs text-neutral-500 font-mono block">{s.token}</code>
-                    <p class="text-[10px] text-neutral-400">{s.label}</p>
-                  </div>
+        <!-- Elevação -->
+        <div class="bg-[#F9FAFB] rounded-2xl p-8">
+          <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Elevação / Sombras</p>
+          <div class="space-y-4">
+            {[
+              { token: 'shadow/sm',   css: '0 1px 2px rgba(0,0,0,0.05)',                                              label: 'Sutil — cards flat' },
+              { token: 'shadow/base', css: '0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.10)',                 label: 'Base — cards padrão' },
+              { token: 'shadow/md',   css: '0 2px 4px -1px rgba(0,0,0,0.06), 0 4px 6px -1px rgba(0,0,0,0.10)',       label: 'Médio — modais' },
+              { token: 'shadow/lg',   css: '0 16px 32px rgba(0,0,0,0.06)',                                            label: 'Alto — dropdowns' },
+              { token: 'shadow/xl',   css: '0 32px 64px rgba(0,0,0,0.16)',                                            label: 'Máximo — overlays' },
+            ].map(s => (
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-white rounded-xl shrink-0" style={`box-shadow:${s.css}`}></div>
+                <div>
+                  <code class="text-xs text-neutral-500 font-mono block">{s.token}</code>
+                  <p class="text-[10px] text-neutral-400">{s.label}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -705,6 +742,400 @@ import Layout from '../layouts/Layout.astro'
 
   <!-- Componentes -->
   <section class="py-24 bg-[#F9FAFB]">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Componentes</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight mb-4">Biblioteca de componentes</h2>
+        <p class="text-neutral-500 max-w-xl text-[15px] leading-relaxed">
+          Componentes documentados em aplicações light e dark, com organização próxima ao Figma e exemplos compactos para leitura rápida.
+        </p>
+      </div>
+
+      <div class="space-y-10">
+
+        <!-- Botões -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Button</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Botões</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">
+                Estrutura condensada da tela do Figma: accent, hierarchy, size, state, icon e badge em modo claro e escuro.
+              </p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              {[
+                { theme: 'Light', bg: '#FFFFFF', text: '#1B1B1F', sub: '#707077', border: '#EAECF0', soft: '#F9FAFB' },
+                { theme: 'Dark', bg: '#1B1B1F', text: '#F9FAFB', sub: '#A8A8B2', border: '#434349', soft: '#2F3033' },
+              ].map(theme => (
+                <div class="rounded-2xl border p-5" style={`background:${theme.bg}; border-color:${theme.border}`}>
+                  <div class="flex items-center justify-between mb-5">
+                    <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>{theme.theme}</p>
+                    <code class="text-[10px] font-mono" style={`color:${theme.sub}`}>Button / Tokens</code>
+                  </div>
+
+                  <div class="space-y-6">
+                    <div>
+                      <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Accent</p>
+                      <div class="flex flex-wrap gap-2">
+                        {[
+                          { label: 'Default', bg: theme.theme === 'Light' ? '#006EEF' : '#4A9DFF', color: theme.theme === 'Light' ? '#FFFFFF' : '#001028' },
+                          { label: 'Neutral', bg: theme.theme === 'Light' ? '#2F3033' : '#F9FAFB', color: theme.theme === 'Light' ? '#FFFFFF' : '#1B1B1F' },
+                          { label: 'Brand', bg: theme.theme === 'Light' ? '#D40000' : '#FF8A78', color: theme.theme === 'Light' ? '#FFFFFF' : '#280000' },
+                          { label: 'Success', bg: theme.theme === 'Light' ? '#006D31' : '#92F2AB', color: theme.theme === 'Light' ? '#FFFFFF' : '#00290D' },
+                          { label: 'Error', bg: theme.theme === 'Light' ? '#CC2543' : '#FF888E', color: theme.theme === 'Light' ? '#FFFFFF' : '#42001C' },
+                        ].map(b => (
+                          <button class="h-9 px-4 text-xs font-semibold" style={`background:${b.bg}; color:${b.color}; border-radius:8px`}>{b.label}</button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Hierarchy</p>
+                      <div class="flex flex-wrap gap-2">
+                        <button class="h-10 px-4 text-xs font-semibold" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>Primary</button>
+                        <button class="h-10 px-4 text-xs font-semibold" style={`background:${theme.soft}; color:${theme.text}; border:1px solid ${theme.border}; border-radius:8px`}>Secondary</button>
+                        <button class="h-10 px-4 text-xs font-semibold" style={`background:transparent; color:${theme.text}; border-radius:8px`}>Tertiary</button>
+                        <button class="h-10 px-4 text-xs font-semibold" style={`background:${theme.theme === 'Light' ? '#EDF5FF' : '#001A41'}; color:${theme.theme === 'Light' ? '#006EEF' : '#D8ECFF'}; border-radius:8px`}>Soft</button>
+                      </div>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2">
+                      <div>
+                        <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Size</p>
+                        <div class="flex flex-wrap items-center gap-2">
+                          <button class="h-6 px-3 text-[11px] font-semibold" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:6px`}>xs</button>
+                          <button class="h-8 px-4 text-xs font-semibold" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>sm</button>
+                          <button class="h-11 px-5 text-sm font-semibold" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>md</button>
+                          <button class="h-14 px-6 text-sm font-semibold" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:10px`}>lg</button>
+                        </div>
+                      </div>
+
+                      <div>
+                        <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>State</p>
+                        <div class="grid gap-2">
+                          <button class="h-9 px-4 text-xs font-semibold text-left" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>Default</button>
+                          <button class="h-9 px-4 text-xs font-semibold text-left" style={`background:${theme.theme === 'Light' ? '#005BC0' : '#ADD3FF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>Hover</button>
+                          <button class="h-9 px-4 text-xs font-semibold text-left" style={`background:${theme.theme === 'Light' ? '#004493' : '#D8ECFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>Pressed</button>
+                          <button class="h-9 px-4 text-xs font-semibold text-left cursor-not-allowed" style={`background:${theme.theme === 'Light' ? '#F2F4F7' : '#434349'}; color:${theme.theme === 'Light' ? '#A8A8B2' : '#707077'}; border-radius:8px`}>Disabled</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Icon / Badge</p>
+                      <div class="flex flex-wrap gap-2">
+                        <button class="h-10 px-4 text-xs font-semibold inline-flex items-center gap-2" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`}>
+                          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                          Icon left
+                        </button>
+                        <button class="h-10 px-4 text-xs font-semibold inline-flex items-center gap-2" style={`background:${theme.soft}; color:${theme.text}; border:1px solid ${theme.border}; border-radius:8px`}>
+                          Badge
+                          <span class="min-w-4 h-4 px-1 rounded-full text-[9px] inline-flex items-center justify-center" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}`}>1</span>
+                        </button>
+                        <button class="w-10 h-10 inline-flex items-center justify-center" style={`background:${theme.theme === 'Light' ? '#006EEF' : '#4A9DFF'}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}; border-radius:8px`} aria-label="Adicionar">
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Inputs -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Input</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Campos e seleção</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Estrutura fiel ao Figma: surface, variant boxed/lined, tamanhos, estados, select, checkbox e radio button.</p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              {[
+                { mode: 'Light', bg: '#FFFFFF', panel: '#F9FAFB', field: '#FFFFFF', text: '#1B1B1F', soft: '#707077', muted: '#918F97', border: '#DADBE3', line: '#EAECF0', accent: '#006EEF', error: '#CC2543', done: '#006D31', disabledBg: '#F2F4F7', disabledText: '#A8A8B2' },
+                { mode: 'Dark', bg: '#1B1B1F', panel: '#2F3033', field: '#2F3033', text: '#F9FAFB', soft: '#A8A8B2', muted: '#A8A8B2', border: '#56565B', line: '#434349', accent: '#4A9DFF', error: '#FF888E', done: '#92F2AB', disabledBg: '#434349', disabledText: '#707077' },
+              ].map(theme => (
+                <div class="rounded-2xl border p-5 space-y-6" style={`background:${theme.bg}; border-color:${theme.line}`}>
+                  <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.muted}`}>{theme.mode}</p>
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>Variant</p>
+                    <div class="grid gap-3">
+                      <div>
+                        <div class="mb-1.5 flex items-center justify-between">
+                          <label class="text-xs font-semibold" style={`color:${theme.soft}`}>Boxed</label>
+                          <span class="text-[10px]" style={`color:${theme.muted}`}>Opcional</span>
+                        </div>
+                        <div class="rounded-lg px-3 py-2.5" style={`background:${theme.field}; border:1px solid ${theme.border}`}>
+                          <p class="text-[10px] font-semibold mb-0.5" style={`color:${theme.soft}`}>E-mail</p>
+                          <p class="text-sm" style={`color:${theme.text}`}>email@example.com</p>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label class="text-xs font-semibold block mb-1.5" style={`color:${theme.soft}`}>Overlap</label>
+                        <div class="relative pt-2">
+                          <span class="absolute left-3 top-0 px-1 text-[10px] font-semibold" style={`background:${theme.bg}; color:${theme.soft}`}>E-mail</span>
+                          <div class="flex h-11 items-center rounded-lg px-3 text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.border}`}>email@example.com</div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label class="text-xs font-semibold block mb-1.5" style={`color:${theme.soft}`}>Lined</label>
+                        <input type="text" value="email@example.com" class="h-10 w-full outline-none bg-transparent px-0 text-sm" style={`color:${theme.text}; border-bottom:1px solid ${theme.border}`} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>Size</p>
+                    <div class="grid gap-2">
+                      {[
+                        { name: 'sm', h: '32px' },
+                        { name: 'md', h: '44px' },
+                        { name: 'lg', h: '56px' },
+                      ].map(size => (
+                        <div class="grid grid-cols-[44px_minmax(0,1fr)_44px] items-center gap-3">
+                          <code class="text-[10px] font-mono" style={`color:${theme.muted}`}>{size.name}</code>
+                          <div class="flex items-center rounded-lg px-3 text-sm" style={`height:${size.h}; background:${theme.field}; color:${theme.text}; border:1px solid ${theme.border}`}>email@example.com</div>
+                          <code class="text-[10px] font-mono" style={`color:${theme.muted}`}>{size.h}</code>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>State</p>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                      <div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.soft}`}>Default</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.border}`}>email@example.com</div>
+                      </div>
+                      <div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.accent}`}>Focused</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.accent}; box-shadow:0 0 0 3px ${theme.mode === 'Light' ? 'rgba(0,110,239,0.12)' : 'rgba(74,157,255,0.18)'}`}>email@example.com</div>
+                      </div>
+                      <div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.error}`}>Error</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.mode === 'Light' ? '#FDEEF0' : '#5C0026'}; color:${theme.mode === 'Light' ? '#1B1B1F' : '#FFDADA'}; border:1px solid ${theme.error}`}>00000-000</div>
+                      </div>
+                      <div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.done}`}>Done</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center justify-between text-sm" style={`background:${theme.mode === 'Light' ? '#E6FAEF' : '#07461F'}; color:${theme.mode === 'Light' ? '#006D31' : '#E6FAEF'}; border:1px solid ${theme.done}`}>
+                          Oliveira Trust
+                          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.disabledText}`}>Disabled</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.disabledBg}; color:${theme.disabledText}; border:1px solid ${theme.line}`}>Campo desabilitado</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>Select / Choice</p>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                      <div class="flex h-11 items-center justify-between rounded-lg px-3 text-sm" style={`background:${theme.field}; border:1px solid ${theme.border}; color:${theme.text}`}>
+                        Pessoa Jurídica
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                          <span class="flex h-5 w-5 items-center justify-center rounded" style={`background:${theme.accent}`}><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5 4.3 8 9 3" stroke={theme.mode === 'Light' ? '#FFFFFF' : '#001028'} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                          <span class="text-xs" style={`color:${theme.soft}`}>Checkbox</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                          <span class="flex h-5 w-5 items-center justify-center rounded-full" style={`border:1.5px solid ${theme.accent}`}><span class="h-2.5 w-2.5 rounded-full" style={`background:${theme.accent}`}></span></span>
+                          <span class="text-xs" style={`color:${theme.soft}`}>Radio button</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Feedback -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Feedback</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Badges, chips e alertas</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Aplicações compactas de status e comunicação, usando os tokens semânticos de appearance.</p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              <div class="rounded-2xl border border-[#EAECF0] bg-white p-5 space-y-5">
+                <p class="text-xs font-bold tracking-widest uppercase text-neutral-500">Light</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#006EEF; color:#FFFFFF; border-radius:999px">primary</span>
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#006D31; color:#FFFFFF; border-radius:999px">success</span>
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#F3AF00; color:#473101; border-radius:999px">warning</span>
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#CC2543; color:#FFFFFF; border-radius:999px">error</span>
+                </div>
+                <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#E6FAEF">
+                  <div class="w-4 h-4 rounded-full mt-0.5" style="background:#006D31"></div>
+                  <div><p class="text-xs font-semibold" style="color:#006D31">Sucesso</p><p class="text-[11px]" style="color:#006D31">Transferência realizada.</p></div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border p-5 space-y-5" style="background:#1B1B1F; border-color:#434349">
+                <p class="text-xs font-bold tracking-widest uppercase" style="color:#A8A8B2">Dark</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#4A9DFF; color:#001028; border-radius:999px">primary</span>
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#92F2AB; color:#00290D; border-radius:999px">success</span>
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#FFCD5E; color:#271900; border-radius:999px">warning</span>
+                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#FF888E; color:#42001C; border-radius:999px">error</span>
+                </div>
+                <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#07461F">
+                  <div class="w-4 h-4 rounded-full mt-0.5" style="background:#92F2AB"></div>
+                  <div><p class="text-xs font-semibold" style="color:#E6FAEF">Sucesso</p><p class="text-[11px]" style="color:#E6FAEF">Transferência realizada.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tabela -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Data Table</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Tabela</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Linhas alternadas, seleção, status e alinhamento numérico.</p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              {[
+                { theme: 'Light', bg: '#FFFFFF', row: '#F9FAFB', border: '#EAECF0', text: '#1B1B1F', sub: '#707077' },
+                { theme: 'Dark', bg: '#1B1B1F', row: '#2F3033', border: '#434349', text: '#F9FAFB', sub: '#A8A8B2' },
+              ].map(theme => (
+                <div class="overflow-hidden rounded-2xl border" style={`background:${theme.bg}; border-color:${theme.border}`}>
+                  <div class="px-5 py-4 flex items-center justify-between" style={`border-bottom:1px solid ${theme.border}`}>
+                    <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>{theme.theme}</p>
+                    <span class="text-[10px]" style={`color:${theme.sub}`}>4 rows</span>
+                  </div>
+                  {[
+                    ['OT Gestão', 'Fiduciário', 'Ativo'],
+                    ['OT Capital', 'Securitização', 'Análise'],
+                    ['OT Crédito', 'CRI/CRA', 'Pendente'],
+                  ].map((r, i) => (
+                    <div class="grid grid-cols-[1fr_1fr_auto] gap-3 px-5 py-3 text-xs" style={`background:${i === 1 ? theme.row : theme.bg}; border-bottom:1px solid ${theme.border}`}>
+                      <span class="font-semibold" style={`color:${theme.text}`}>{r[0]}</span>
+                      <span style={`color:${theme.sub}`}>{r[1]}</span>
+                      <span class="px-2 py-0.5 font-bold" style={`border-radius:999px; ${r[2] === 'Ativo' ? 'background:#E6FAEF; color:#006D31' : r[2] === 'Análise' ? 'background:#EDF5FF; color:#006EEF' : 'background:#FEF7E5; color:#744600'}`}>{r[2]}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Navegação e controles -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Navigation</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Tabs, paginação e switches</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Controles de navegação e seleção em versões clara e escura.</p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              {[
+                { theme: 'Light', bg: '#FFFFFF', soft: '#F9FAFB', border: '#DADBE3', text: '#1B1B1F', sub: '#707077', accent: '#006EEF' },
+                { theme: 'Dark', bg: '#1B1B1F', soft: '#2F3033', border: '#56565B', text: '#F9FAFB', sub: '#A8A8B2', accent: '#4A9DFF' },
+              ].map(theme => (
+                <div class="rounded-2xl border p-5 space-y-5" style={`background:${theme.bg}; border-color:${theme.border}`}>
+                  <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>{theme.theme}</p>
+                  <div class="flex gap-0" style={`border-bottom:1px solid ${theme.border}`}>
+                    {['Visão Geral', 'Docs', 'Histórico'].map((tab, i) => (
+                      <button class="px-3 py-2 text-xs font-medium" style={i === 0 ? `color:${theme.accent}; border-bottom:2px solid ${theme.accent}; margin-bottom:-1px` : `color:${theme.sub}; border-bottom:2px solid transparent; margin-bottom:-1px`}>{tab}</button>
+                    ))}
+                  </div>
+                  <div class="flex items-center gap-1">
+                    {['1', '2', '3', '...'].map((p, i) => (
+                      <button class="w-8 h-8 text-xs font-medium" style={`border-radius:8px; ${i === 1 ? `background:${theme.accent}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}` : `background:${theme.soft}; color:${theme.text}; border:1px solid ${theme.border}`}`}>{p}</button>
+                    ))}
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs" style={`color:${theme.sub}`}>Autenticação 2FA</span>
+                    <div class="flex items-center px-0.5 rounded-full" style={`width:40px; height:22px; background:${theme.accent}`}>
+                      <div class="w-4 h-4 rounded-full bg-white" style="transform:translateX(18px)"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Avatars, loading e modal -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Patterns</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Avatar, loading e modal</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Aplicações de suporte para feedback visual, composição e confirmação de ação.</p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              <div class="rounded-2xl border border-[#EAECF0] bg-white p-5 space-y-5">
+                <p class="text-xs font-bold tracking-widest uppercase text-neutral-500">Light</p>
+                <div class="flex items-center gap-2">
+                  {['GC', 'OT', 'MS'].map((init, i) => (
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white" style={`${i === 0 ? 'background:#006EEF' : i === 1 ? 'background:#918F97' : 'background:#00A74E'}; ${i > 0 ? 'margin-left:-8px; outline:2px solid white' : ''}`}>{init}</div>
+                  ))}
+                </div>
+                <div class="space-y-2">
+                  <div class="h-3 rounded-full animate-pulse w-3/4" style="background:#EAECF0"></div>
+                  <div class="h-3 rounded-full animate-pulse w-1/2" style="background:#EAECF0"></div>
+                  <div class="h-9 rounded-xl animate-pulse w-full" style="background:#EAECF0"></div>
+                </div>
+                <div class="rounded-xl border border-[#EAECF0] p-4">
+                  <p class="text-sm font-semibold text-[#1B1B1F] mb-2">Confirmar transferência</p>
+                  <p class="text-xs text-[#707077] mb-4">R$ 45.000,00 para OT Gestão S.A.</p>
+                  <button class="w-full h-9 text-xs font-semibold text-white" style="background:#006EEF; border-radius:8px">Confirmar</button>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border p-5 space-y-5" style="background:#1B1B1F; border-color:#434349">
+                <p class="text-xs font-bold tracking-widest uppercase" style="color:#A8A8B2">Dark</p>
+                <div class="flex items-center gap-2">
+                  {['GC', 'OT', 'MS'].map((init, i) => (
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style={`${i === 0 ? 'background:#4A9DFF; color:#001028' : i === 1 ? 'background:#A8A8B2; color:#1B1B1F' : 'background:#92F2AB; color:#00290D'}; ${i > 0 ? 'margin-left:-8px; outline:2px solid #1B1B1F' : ''}`}>{init}</div>
+                  ))}
+                </div>
+                <div class="space-y-2">
+                  <div class="h-3 rounded-full animate-pulse w-3/4" style="background:#434349"></div>
+                  <div class="h-3 rounded-full animate-pulse w-1/2" style="background:#434349"></div>
+                  <div class="h-9 rounded-xl animate-pulse w-full" style="background:#434349"></div>
+                </div>
+                <div class="rounded-xl p-4" style="border:1px solid #434349; background:#2F3033">
+                  <p class="text-sm font-semibold mb-2" style="color:#F9FAFB">Confirmar transferência</p>
+                  <p class="text-xs mb-4" style="color:#A8A8B2">R$ 45.000,00 para OT Gestão S.A.</p>
+                  <button class="w-full h-9 text-xs font-semibold" style="background:#4A9DFF; color:#001028; border-radius:8px">Confirmar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Componentes legacy -->
+  <section class="hidden">
     <div class="max-w-[1600px] mx-auto px-6">
 
       <div class="mb-16">
