@@ -1,0 +1,96 @@
+---
+const etapas = [
+  {
+    fase: 'Descoberta',
+    label: 'Discover',
+    cor: '#0891B2',
+    descricao: 'Pesquisa com usuários, imersão no negócio e coleta de dados para entender o problema em toda a sua complexidade.',
+    itens: ['Entrevistas com usuários', 'Análise heurística', 'Benchmarking', 'Desk research'],
+    icone: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="28" stroke="#0891B2" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <circle cx="40" cy="40" r="14" fill="#0891B2" fill-opacity="0.1" stroke="#0891B2" stroke-width="1.5"/>
+      <path d="M40 26v4M40 50v4M26 40h4M50 40h4" stroke="#0891B2" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="40" cy="40" r="4" fill="#0891B2"/>
+      <path d="M32 32l3 3M48 32l-3 3M32 48l3-3M48 48l-3-3" stroke="#0891B2" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+    </svg>`,
+  },
+  {
+    fase: 'Definição',
+    label: 'Define',
+    cor: '#0670A0',
+    descricao: 'Síntese dos aprendizados em oportunidades claras. Personas, jornadas e o problema certo a resolver.',
+    itens: ['Síntese de pesquisa', 'Mapa de jornada', 'Personas', 'HMW & POV'],
+    icone: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 12L68 40L40 68L12 40L40 12Z" stroke="#0670A0" stroke-width="1.5" fill="#0670A0" fill-opacity="0.08"/>
+      <path d="M28 40h24M40 28v24" stroke="#0670A0" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="40" cy="40" r="5" fill="#0670A0"/>
+      <circle cx="40" cy="40" r="10" stroke="#0670A0" stroke-width="1" stroke-dasharray="3 3"/>
+    </svg>`,
+  },
+  {
+    fase: 'Ideação',
+    label: 'Develop',
+    cor: '#0891B2',
+    descricao: 'Exploração ampla de soluções — wireframes, fluxos alternativos e protótipos rápidos para testar hipóteses.',
+    itens: ['Crazy 8s', 'Wireframes', 'Fluxos de navegação', 'Design sprint'],
+    icone: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 56 Q30 20 40 40 Q50 60 60 24" stroke="#0891B2" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="20" cy="56" r="3" fill="#0891B2" fill-opacity="0.4"/>
+      <circle cx="40" cy="40" r="3" fill="#0891B2" fill-opacity="0.6"/>
+      <circle cx="60" cy="24" r="4" fill="#0891B2"/>
+      <rect x="26" y="43" width="9" height="9" rx="2" stroke="#0891B2" stroke-width="1" opacity="0.4"/>
+      <rect x="45" y="25" width="9" height="9" rx="2" stroke="#0891B2" stroke-width="1" opacity="0.4"/>
+    </svg>`,
+  },
+  {
+    fase: 'Entrega',
+    label: 'Deliver',
+    cor: '#0670A0',
+    descricao: 'Protótipo validado, design system e handoff estruturado. Acompanhamento do time de dev até o lançamento.',
+    itens: ['UI final & prototipagem', 'Design system', 'Handoff para dev', 'QA & validação'],
+    icone: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="16" y="20" width="48" height="34" rx="4" stroke="#0670A0" stroke-width="1.5" fill="#0670A0" fill-opacity="0.06"/>
+      <path d="M16 29h48" stroke="#0670A0" stroke-width="1.2"/>
+      <circle cx="23" cy="24.5" r="2" fill="#0670A0" fill-opacity="0.5"/>
+      <circle cx="30" cy="24.5" r="2" fill="#0670A0" fill-opacity="0.5"/>
+      <circle cx="37" cy="24.5" r="2" fill="#0670A0" fill-opacity="0.5"/>
+      <path d="M31 42l5 5 11-11" stroke="#0670A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M30 62h20M40 54v8" stroke="#0670A0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+    </svg>`,
+  },
+]
+---
+
+<section id="processo" class="py-24">
+  <div class="max-w-[1600px] mx-auto px-6">
+
+    <div class="mb-16">
+      <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
+        Processo
+      </p>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
+          Como eu<br />trabalho.
+        </h2>
+        <p class="hidden md:block text-sm text-neutral-400 max-w-xs text-right leading-relaxed">
+          Utilizo o método <strong class="text-neutral-600 font-semibold">Double Diamond</strong> do British Design Council — alternando entre pensamento divergente e convergente para chegar à solução certa.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {etapas.map((etapa) => (
+        <div class="group flex flex-col gap-4 p-5 bg-white rounded-xl border border-neutral-100 hover:border-[#0891B2]/20 hover:shadow-sm transition-all">
+          <div class="text-neutral-300 group-hover:text-[#0891B2] transition-colors w-20 h-20" set:html={etapa.icone} />
+          <div>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-[#0891B2] mb-0.5">{etapa.label}</p>
+            <h3 class="text-sm font-bold text-neutral-900 mb-1 group-hover:text-[#0891B2] transition-colors">{etapa.fase}</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">{etapa.descricao}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

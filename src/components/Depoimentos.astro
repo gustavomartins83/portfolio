@@ -1,0 +1,104 @@
+---
+const depoimentos = [
+  {
+    texto: 'Gustavo tem uma capacidade rara de entender o problema de negócio antes de partir para o design. Nos projetos que trabalhamos juntos, os resultados foram sempre acima do esperado.',
+    nome: 'Nome do Colega',
+    cargo: 'Cargo — Empresa',
+  },
+  {
+    texto: 'Além da qualidade técnica impecável, Gustavo lidera equipes com muita clareza e empatia. Consegue extrair o melhor de cada designer no time.',
+    nome: 'Nome do Colega',
+    cargo: 'Cargo — Empresa',
+  },
+  {
+    texto: 'A entrega do Gustavo sempre supera as expectativas. Ele pensa em toda a experiência — da pesquisa ao detalhe visual — sem perder o foco no usuário.',
+    nome: 'Nome do Colega',
+    cargo: 'Cargo — Empresa',
+  },
+  {
+    texto: 'Trabalhar com Gustavo é entender o que significa design orientado a resultado. Cada decisão é justificada por dados e centrada no usuário.',
+    nome: 'Nome do Colega',
+    cargo: 'Cargo — Empresa',
+  },
+]
+---
+
+<section class="py-24 bg-neutral-50 overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-6">
+    <div class="flex items-end justify-between mb-12">
+      <div>
+        <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">Depoimentos</p>
+        <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
+          O que dizem<br />sobre mim.
+        </h2>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <button id="prev-btn" aria-label="Anterior" class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center hover:border-[#0891B2] hover:text-[#0891B2] transition-colors text-neutral-400">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button id="next-btn" aria-label="Próximo" class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center hover:border-[#0891B2] hover:text-[#0891B2] transition-colors text-neutral-400">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-out">
+      {depoimentos.map((d) => (
+        <div class="min-w-[min(100%,24rem)] bg-white rounded-2xl p-8 border border-neutral-100 flex flex-col justify-between gap-8">
+          <div>
+            <div class="text-[#0891B2] text-4xl font-serif leading-none mb-6 select-none">"</div>
+            <p class="text-neutral-600 text-sm leading-relaxed">{d.texto}</p>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-neutral-900">{d.nome}</p>
+            <p class="text-xs text-neutral-400 mt-0.5">{d.cargo}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Dots -->
+    <div id="dots" class="flex items-center gap-2 mt-8">
+      {depoimentos.map((_, i) => (
+        <button
+          class={`dot h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'w-6 bg-[#0891B2]' : 'w-1.5 bg-neutral-300'}`}
+          data-index={i}
+          aria-label={`Depoimento ${i + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('carousel-track') as HTMLElement
+  const dots = document.querySelectorAll<HTMLElement>('.dot')
+  const cards = track?.children
+  let current = 0
+
+  function goTo(index: number) {
+    current = index
+    const cardWidth = (cards[0] as HTMLElement).offsetWidth + 24 // gap-6 = 24px
+    track.style.transform = `translateX(-${current * cardWidth}px)`
+    dots.forEach((d, i) => {
+      d.classList.toggle('w-6', i === current)
+      d.classList.toggle('bg-[#0891B2]', i === current)
+      d.classList.toggle('w-1.5', i !== current)
+      d.classList.toggle('bg-neutral-300', i !== current)
+    })
+  }
+
+  document.getElementById('next-btn')?.addEventListener('click', () => {
+    goTo((current + 1) % (cards?.length ?? 1))
+  })
+  document.getElementById('prev-btn')?.addEventListener('click', () => {
+    goTo((current - 1 + (cards?.length ?? 1)) % (cards?.length ?? 1))
+  })
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)))
+  })
+</script>

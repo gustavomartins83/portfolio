@@ -1,0 +1,178 @@
+---
+const projetos = [
+  {
+    numero: '01',
+    empresa: 'Oliveira Trust',
+    titulo: 'Design System',
+    descricao: 'Sistema de design para plataforma fintech com tokens, componentes e documentação para times distribuídos.',
+    tags: ['Design System', 'Fintech', 'Figma'],
+    resultado: 'Sistema escalável',
+    bg: 'bg-neutral-900',
+    cor: 'text-white',
+    large: true,
+    url: '/oliveira-trust',
+  },
+  {
+    numero: '02',
+    empresa: 'Funcional Health Tech',
+    titulo: 'Design System',
+    descricao: 'Sistema de design para ecossistema de saúde conectando indústria, pacientes, farmácias e operadoras.',
+    tags: ['Design System', 'Health Tech', 'Tokens'],
+    resultado: '13M+ vidas impactadas',
+    bg: 'bg-neutral-100',
+    cor: 'text-neutral-900',
+    large: false,
+  },
+  {
+    numero: '03',
+    empresa: 'Petz',
+    titulo: 'Clubz',
+    descricao: 'Programa de benefícios com quatro níveis — Bronze, Silver, Gold e Diamond — integrado ao super app.',
+    tags: ['UI Design', 'Loyalty', 'Mobile'],
+    resultado: 'Clube líder do setor',
+    bg: 'bg-[#0891B2]',
+    cor: 'text-white',
+    large: false,
+  },
+  {
+    numero: '04',
+    empresa: 'Petz',
+    titulo: 'Super App',
+    descricao: 'Redesign completo do super app unificando compras, agendamentos, planos de saúde pet e o Clubz em uma única experiência.',
+    tags: ['UX Research', 'UI Design', 'Super App'],
+    resultado: '4.8★ App Store',
+    bg: 'bg-neutral-900',
+    cor: 'text-white',
+    large: true,
+  },
+  {
+    numero: '05',
+    empresa: 'Funcional Health Tech',
+    titulo: 'App Multi',
+    descricao: 'App para o cartão corporativo Mastercard de benefícios — alimentação, mobilidade, prêmios e mais.',
+    tags: ['Mobile', 'Benefícios', 'iOS & Android'],
+    resultado: '4M+ estabelecimentos',
+    bg: 'bg-neutral-100',
+    cor: 'text-neutral-900',
+    large: false,
+  },
+  {
+    numero: '06',
+    empresa: 'Izenu',
+    titulo: 'App',
+    descricao: 'Plataforma de streaming musical e rede social para países lusófonos — conectando artistas e fãs da CPLP.',
+    tags: ['UI Design', 'Streaming', 'Social'],
+    resultado: 'Lançado na CPLP',
+    bg: 'bg-neutral-800',
+    cor: 'text-white',
+    large: false,
+  },
+  {
+    numero: '07',
+    empresa: 'Badesul',
+    titulo: 'Internet Banking',
+    descricao: 'Nova interface do internet banking do Badesul — simplificando operações com foco em acessibilidade e confiança.',
+    tags: ['UI Design', 'Banking', 'Web'],
+    resultado: 'Banco de fomento RS',
+    bg: 'bg-[#0891B2]',
+    cor: 'text-white',
+    large: true,
+  },
+  {
+    numero: '08',
+    empresa: 'Ypê',
+    titulo: 'App',
+    descricao: 'Aplicativo de fidelidade com missões, sorteios, lista de compras e a assistente virtual Yara com IA generativa.',
+    tags: ['Mobile', 'Loyalty', 'UX'],
+    resultado: 'Top limpeza App Store',
+    bg: 'bg-neutral-50',
+    cor: 'text-neutral-900',
+    large: true,
+  },
+]
+
+const linhas = [
+  [projetos[0]],
+  [projetos[1], projetos[2]],
+  [projetos[3]],
+  [projetos[4], projetos[5]],
+  [projetos[6]],
+  [projetos[7]],
+]
+---
+
+<section id="trabalhos" class="py-24">
+  <div class="max-w-[1600px] mx-auto px-6">
+
+    <div class="flex items-end justify-between mb-16">
+      <div>
+        <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
+          Trabalhos
+        </p>
+        <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
+          Projetos<br />selecionados
+        </h2>
+      </div>
+      <p class="hidden md:block text-sm text-neutral-400 max-w-xs text-right leading-relaxed">
+        Cada projeto reflete um problema real resolvido com estratégia, pesquisa e execução.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      {linhas.map((linha) => (
+        <div class={`grid gap-4 ${linha.length > 1 ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
+          {linha.map((projeto) => (
+            <article
+              class={`group relative ${projeto.bg} rounded-2xl overflow-hidden cursor-pointer`}
+              style={`aspect-ratio: ${projeto.large ? '16/7' : '4/3'}; min-height: ${projeto.large ? '360px' : '280px'}`}
+              onclick={projeto.url ? `window.location.href='${projeto.url}'` : undefined}
+            >
+              <div class="relative flex flex-col justify-between p-8 md:p-10 h-full" style={`min-height: inherit`}>
+
+                {/* Topo */}
+                <div class="flex items-start justify-between">
+                  <span class={`text-xs font-bold tracking-widest ${projeto.cor} opacity-30`}>
+                    {projeto.numero}
+                  </span>
+                  <span class={`text-xs font-semibold px-3 py-1.5 rounded-full border ${projeto.cor} border-current opacity-60`}>
+                    {projeto.resultado}
+                  </span>
+                </div>
+
+                {/* Base */}
+                <div>
+                  <p class={`text-xs font-semibold tracking-widest uppercase mb-2 ${projeto.cor} opacity-50`}>
+                    {projeto.empresa}
+                  </p>
+                  <h3 class={`font-bold mb-3 leading-tight group-hover:opacity-70 transition-opacity ${projeto.cor} ${projeto.large ? 'text-2xl md:text-4xl' : 'text-xl md:text-2xl'}`}>
+                    {projeto.titulo}
+                  </h3>
+                  <p class={`text-sm leading-relaxed mb-5 max-w-lg ${projeto.cor} opacity-60`}>
+                    {projeto.descricao}
+                  </p>
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-2">
+                      {projeto.tags.map(tag => (
+                        <span class={`text-xs font-medium px-3 py-1 rounded-full border ${projeto.cor} opacity-50 border-current`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div class={`w-9 h-9 rounded-full border ${projeto.cor} border-current opacity-30 group-hover:opacity-80 transition-all flex items-center justify-center shrink-0`}>
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" class={projeto.cor}>
+                        <path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+          ))}
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

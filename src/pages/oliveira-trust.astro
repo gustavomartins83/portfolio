@@ -1,0 +1,1237 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout whiteNav={true}>
+
+  <!-- Hero do Projeto -->
+  <section class="pt-32 pb-20" style="background: linear-gradient(135deg, #280000 0%, #7A0000 50%, #D40000 100%);">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-end">
+        <div>
+          <img src="/ot-logo.svg" class="h-6 mb-6 brightness-0 invert" alt="Oliveira Trust" />
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.0] tracking-tight mb-6">
+            Design System
+          </h1>
+          <p class="text-white/70 text-lg leading-relaxed max-w-md">
+            Sistema de design escalável para ecossistema fintech — tokens primitivos baseados na escala do Tailwind CSS, semântica própria, modo claro e escuro, e biblioteca de componentes integrada ao fluxo de desenvolvimento.
+          </p>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          {[
+            { label: 'Papel', valor: 'Lead Designer' },
+            { label: 'Base primitiva', valor: 'Tailwind CSS' },
+            { label: 'Plataforma', valor: 'Web · Mobile' },
+            { label: 'Ferramenta', valor: 'Figma' },
+            { label: 'Tokens', valor: '400+' },
+            { label: 'Componentes', valor: '80+' },
+          ].map(m => (
+            <div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.12); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.2)">
+              <p class="text-[10px] font-bold tracking-widest uppercase text-white/50 mb-1">{m.label}</p>
+              <p class="text-white font-semibold text-sm">{m.valor}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cover -->
+  <div style="background: linear-gradient(180deg, #D40000 0%, #280000 100%);">
+    <div class="max-w-[1600px] mx-auto px-6 py-12">
+      <div class="aspect-[16/5] rounded-2xl overflow-hidden relative flex items-center justify-center" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12)">
+        <!-- Grid of squares with varying opacity -->
+        <div class="absolute inset-0 grid grid-cols-10 grid-rows-4 gap-2 p-6 opacity-20">
+          {Array.from({length: 40}).map((_, i) => (
+            <div class="rounded-lg bg-white" style={`opacity:${0.2 + (i % 7) * 0.12}`}></div>
+          ))}
+        </div>
+        <div class="relative text-center z-10">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-white/60 mb-3">Design System · Oliveira Trust</p>
+          <p class="text-white/25 text-8xl font-bold tracking-tighter">OT.DS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contexto -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="grid md:grid-cols-[1fr_2fr] gap-16">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Contexto</p>
+          <h2 class="text-3xl font-bold text-neutral-900 leading-tight">O problema</h2>
+        </div>
+        <div class="space-y-5 text-neutral-500 text-[15px] leading-relaxed">
+          <p>A Oliveira Trust, uma das principais empresas de serviços fiduciários do Brasil, operava com múltiplos produtos digitais sem consistência visual entre si. Cada produto tinha sua própria paleta, tipografia e padrões de componentes — resultando em retrabalho constante, handoffs inconsistentes e experiências fragmentadas para o usuário final.</p>
+          <p>O desafio era construir um Design System do zero que fosse ao mesmo tempo <strong class="text-neutral-700">flexível o suficiente</strong> para atender múltiplos produtos e <strong class="text-neutral-700">restritivo o suficiente</strong> para garantir coesão — com suporte nativo a modo claro e escuro desde o primeiro token.</p>
+          <p>A decisão estratégica foi adotar a <strong class="text-neutral-700">escala de valores do Tailwind CSS</strong> como base dos tokens primitivos — aproveitando uma nomenclatura já familiar para os times de front-end e garantindo compatibilidade direta entre o Figma e o código. Sobre essa base, criamos a camada semântica própria da Oliveira Trust, desacoplando os valores brutos da intenção de uso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquitetura de Tokens -->
+  <section class="py-24 bg-neutral-50">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Fundação</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight mb-4">Arquitetura de tokens</h2>
+        <p class="text-neutral-500 max-w-xl text-[15px] leading-relaxed">
+          Os tokens primitivos espelham a escala do Tailwind CSS — paletas de cores, espaçamentos, tipografia e radii com a mesma nomenclatura usada no código. Sobre essa base, tokens semânticos atribuem intenção e garantem consistência entre temas.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+
+        <!-- Primitivos -->
+        <div class="bg-white rounded-2xl border border-[#EAECF0] p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="white" stroke-width="1.2"/><circle cx="7" cy="7" r="2" fill="white"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold tracking-widest uppercase text-neutral-400">Nível 1</p>
+              <h3 class="font-bold text-neutral-900">Tokens Primitivos</h3>
+            </div>
+          </div>
+          <p class="text-sm text-neutral-500 leading-relaxed mb-6">Espelham a escala do <strong class="text-neutral-700">Tailwind CSS</strong> — paletas, espaçamentos, radii e tipografia com a mesma nomenclatura do código. Não são consumidos diretamente pelos componentes.</p>
+          <div class="grid grid-cols-1 gap-x-4">
+            {[
+              [
+                { name: 'colors/brand/500',      value: '#D40000', type: 'color' },
+                { name: 'colors/brand/400',      value: '#FF5540', type: 'color' },
+                { name: 'colors/brand/100',      value: '#FFDAD4', type: 'color' },
+                { name: 'colors/brand/50',       value: '#FFF0ED', type: 'color' },
+                { name: 'colors/brand/950',      value: '#280000', type: 'color' },
+                { name: 'colors/primary/500',    value: '#006EEF', type: 'color' },
+                { name: 'colors/primary/400',    value: '#4A9DFF', type: 'color' },
+                { name: 'colors/primary/100',    value: '#D8ECFF', type: 'color' },
+                { name: 'colors/primary/50',     value: '#EDF5FF', type: 'color' },
+                { name: 'colors/primary/900',    value: '#001A41', type: 'color' },
+                { name: 'colors/red/500',        value: '#E22849', type: 'color' },
+                { name: 'colors/red/50',         value: '#FDEEF0', type: 'color' },
+                { name: 'colors/green/700',      value: '#006D31', type: 'color' },
+                { name: 'colors/neutral/950',    value: '#1B1B1F', type: 'color' },
+                { name: 'colors/neutral/900',    value: '#2F3033', type: 'color' },
+              ],
+            ].map(col => (
+              <div class="space-y-1.5">
+                {col.map(t => (
+                  <div class="flex items-center justify-between py-1.5 border-b border-neutral-50 last:border-0">
+                    <code class="text-[10px] text-neutral-500 font-mono truncate mr-2">{t.name}</code>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      {t.type === 'color' && (
+                        <div class="w-3.5 h-3.5 rounded-full border border-neutral-200 shrink-0" style={`background:${t.value}`}></div>
+                      )}
+                      <code class="text-[10px] text-neutral-400 font-mono">{t.value}</code>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Semânticos -->
+        <div class="rounded-2xl p-8 shadow-sm" style="background:#1B1B1F">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-[#006EEF] flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold tracking-widest uppercase text-neutral-500">Nível 2</p>
+              <h3 class="font-bold text-white">Tokens Semânticos</h3>
+            </div>
+          </div>
+          <p class="text-sm text-neutral-400 leading-relaxed mb-6">Referenciam primitivos e carregam intenção de uso. São esses que os componentes consomem — e que mudam entre os modos claro e escuro.</p>
+          <div class="grid grid-cols-1 gap-x-4">
+            {[
+              [
+                { name: 'color-page-default',            light: '#FFFFFF', dark: '#1B1B1F' },
+                { name: 'color-page-soft',               light: '#F9FAFB', dark: '#2F3033' },
+                { name: 'color-surface-level-0',         light: '#FFFFFF', dark: '#2F3033' },
+                { name: 'color-surface-level-1',         light: '#F9FAFB', dark: '#434349' },
+                { name: 'color-surface-level-3',         light: '#EAECF0', dark: '#56565B' },
+                { name: 'text-color-default',            light: '#1B1B1F', dark: '#F9FAFB' },
+                { name: 'text-color-soft',               light: '#707077', dark: '#A8A8B2' },
+                { name: 'text-color-disabled',           light: '#A8A8B2', dark: '#56565B' },
+                { name: 'text-color-action-primary',     light: '#006EEF', dark: '#4A9DFF' },
+                { name: 'text-color-action-brand',       light: '#D40000', dark: '#FF8A78' },
+                { name: 'border-color-default',          light: '#DADBE3', dark: '#56565B' },
+                { name: 'border-color-soft',             light: '#EAECF0', dark: '#434349' },
+                { name: 'border-color-emphasis',         light: '#434349', dark: '#DADBE3' },
+                { name: 'color-primary-surface-mid',     light: '#006EEF', dark: '#006EEF' },
+                { name: 'color-primary-surface-soft',    light: '#EDF5FF', dark: '#001A41' },
+              ],
+            ].map(col => (
+              <div class="space-y-1.5">
+                {col.map(t => (
+                  <div class="flex items-center justify-between py-1.5 border-b border-white/5 last:border-0">
+                    <code class="text-[10px] text-neutral-400 font-mono truncate mr-2">{t.name}</code>
+                    <div class="flex items-center gap-1 shrink-0">
+                      <div class="w-3 h-3 rounded-full border border-white/10 shrink-0" style={`background:${t.light}`}></div>
+                      <div class="w-3 h-3 rounded-full border border-white/10 shrink-0" style={`background:${t.dark}`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Diagrama de fluxo tokens -->
+      <div class="py-4">
+        <div class="flex items-center justify-between gap-4 mb-8">
+          <div>
+            <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-2">Fluxo de referência</p>
+            <h3 class="text-2xl font-bold text-neutral-900">Da matéria-prima ao componente</h3>
+          </div>
+          <div class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-50 border border-[#EAECF0]">
+            <div class="w-2 h-2 rounded-full bg-[#D40000]"></div>
+            <p class="text-[11px] font-medium text-neutral-500">Base Tailwind CSS + semântica OT</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-4 md:gap-12">
+          {[
+            {
+              label: 'Valor bruto',
+              ex: '#006EEF',
+              sub: 'Hex, px ou rem',
+              iconBg: 'bg-neutral-900',
+              icon: 'dot',
+            },
+            {
+              label: 'Token primitivo',
+              ex: 'colors/primary/500',
+              sub: 'Escala Tailwind CSS',
+              iconBg: 'bg-[#D40000]',
+              icon: 'layers',
+            },
+            {
+              label: 'Token semântico',
+              ex: 'color-primary-surface-mid',
+              sub: 'Intenção de uso',
+              iconBg: 'bg-[#006EEF]',
+              icon: 'arrow',
+            },
+            {
+              label: 'Componente',
+              ex: 'Button / primary',
+              sub: 'Aplicação no produto',
+              iconBg: 'bg-[#00A74E]',
+              icon: 'square',
+            },
+          ].map((step, i) => (
+            <div class="relative">
+              <div class="h-full min-h-[176px] rounded-2xl border border-[#EAECF0] bg-gradient-to-b from-white to-neutral-50 p-5 flex flex-col">
+                <div class="flex items-center justify-between gap-3 mb-6">
+                  <div class={`w-11 h-11 rounded-xl ${step.iconBg} flex items-center justify-center shrink-0`}>
+                    {step.icon === 'dot' && (
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="9" cy="9" r="5" stroke="white" stroke-width="1.6"/>
+                        <circle cx="9" cy="9" r="1.8" fill="white"/>
+                      </svg>
+                    )}
+                    {step.icon === 'layers' && (
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 3 14 5.5 9 8 4 5.5 9 3Z" stroke="white" stroke-width="1.4" stroke-linejoin="round"/>
+                        <path d="M4 8.5 9 11l5-2.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 11.5 9 14l5-2.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                    {step.icon === 'arrow' && (
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M4 9h10M10 5l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                    {step.icon === 'square' && (
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <rect x="4" y="4" width="10" height="10" rx="2.5" stroke="white" stroke-width="1.6"/>
+                        <path d="M7 9h4" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+                      </svg>
+                    )}
+                  </div>
+                  <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-300">0{i + 1}</p>
+                </div>
+
+                <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-2">{step.label}</p>
+                <code class="text-sm text-neutral-800 font-mono leading-snug break-words">{step.ex}</code>
+                <p class="text-sm text-neutral-500 leading-relaxed mt-auto pt-6">{step.sub}</p>
+              </div>
+              {i < 3 && (
+                <div class="hidden md:flex absolute top-1/2 -right-6 translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                  <svg width="12" height="20" viewBox="0 0 12 20" fill="none" class="text-neutral-300">
+                    <path d="M2 3l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sistema de Cores — Light & Dark -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Cores</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight mb-4">Light & Dark mode</h2>
+        <p class="text-neutral-500 max-w-xl text-[15px] leading-relaxed">
+          O sistema de cores foi construído com troca de modo nativa. Cada token semântico possui par definido — nenhuma cor é hard-coded nos componentes.
+        </p>
+      </div>
+
+      <!-- Preview light/dark side by side -->
+      <div class="grid md:grid-cols-2 gap-4 mb-12">
+        <!-- Light -->
+        <div class="rounded-2xl border border-[#EAECF0] overflow-hidden">
+          <div class="bg-[#F2F4F7] px-6 py-3 flex items-center gap-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#DADBE3]"></div>
+            <p class="text-xs font-bold tracking-widest uppercase text-[#707077]">Light Mode</p>
+          </div>
+          <div class="bg-white p-6 space-y-3">
+            <div class="flex items-center justify-between p-4 bg-[#F9FAFB] rounded-xl border border-[#EAECF0]">
+              <div>
+                <p class="text-xs text-[#707077] mb-0.5">Saldo disponível</p>
+                <p class="text-2xl font-bold text-[#1B1B1F]">R$ 48.320,00</p>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-[#EDF5FF] flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="#006EEF" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="py-3 px-4 bg-[#006EEF] text-white text-sm font-medium rounded-lg">Transferir</button>
+              <button class="py-3 px-4 bg-[#F2F4F7] text-[#2F3033] text-sm font-medium rounded-lg">Extrato</button>
+            </div>
+            <div class="p-4 rounded-xl border border-[#EAECF0] flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full bg-[#00A74E]"></div>
+              <p class="text-sm text-[#56565B]">Operação realizada com sucesso</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark -->
+        <div class="rounded-2xl overflow-hidden border border-white/5">
+          <div class="px-6 py-3 flex items-center gap-2" style="background:#434349">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#707077]"></div>
+            <p class="text-xs font-bold tracking-widest uppercase text-[#A8A8B2]">Dark Mode</p>
+          </div>
+          <div class="p-6 space-y-3" style="background:#1B1B1F">
+            <div class="flex items-center justify-between p-4 rounded-xl border border-white/5" style="background:#2F3033">
+              <div>
+                <p class="text-xs text-[#A8A8B2] mb-0.5">Saldo disponível</p>
+                <p class="text-2xl font-bold text-[#F9FAFB]">R$ 48.320,00</p>
+              </div>
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,110,239,0.2)">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3v12M3 9h12" stroke="#006EEF" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="py-3 px-4 bg-[#006EEF] text-white text-sm font-medium rounded-lg">Transferir</button>
+              <button class="py-3 px-4 text-[#A8A8B2] text-sm font-medium rounded-lg" style="background:#434349">Extrato</button>
+            </div>
+            <div class="p-4 rounded-xl border border-white/5 flex items-center gap-3">
+              <div class="w-2 h-2 rounded-full bg-[#2DD07A]"></div>
+              <p class="text-sm text-[#A8A8B2]">Operação realizada com sucesso</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paleta de cores -->
+      <div class="space-y-8">
+        {[
+          {
+            nome: 'Brand',
+            path: 'colors/brand',
+            desc: 'Identidade visual da Oliveira Trust',
+            cores: [
+              { token: 'colors/brand/50',  hex: '#FFF0ED' },
+              { token: 'colors/brand/100', hex: '#FFDAD4' },
+              { token: 'colors/brand/200', hex: '#FFB4A8' },
+              { token: 'colors/brand/300', hex: '#FF8A78' },
+              { token: 'colors/brand/400', hex: '#FF5540' },
+              { token: 'colors/brand/500', hex: '#D40000' },
+              { token: 'colors/brand/600', hex: '#BA0000' },
+              { token: 'colors/brand/700', hex: '#990000' },
+              { token: 'colors/brand/800', hex: '#7A0000' },
+              { token: 'colors/brand/900', hex: '#4F0000' },
+              { token: 'colors/brand/950', hex: '#280000' },
+            ],
+          },
+          {
+            nome: 'Primary',
+            path: 'colors/primary',
+            desc: 'Cor de ação e elementos interativos',
+            cores: [
+              { token: 'colors/primary/50',  hex: '#EDF5FF' },
+              { token: 'colors/primary/100', hex: '#D8ECFF' },
+              { token: 'colors/primary/200', hex: '#ADD3FF' },
+              { token: 'colors/primary/300', hex: '#7FBAFF' },
+              { token: 'colors/primary/400', hex: '#4A9DFF' },
+              { token: 'colors/primary/500', hex: '#006EEF' },
+              { token: 'colors/primary/600', hex: '#005BC0' },
+              { token: 'colors/primary/700', hex: '#004493' },
+              { token: 'colors/primary/800', hex: '#002E68' },
+              { token: 'colors/primary/900', hex: '#001A41' },
+              { token: 'colors/primary/950', hex: '#001028' },
+            ],
+          },
+          {
+            nome: 'Neutral',
+            path: 'colors/neutral',
+            desc: 'Base do sistema tipográfico e de superfícies',
+            cores: [
+              { token: 'colors/neutral/50',  hex: '#F9FAFB' },
+              { token: 'colors/neutral/100', hex: '#F2F4F7' },
+              { token: 'colors/neutral/200', hex: '#EAECF0' },
+              { token: 'colors/neutral/300', hex: '#DADBE3' },
+              { token: 'colors/neutral/400', hex: '#A8A8B2' },
+              { token: 'colors/neutral/500', hex: '#918F97' },
+              { token: 'colors/neutral/600', hex: '#707077' },
+              { token: 'colors/neutral/700', hex: '#56565B' },
+              { token: 'colors/neutral/800', hex: '#434349' },
+              { token: 'colors/neutral/900', hex: '#2F3033' },
+              { token: 'colors/neutral/950', hex: '#1B1B1F' },
+            ],
+          },
+          {
+            nome: 'Feedback',
+            path: 'colors/feedback',
+            desc: 'Comunicação de estado e resultado de ações',
+            cores: [
+              { token: 'success/light', hex: '#E6FAEF' },
+              { token: 'success/500',  hex: '#00A74E' },
+              { token: 'success/dark',  hex: '#006D31' },
+              { token: 'warning/light', hex: '#FEF7E5' },
+              { token: 'warning/500',  hex: '#F3AF00' },
+              { token: 'warning/dark',  hex: '#AE7300' },
+              { token: 'error/light',   hex: '#FDEEF0' },
+              { token: 'error/500',     hex: '#CC2442' },
+              { token: 'error/dark',    hex: '#A5003B' },
+              { token: 'info/light',    hex: '#E5F7F9' },
+              { token: 'info/500',      hex: '#006383' },
+              { token: 'info/dark',     hex: '#004D66' },
+            ],
+          },
+        ].map(grupo => (
+          <div>
+            <div class="flex items-baseline gap-3 mb-4">
+              <p class="text-xs font-bold tracking-widest uppercase text-neutral-400">{grupo.nome}</p>
+              <code class="text-[10px] text-neutral-300 font-mono">{grupo.path}</code>
+              <p class="text-xs text-neutral-300">{grupo.desc}</p>
+            </div>
+            <div class="flex gap-1.5">
+              {grupo.cores.map(c => (
+                <div class="flex-1 min-w-0 group">
+                  <div class="h-16 rounded-xl border border-neutral-100 mb-2 transition-transform group-hover:-translate-y-1" style={`background:${c.hex}`}></div>
+                  <code class="text-[9px] text-neutral-400 font-mono block truncate">{c.token}</code>
+                  <code class="text-[9px] text-neutral-300 font-mono">{c.hex}</code>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tipografia -->
+  <section class="py-24 bg-[#F9FAFB]">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Tipografia</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight">Escala tipográfica</h2>
+      </div>
+
+      <div class="relative overflow-hidden rounded-[28px] border border-[#EAECF0] bg-white px-8 py-10 shadow-sm md:px-12 md:py-12">
+        <div class="absolute inset-y-0 left-0 w-4 bg-gradient-to-b from-[#D40000] via-[#FF5540] to-[#280000]"></div>
+        <div class="absolute inset-y-0 right-0 w-4 bg-gradient-to-b from-[#006EEF] via-[#4A9DFF] to-[#001A41]"></div>
+
+        <div class="grid gap-10 xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-12">
+          <div class="min-w-0">
+            <div class="border-b border-[#EAECF0] pb-6">
+              <p class="text-[11px] font-bold tracking-[0.18em] uppercase text-[#D40000] mb-3">Titles · Headlines</p>
+              <h3 class="text-3xl font-bold text-neutral-900">Sistema editorial de títulos</h3>
+            </div>
+
+            <div class="divide-y divide-[#EAECF0]">
+              {[
+                { label: 'Display XL', token: 'display/xl', size: '72px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
+                { label: 'Display LG', token: 'display/lg', size: '60px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
+                { label: 'Display MD', token: 'display/md', size: '48px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
+                { label: 'Display SM', token: 'display/sm', size: '36px', weight: '700', lh: '120%', tracking: '-2%', sample: 'Cardiac Rehab' },
+                { label: 'Title H1', token: 'title/h1', size: '32px', weight: '700', lh: '40px', tracking: '0%', sample: 'Cardiac Rehab' },
+                { label: 'Title H2', token: 'title/h2', size: '24px', weight: '700', lh: '32px', tracking: '0%', sample: 'Cardiac Rehab' },
+                { label: 'Title H3', token: 'title/h3', size: '20px', weight: '700', lh: '28px', tracking: '0%', sample: 'Cardiac Rehab' },
+                { label: 'Title H4', token: 'title/h4', size: '18px', weight: '700', lh: '24px', tracking: '0%', sample: 'Cardiac Rehab' },
+              ].map(t => (
+                <div class="grid gap-5 py-6 md:grid-cols-[140px_220px_minmax(0,1fr)] md:items-start md:gap-8">
+                  <div>
+                    <p class="text-lg font-semibold text-neutral-900">{t.label}</p>
+                    <code class="mt-2 block text-[10px] text-neutral-300 font-mono">{t.token}</code>
+                  </div>
+                  <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
+                    <p>Font Family: Source Sans Pro</p>
+                    <p>Font Style: {t.weight === '700' ? 'Bold' : 'Regular'}</p>
+                    <p>Font Size: {t.size}</p>
+                    <p>Line Height: {t.lh}</p>
+                    <p>Letter Spacing: {t.tracking}</p>
+                  </div>
+                  <div class="min-w-0">
+                    <p
+                      style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; letter-spacing:${t.tracking}; font-family:'Source Sans Pro',sans-serif`}
+                      class="text-neutral-950 break-words"
+                    >
+                      {t.sample}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="grid gap-10 pt-10 lg:grid-cols-2">
+              <div>
+                <div class="border-b border-[#EAECF0] pb-5 mb-6">
+                  <h4 class="text-3xl font-bold text-neutral-900">Paragraphs</h4>
+                </div>
+                <div class="divide-y divide-[#EAECF0]">
+                  {[
+                    { label: 'Body Large', token: 'body/lg', size: '18px', weight: '400', lh: '24px', sample: 'Design systems constroem consistência entre produto, time e código.' },
+                    { label: 'Body Medium', token: 'body/md', size: '16px', weight: '400', lh: '20px', sample: 'Design systems constroem consistência entre produto, time e código.' },
+                    { label: 'Body Small', token: 'body/sm', size: '14px', weight: '400', lh: '20px', sample: 'Design systems constroem consistência entre produto, time e código.' },
+                  ].map(t => (
+                    <div class="grid gap-4 py-5 md:grid-cols-[132px_170px_minmax(0,1fr)] md:gap-6">
+                      <p class="text-base font-semibold text-neutral-900">{t.label}</p>
+                      <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
+                        <p>Size: {t.size}</p>
+                        <p>Weight: {t.weight}</p>
+                        <p>Line Height: {t.lh}</p>
+                      </div>
+                      <p
+                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; font-family:'Source Sans Pro',sans-serif`}
+                        class="text-neutral-900"
+                      >
+                        {t.sample}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div class="border-b border-[#EAECF0] pb-5 mb-6">
+                  <h4 class="text-3xl font-bold text-neutral-900">Caption</h4>
+                </div>
+                <div class="divide-y divide-[#EAECF0]">
+                  {[
+                    { label: 'Caption LG', token: 'caption/lg', size: '14px', weight: '400', lh: '16px', sample: 'Token aplicado a rótulos e apoios visuais.' },
+                    { label: 'Caption MD', token: 'caption/md', size: '12px', weight: '400', lh: '16px', sample: 'Token aplicado a rótulos e apoios visuais.' },
+                    { label: 'Caption SM', token: 'caption/sm', size: '10px', weight: '400', lh: '12px', sample: 'Token aplicado a rótulos e apoios visuais.' },
+                  ].map(t => (
+                    <div class="grid gap-4 py-5 md:grid-cols-[132px_170px_minmax(0,1fr)] md:gap-6">
+                      <p class="text-base font-semibold text-neutral-900">{t.label}</p>
+                      <div class="space-y-1 text-sm text-neutral-700 leading-relaxed">
+                        <p>Size: {t.size}</p>
+                        <p>Weight: {t.weight}</p>
+                        <p>Line Height: {t.lh}</p>
+                      </div>
+                      <p
+                        style={`font-size:${t.size}; font-weight:${t.weight}; line-height:${t.lh}; font-family:'Source Sans Pro',sans-serif`}
+                        class="text-neutral-900"
+                      >
+                        {t.sample}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="xl:sticky xl:top-24 self-start rounded-3xl border border-[#EAECF0] bg-white p-7 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
+            <div class="flex items-center justify-between mb-6">
+              <p class="text-2xl font-bold text-neutral-900">Local styles</p>
+              <div class="w-9 h-9 rounded-full border border-[#EAECF0] flex items-center justify-center text-neutral-500">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="space-y-5">
+              <div>
+                <p class="text-sm text-neutral-400 mb-3">Text styles</p>
+                <div class="space-y-3">
+                  {[
+                    'Display',
+                    'H1',
+                    'H2',
+                    'H3',
+                    'H4',
+                    'Body',
+                    'Caption',
+                    'Button text',
+                  ].map(item => (
+                    <div class="flex items-center justify-between text-neutral-800">
+                      <div class="flex items-center gap-3">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="text-neutral-300">
+                          <path d="M3 2.2 6 5 3 7.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="text-lg">{item}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="pt-5 border-t border-[#EAECF0] space-y-3">
+                <p class="text-sm text-neutral-400">Tokens utilitários</p>
+                {[
+                  { label: 'Pesos', value: '400 · 500 · 600 · 700' },
+                  { label: 'Line Height', value: '1.25 · 1.5 · 1.75' },
+                  { label: 'Tracking', value: '-0.02em · 0.08em' },
+                ].map(item => (
+                  <div class="flex items-start justify-between gap-4">
+                    <span class="text-sm text-neutral-500">{item.label}</span>
+                    <code class="text-[11px] text-neutral-400 font-mono text-right">{item.value}</code>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Espaçamento & Grid -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Layout</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight">Espaçamento & Grid</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Escala de espaçamento -->
+        <div class="bg-[#F9FAFB] rounded-2xl p-8">
+          <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Escala de espaçamento (base 4px)</p>
+          <div class="space-y-3">
+            {[
+              { token: 'space.1', px: '4px' },
+              { token: 'space.2', px: '8px' },
+              { token: 'space.3', px: '12px' },
+              { token: 'space.4', px: '16px' },
+              { token: 'space.6', px: '24px' },
+              { token: 'space.8', px: '32px' },
+              { token: 'space.12', px: '48px' },
+              { token: 'space.16', px: '64px' },
+              { token: 'space.24', px: '96px' },
+            ].map(s => (
+              <div class="flex items-center gap-4">
+                <code class="text-xs text-neutral-400 font-mono w-24 shrink-0">{s.token}</code>
+                <div class="h-4 bg-[#006EEF]/20 rounded" style={`width:${s.px}`}></div>
+                <code class="text-xs text-neutral-400 font-mono">{s.px}</code>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Border radius + Shadows -->
+        <div class="space-y-4">
+          <div class="bg-[#F9FAFB] rounded-2xl p-8">
+            <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Border radius</p>
+            <div class="flex flex-wrap gap-4">
+              {[
+                { token: 'radius/none',    value: '0px',   r: '0px' },
+                { token: 'radius/sm',      value: '2px',   r: '2px' },
+                { token: 'radius/DEFAULT', value: '4px',   r: '4px' },
+                { token: 'radius/md',      value: '6px',   r: '6px' },
+                { token: 'radius/lg',      value: '8px',   r: '8px' },
+                { token: 'radius/xl',      value: '12px',  r: '12px' },
+                { token: 'radius/2xl',     value: '16px',  r: '16px' },
+                { token: 'radius/3xl',     value: '24px',  r: '24px' },
+                { token: 'radius/4xl',     value: '32px',  r: '32px' },
+                { token: 'radius/full',    value: '999px', r: '999px' },
+              ].map(r => (
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-[#006EEF]/15 border-2 border-[#006EEF]/30 mb-2" style={`border-radius:${r.r}`}></div>
+                  <code class="text-[9px] text-neutral-400 font-mono block">{r.token}</code>
+                  <code class="text-[9px] text-neutral-300 font-mono">{r.value}</code>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-[#F9FAFB] rounded-2xl p-8">
+            <p class="text-xs font-bold tracking-widest uppercase text-neutral-400 mb-6">Elevação / Sombras</p>
+            <div class="space-y-4">
+              {[
+                { token: 'shadow/sm',   css: '0 1px 2px rgba(0,0,0,0.05)',                                              label: 'Sutil — cards flat' },
+                { token: 'shadow/base', css: '0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.10)',                 label: 'Base — cards padrão' },
+                { token: 'shadow/md',   css: '0 2px 4px -1px rgba(0,0,0,0.06), 0 4px 6px -1px rgba(0,0,0,0.10)',       label: 'Médio — modais' },
+                { token: 'shadow/lg',   css: '0 16px 32px rgba(0,0,0,0.06)',                                            label: 'Alto — dropdowns' },
+                { token: 'shadow/xl',   css: '0 32px 64px rgba(0,0,0,0.16)',                                            label: 'Máximo — overlays' },
+              ].map(s => (
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 bg-white rounded-xl shrink-0" style={`box-shadow:${s.css}`}></div>
+                  <div>
+                    <code class="text-xs text-neutral-500 font-mono block">{s.token}</code>
+                    <p class="text-[10px] text-neutral-400">{s.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Componentes -->
+  <section class="py-24 bg-[#F9FAFB]">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Componentes</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight mb-4">Biblioteca de componentes</h2>
+        <p class="text-neutral-500 max-w-xl text-[15px] leading-relaxed">
+          80+ componentes organizados em categorias — cada um documentado com variantes, estados, tokens consumidos e diretrizes de uso.
+        </p>
+      </div>
+
+      <!-- Botões -->
+      <div class="mb-6">
+        <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-4">Botões — variantes & estados</p>
+        <div class="bg-white rounded-2xl p-8 border border-[#EAECF0] shadow-sm">
+          <div class="flex flex-wrap gap-3 mb-5">
+            <!-- Primary (Accent=default) -->
+            <button class="px-5 py-2.5 text-white text-sm font-medium" style="background:#006EEF; border-radius:8px">Primary</button>
+            <!-- Neutral -->
+            <button class="px-5 py-2.5 text-white text-sm font-medium" style="background:#2F3033; border-radius:8px">Neutral</button>
+            <!-- Inverse -->
+            <button class="px-5 py-2.5 text-sm font-medium" style="background:#FFFFFF; color:#2F3033; border:1px solid #DADBE3; border-radius:8px">Inverse</button>
+            <!-- Soft -->
+            <button class="px-5 py-2.5 text-sm font-medium" style="background:#EDF5FF; color:#006EEF; border-radius:8px">Soft</button>
+            <!-- Ghost/Outline -->
+            <button class="px-5 py-2.5 text-sm font-medium" style="background:transparent; color:#2F3033; border:1px solid #DADBE3; border-radius:8px">Ghost</button>
+            <!-- Brand -->
+            <button class="px-5 py-2.5 text-white text-sm font-medium" style="background:#D40000; border-radius:8px">Brand</button>
+            <!-- Danger -->
+            <button class="px-5 py-2.5 text-sm font-medium" style="background:#FDEEF0; color:#CC2442; border:1px solid #CC2442; border-radius:8px">Danger</button>
+            <!-- Disabled -->
+            <button class="px-5 py-2.5 text-sm font-medium cursor-not-allowed" style="background:#F2F4F7; color:#A8A8B2; border-radius:8px" disabled>Disabled</button>
+          </div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <button class="px-3 py-1.5 text-white text-xs font-medium" style="background:#006EEF; border-radius:8px">XS</button>
+            <button class="px-4 py-2 text-white text-sm font-medium" style="background:#006EEF; border-radius:8px">SM</button>
+            <button class="px-5 py-2.5 text-white text-sm font-medium" style="background:#006EEF; border-radius:8px">MD</button>
+            <button class="px-6 py-3 text-white text-base font-medium" style="background:#006EEF; border-radius:8px">LG</button>
+            <button class="px-8 py-3.5 text-white text-base font-medium" style="background:#006EEF; border-radius:999px">Pill</button>
+            <button class="px-5 py-2.5 text-white text-sm font-medium flex items-center gap-2" style="background:#006EEF; border-radius:8px">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Com ícone
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid principal de componentes -->
+      <div class="grid md:grid-cols-3 gap-6 mb-6">
+
+        <!-- Inputs -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Inputs & Forms</p>
+          <div class="space-y-4">
+            <div>
+              <label class="text-xs text-[#707077] block mb-1.5">Default</label>
+              <input type="text" placeholder="CPF ou CNPJ" class="w-full outline-none px-4 py-2.5 text-sm text-[#2F3033] placeholder-[#A8A8B2]" style="background:#FFFFFF; border:1px solid #DADBE3; border-radius:8px" />
+            </div>
+            <div>
+              <label class="text-xs block mb-1.5" style="color:#006EEF">Focus</label>
+              <input type="text" value="gustavo@oliveiratrust.com" class="w-full outline-none px-4 py-2.5 text-sm text-[#1B1B1F]" style="background:#FFFFFF; border:1px solid #006EEF; border-radius:8px; box-shadow:0 0 0 3px rgba(0,110,239,0.12)" />
+            </div>
+            <div>
+              <label class="text-xs block mb-1.5" style="color:#CC2442">Error</label>
+              <input type="text" value="00000-000" class="w-full outline-none px-4 py-2.5 text-sm text-[#1B1B1F]" style="background:#FDEEF0; border:1px solid #CC2442; border-radius:8px" />
+              <p class="text-xs mt-1.5 flex items-center gap-1.5" style="color:#CC2442">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                CEP inválido
+              </p>
+            </div>
+            <div>
+              <label class="text-xs block mb-1.5" style="color:#00A74E">Success</label>
+              <div class="relative">
+                <input type="text" value="Oliveira Trust S.A." class="w-full outline-none px-4 py-2.5 pr-10 text-sm text-[#1B1B1F]" style="background:#E6FAEF; border:1px solid #00A74E; border-radius:8px" />
+                <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#00A74E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="text-xs text-[#A8A8B2] block mb-1.5">Disabled</label>
+              <input type="text" value="Campo desabilitado" disabled class="w-full outline-none px-4 py-2.5 text-sm cursor-not-allowed" style="background:#F2F4F7; border:1px solid #EAECF0; border-radius:8px; color:#A8A8B2" />
+            </div>
+            <div>
+              <label class="text-xs text-[#707077] block mb-1.5">Select</label>
+              <div class="relative">
+                <select class="w-full outline-none px-4 py-2.5 text-sm appearance-none" style="background:#FFFFFF; border:1px solid #DADBE3; border-radius:8px; color:#2F3033">
+                  <option>Pessoa Jurídica</option>
+                </select>
+                <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="#707077" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded flex items-center justify-center shrink-0" style="background:#006EEF">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="text-sm text-[#56565B]">Aceito os termos de uso</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Badges</p>
+          <div class="space-y-4">
+            <!-- Cards operação -->
+            <div class="rounded-xl p-4 border" style="background:#F9FAFB; border-color:#EAECF0">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#EDF5FF">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 3l4 4-4 4" stroke="#006EEF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold" style="color:#1B1B1F">TED Recebido</p>
+                    <p class="text-[10px]" style="color:#A8A8B2">Hoje, 14:32</p>
+                  </div>
+                </div>
+                <span class="text-sm font-bold" style="color:#00A74E">+R$ 12.000</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px]" style="color:#A8A8B2">Banco do Brasil · AG 1234</span>
+                <span class="px-2 py-0.5 text-[10px] font-semibold rounded" style="background:#E6FAEF; color:#006D31; border-radius:999px">Concluído</span>
+              </div>
+            </div>
+            <!-- Badges grid - token-faithful variants -->
+            <div>
+              <p class="text-[9px] font-bold tracking-widest uppercase mb-2" style="color:#A8A8B2">Variantes Figma</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#006EEF; color:#FFFFFF; border-radius:999px">primary</span>
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#D40000; color:#FFFFFF; border-radius:999px">brand</span>
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#006D31; color:#FFFFFF; border-radius:999px">success</span>
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#F3AF00; color:#FFFFFF; border-radius:999px">warning</span>
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#CC2442; color:#FFFFFF; border-radius:999px">error</span>
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#006383; color:#FFFFFF; border-radius:999px">info</span>
+                <span class="px-2.5 py-1 text-[10px] font-bold rounded" style="background:#F2F4F7; color:#2F3033; border-radius:999px">neutral-soft</span>
+              </div>
+            </div>
+            <!-- Chips -->
+            <div>
+              <p class="text-[9px] font-bold tracking-widest uppercase mb-2" style="color:#A8A8B2">Chips</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 text-[11px] font-semibold" style="background:#006EEF; color:#FFFFFF; border-radius:999px">Figma</span>
+                <span class="px-3 py-1 text-[11px] font-semibold" style="background:#D40000; color:#FFFFFF; border-radius:999px">Brand</span>
+                <span class="px-3 py-1 text-[11px] font-semibold" style="background:#F2F4F7; color:#2F3033; border-radius:999px">React</span>
+                <span class="px-3 py-1 text-[11px] font-semibold" style="background:#F2F4F7; color:#2F3033; border-radius:999px">Tokens</span>
+                <span class="px-3 py-1 text-[11px] font-semibold" style="background:#F2F4F7; color:#2F3033; border-radius:999px">WCAG AA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alertas -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Alertas — soft style</p>
+          <div class="space-y-3">
+            <!-- error/soft -->
+            <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#FDEEF0">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 mt-0.5"><circle cx="8" cy="8" r="6" stroke="#CC2442" stroke-width="1.2"/><path d="M6 6l4 4M10 6l-4 4" stroke="#CC2442" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <div><p class="text-xs font-semibold mb-0.5" style="color:#CC2442">Erro</p><p class="text-[11px]" style="color:#CC2442">Falha na autenticação. Tente novamente.</p></div>
+            </div>
+            <!-- warning/soft -->
+            <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#FEF7E5">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 mt-0.5"><path d="M8 2L14 13H2L8 2Z" stroke="#F3AF00" stroke-width="1.2" stroke-linejoin="round"/><path d="M8 6v4M8 11.5v.5" stroke="#F3AF00" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <div><p class="text-xs font-semibold mb-0.5" style="color:#F3AF00">Atenção</p><p class="text-[11px]" style="color:#F3AF00">Limite de saque quase atingido.</p></div>
+            </div>
+            <!-- success/soft -->
+            <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#E6FAEF">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 mt-0.5"><circle cx="8" cy="8" r="6" stroke="#006D31" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="#006D31" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div><p class="text-xs font-semibold mb-0.5" style="color:#006D31">Sucesso</p><p class="text-[11px]" style="color:#006D31">Transferência realizada com sucesso.</p></div>
+            </div>
+            <!-- info/soft -->
+            <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#E5F7F9">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 mt-0.5"><circle cx="8" cy="8" r="6" stroke="#006383" stroke-width="1.2"/><path d="M8 5v4M8 10.5v.5" stroke="#006383" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <div><p class="text-xs font-semibold mb-0.5" style="color:#006383">Informação</p><p class="text-[11px]" style="color:#006383">Sua conta será verificada em até 24h.</p></div>
+            </div>
+            <!-- Toast -->
+            <div class="rounded-xl p-3.5 flex items-center justify-between shadow-md" style="background:#2F3033; border:1px solid #434349">
+              <div class="flex items-center gap-2.5">
+                <div class="w-2 h-2 rounded-full" style="background:#2DD07A"></div>
+                <p class="text-xs" style="color:#F9FAFB">Documento enviado!</p>
+              </div>
+              <button style="color:#707077">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda linha de componentes -->
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+
+        <!-- Tabela -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Data Table</p>
+          <div class="overflow-hidden rounded-xl" style="border:1px solid #EAECF0">
+            <table class="w-full text-sm">
+              <thead>
+                <tr style="background:#F9FAFB; border-bottom:1px solid #EAECF0">
+                  <th class="text-left px-4 py-3 text-[10px] font-bold tracking-widest uppercase" style="color:#A8A8B2">Empresa</th>
+                  <th class="text-left px-4 py-3 text-[10px] font-bold tracking-widest uppercase" style="color:#A8A8B2">Tipo</th>
+                  <th class="text-right px-4 py-3 text-[10px] font-bold tracking-widest uppercase" style="color:#A8A8B2">Valor</th>
+                  <th class="text-center px-4 py-3 text-[10px] font-bold tracking-widest uppercase" style="color:#A8A8B2">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { emp: 'OT Gestão',  tipo: 'Fiduciário',    val: 'R$ 2,4M', status: 'Ativo',    isActive: true, hover: false },
+                  { emp: 'OT Capital', tipo: 'Securitização', val: 'R$ 870K', status: 'Análise',  isActive: false, hover: true },
+                  { emp: 'OT Crédito', tipo: 'CRI/CRA',       val: 'R$ 1,1M', status: 'Pendente', isActive: false, hover: false },
+                  { emp: 'OT Trust',   tipo: 'Escrituração',  val: 'R$ 340K', status: 'Ativo',    isActive: true,  hover: false },
+                ].map((r, i) => (
+                  <tr style={`border-bottom:1px solid #EAECF0; background:${r.hover ? '#EDF5FF' : i % 2 === 1 ? '#F9FAFB' : '#FFFFFF'}; border-left:${r.hover ? '2px solid #006EEF' : '2px solid transparent'}`}>
+                    <td class="px-4 py-3 text-xs font-medium" style="color:#1B1B1F">{r.emp}</td>
+                    <td class="px-4 py-3 text-xs" style="color:#707077">{r.tipo}</td>
+                    <td class="px-4 py-3 text-xs font-mono text-right" style="color:#1B1B1F">{r.val}</td>
+                    <td class="px-4 py-3 text-center">
+                      <span class="px-2.5 py-1 text-[10px] font-bold rounded" style={`border-radius:999px; ${r.isActive ? 'background:#E6FAEF; color:#006D31' : r.status === 'Análise' ? 'background:#EDF5FF; color:#006EEF' : 'background:#FEF7E5; color:#AE7300'}`}>{r.status}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tabs + Pagination + Toggle -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm space-y-5">
+          <!-- Tabs — horizontal, Accent=Primary -->
+          <div>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-4">Tabs — Accent Primary</p>
+            <div class="flex gap-0" style="border-bottom:1px solid #DADBE3">
+              {['Visão Geral', 'Documentos', 'Histórico', 'Config'].map((tab, i) => (
+                <button
+                  class="px-4 py-2.5 text-xs font-medium relative"
+                  style={i === 0
+                    ? 'color:#006EEF; border-bottom:2px solid #006EEF; background:transparent; margin-bottom:-1px'
+                    : 'color:#707077; border-bottom:2px solid transparent; background:transparent; margin-bottom:-1px'}
+                >{tab}</button>
+              ))}
+            </div>
+          </div>
+          <!-- Breadcrumb -->
+          <div>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-4">Breadcrumb</p>
+            <div class="flex items-center gap-1.5 text-xs">
+              <span class="font-medium" style="color:#006EEF">Home</span>
+              <span style="color:#DADBE3">/</span>
+              <span style="color:#707077">Operações</span>
+              <span style="color:#DADBE3">/</span>
+              <span class="font-medium" style="color:#1B1B1F">Fiduciário</span>
+            </div>
+          </div>
+          <!-- Pagination -->
+          <div>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-4">Pagination</p>
+            <div class="flex items-center gap-1">
+              {['←', '1', '2', '3', '...', '12', '→'].map((p, i) => (
+                <button
+                  class="w-8 h-8 text-xs font-medium flex items-center justify-center"
+                  style={`border-radius:8px; ${i === 2 ? 'background:#006EEF; color:#FFFFFF' : 'background:transparent; color:#2F3033; border:1px solid #DADBE3'}`}
+                >{p}</button>
+              ))}
+            </div>
+          </div>
+          <!-- Toggle/Switch -->
+          <div>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-4">Toggle / Switch</p>
+            <div class="space-y-3">
+              {[
+                { label: 'Notificações',     on: true },
+                { label: 'Modo escuro',      on: false },
+                { label: 'Autenticação 2FA', on: true },
+              ].map(t => (
+                <div class="flex items-center justify-between py-1">
+                  <span class="text-xs" style="color:#56565B">{t.label}</span>
+                  <div
+                    class="flex items-center px-0.5 rounded-full"
+                    style={`width:40px; height:22px; background:${t.on ? '#006EEF' : '#EAECF0'}`}
+                  >
+                    <div
+                      class="w-4 h-4 rounded-full bg-white shadow"
+                      style={`transform: translateX(${t.on ? '18px' : '0px'}); transition: transform 0.2s`}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <!-- Progress Bar -->
+          <div>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-4">Progress Bar</p>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-xs mb-1.5"><span style="color:#707077">Documentação</span><span class="font-semibold" style="color:#006EEF">78%</span></div>
+                <div class="h-1.5 rounded-full overflow-hidden" style="background:#EAECF0"><div class="h-full rounded-full" style="width:78%; background:#006EEF"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1.5"><span style="color:#707077">Conformidade</span><span class="font-semibold" style="color:#00A74E">100%</span></div>
+                <div class="h-1.5 rounded-full overflow-hidden" style="background:#EAECF0"><div class="h-full rounded-full" style="width:100%; background:#00A74E"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs mb-1.5"><span style="color:#707077">Análise de risco</span><span class="font-semibold" style="color:#AE7300">42%</span></div>
+                <div class="h-1.5 rounded-full overflow-hidden" style="background:#EAECF0"><div class="h-full rounded-full" style="width:42%; background:#F3AF00"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Terceira linha — Avatar, Skeleton, Modal -->
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Avatars & Chips -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Avatars & Lista</p>
+          <div class="space-y-5">
+            <div class="flex items-center gap-2">
+              {['GC', 'OT', 'MS', 'AL'].map((init, i) => (
+                <div
+                  class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                  style={`${i === 0 ? 'background:#006EEF' : i === 1 ? 'background:#918F97' : i === 2 ? 'background:#4A9DFF' : 'background:#00A74E'}; ${i > 0 ? 'margin-left:-8px; outline:2px solid white' : ''}`}
+                >{init}</div>
+              ))}
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style="background:#EAECF0; color:#707077; margin-left:-8px; outline:2px solid white">+8</div>
+            </div>
+            <div class="space-y-2">
+              {[
+                { name: 'Gustavo Campos', role: 'Lead Designer', online: true },
+                { name: 'Ana Silva', role: 'Product Manager', online: false },
+              ].map(u => (
+                <div class="flex items-center gap-3 p-2.5 rounded-xl" style="background:#F9FAFB">
+                  <div class="relative shrink-0">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold text-white" style="background:#006EEF">{u.name.split(' ').map(n => n[0]).join('')}</div>
+                    <div class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white" style={`background:${u.online ? '#00A74E' : '#DADBE3'}`}></div>
+                  </div>
+                  <div>
+                    <p class="text-xs font-medium" style="color:#1B1B1F">{u.name}</p>
+                    <p class="text-[10px]" style="color:#A8A8B2">{u.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Skeleton loading</p>
+          <div class="space-y-5">
+            <div class="space-y-3">
+              {[
+                { label: 'Notificações', on: true },
+                { label: 'Modo escuro', on: false },
+                { label: 'Autenticação 2FA', on: true },
+              ].map(t => (
+                <div class="flex items-center justify-between py-1">
+                  <span class="text-xs" style="color:#56565B">{t.label}</span>
+                  <div
+                    class="flex items-center px-0.5 rounded-full"
+                    style={`width:40px; height:22px; background:${t.on ? '#006EEF' : '#EAECF0'}`}
+                  >
+                    <div class="w-4 h-4 rounded-full bg-white shadow" style={`transform: translateX(${t.on ? '18px' : '0px'})`}></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="space-y-2 pt-2">
+              <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style="color:#707077">Skeleton loading</p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full animate-pulse shrink-0" style="background:#EAECF0"></div>
+                <div class="flex-1 space-y-2">
+                  <div class="h-2.5 rounded-full animate-pulse w-3/4" style="background:#EAECF0"></div>
+                  <div class="h-2 rounded-full animate-pulse w-1/2" style="background:#EAECF0"></div>
+                </div>
+              </div>
+              <div class="h-3 rounded-full animate-pulse w-full" style="background:#EAECF0"></div>
+              <div class="h-3 rounded-full animate-pulse w-5/6" style="background:#EAECF0"></div>
+              <div class="h-8 rounded-xl animate-pulse w-full mt-1" style="background:#EAECF0"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal preview -->
+        <div class="bg-white rounded-2xl p-6 border border-[#EAECF0] shadow-sm">
+          <p class="text-[10px] font-bold tracking-widest uppercase text-neutral-400 mb-5">Modal</p>
+          <div class="rounded-xl overflow-hidden" style="border:1px solid #EAECF0; box-shadow:0 4px 16px rgba(0,0,0,0.10)">
+            <!-- Header -->
+            <div class="px-5 py-4 flex items-center justify-between" style="background:#FFFFFF; border-bottom:1px solid #EAECF0">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#D8ECFF">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M3 6l4 4 4-4" stroke="#006EEF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="text-sm font-semibold" style="color:#1B1B1F">Confirmar transferência</p>
+              </div>
+              <button style="color:#A8A8B2">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <!-- Body -->
+            <div class="p-5 space-y-4" style="background:#FFFFFF">
+              <div class="rounded-xl p-4 space-y-2" style="background:#F9FAFB; border:1px solid #EAECF0">
+                <div class="flex justify-between"><span class="text-xs" style="color:#707077">Para</span><span class="text-xs font-medium" style="color:#56565B">OT Gestão S.A.</span></div>
+                <div class="flex justify-between"><span class="text-xs" style="color:#707077">Valor</span><span class="text-xs font-bold" style="color:#1B1B1F">R$ 45.000,00</span></div>
+                <div class="flex justify-between"><span class="text-xs" style="color:#707077">Tipo</span><span class="text-xs" style="color:#56565B">TED</span></div>
+              </div>
+              <div class="p-3 rounded-xl" style="background:#EDF5FF">
+                <p class="text-xs" style="color:#006EEF">Disponível em até 1 dia útil após confirmação.</p>
+              </div>
+            </div>
+            <!-- Footer -->
+            <div class="px-5 py-4 grid grid-cols-2 gap-2" style="background:#FFFFFF; border-top:1px solid #EAECF0">
+              <button class="py-2.5 text-xs font-medium" style="background:#F2F4F7; color:#707077; border-radius:8px">Cancelar</button>
+              <button class="py-2.5 text-white text-xs font-medium" style="background:#006EEF; border-radius:8px">Confirmar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Documentação & Handoff -->
+  <section class="py-24 bg-neutral-50">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Processo</p>
+        <h2 class="text-4xl font-bold text-neutral-900 leading-tight">Documentação & Handoff</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        {[
+          {
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+            titulo: 'Tokens em JSON',
+            descricao: 'Tokens exportados em formato W3C Design Tokens para consumo direto pelo time de engenharia — sem ambiguidade no handoff.',
+          },
+          {
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`,
+            titulo: 'Changelog vivo',
+            descricao: 'Cada atualização no sistema documentada com versão semântica (major, minor, patch), rastreável por produto e por componente.',
+          },
+          {
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+            titulo: 'Design critique',
+            descricao: 'Sessões quinzenais com os times de produto para validação de novos componentes — garantindo adoção real e evolução colaborativa.',
+          },
+          {
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+            titulo: 'Integração com código',
+            descricao: 'Nomenclatura espelhada entre Figma e repositório CSS/React — designer e dev falam a mesma língua desde o token até o componente.',
+          },
+          {
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+            titulo: 'Storybook',
+            descricao: 'Biblioteca de componentes documentada no Storybook com todas as variantes, props e estados — referência única para o time de front-end.',
+          },
+          {
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`,
+            titulo: 'Guia de uso',
+            descricao: 'Diretrizes editoriais para cada componente: quando usar, quando não usar, padrões de acessibilidade (WCAG AA) e exemplos de uso correto.',
+          },
+        ].map(item => (
+          <div class="bg-white rounded-xl border border-[#EAECF0] p-6 group hover:shadow-sm transition-all">
+            <div class="text-neutral-300 group-hover:text-[#006EEF] transition-colors mb-4" set:html={item.icon} />
+            <h3 class="font-bold text-neutral-900 mb-2 text-sm group-hover:text-[#006EEF] transition-colors">{item.titulo}</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">{item.descricao}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Resultados -->
+  <section class="py-24" style="background:#1B1B1F">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#D40000] mb-3">Impacto</p>
+        <h2 class="text-4xl font-bold text-white leading-tight">Resultados</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-4 mb-16">
+        {[
+          { numero: '80+', label: 'Componentes documentados', desc: 'Prontos para uso imediato' },
+          { numero: '400+', label: 'Tokens definidos', desc: 'Primitivos e semânticos' },
+          { numero: '2×', label: 'Velocidade de entrega', desc: 'Menos tempo em decisões de UI' },
+          { numero: '100%', label: 'Cobertura light/dark', desc: 'Nenhuma cor hard-coded' },
+        ].map(r => (
+          <div class="p-6 border border-white/10 rounded-2xl">
+            <p class="text-4xl font-bold text-white mb-1">{r.numero}</p>
+            <p class="text-sm font-semibold text-neutral-300 mb-1">{r.label}</p>
+            <p class="text-xs text-neutral-500">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-neutral-950 rounded-2xl p-8 border border-white/5">
+        <p class="text-neutral-400 text-lg leading-relaxed max-w-3xl">
+          "O Design System da Oliveira Trust eliminou a principal fonte de atrito entre design e desenvolvimento. Hoje, um novo componente vai do Figma para produção com documentação e tokens em menos de uma semana."
+        </p>
+        <div class="mt-6 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-neutral-700"></div>
+          <div>
+            <p class="text-sm font-semibold text-white">Time de Produto</p>
+            <p class="text-xs text-neutral-500">Oliveira Trust</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Navegação entre projetos -->
+  <section class="py-16 bg-white border-t border-[#EAECF0]">
+    <div class="max-w-[1600px] mx-auto px-6 flex items-center justify-between">
+      <a href="/" class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar ao portfólio
+      </a>
+      <p class="text-xs text-neutral-300">Oliveira Trust · Design System · 2023</p>
+    </div>
+  </section>
+
+</Layout>
