@@ -757,7 +757,7 @@ const textStyleGroups = [
         <!-- Botões -->
         <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
           <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div>
+            <div class="xl:sticky xl:top-24 xl:self-start">
               <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Button</p>
               <h3 class="text-2xl font-bold text-neutral-900 mb-3">Botões</h3>
               <p class="text-sm text-neutral-500 leading-relaxed">
@@ -850,7 +850,7 @@ const textStyleGroups = [
         <!-- Inputs -->
         <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
           <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div>
+            <div class="xl:sticky xl:top-24 xl:self-start">
               <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Input</p>
               <h3 class="text-2xl font-bold text-neutral-900 mb-3">Campos e seleção</h3>
               <p class="text-sm text-neutral-500 leading-relaxed">Estrutura fiel ao Figma: surface, variant boxed/lined, tamanhos, estados, select, checkbox e radio button.</p>
@@ -858,8 +858,8 @@ const textStyleGroups = [
 
             <div class="grid gap-4 lg:grid-cols-2">
               {[
-                { mode: 'Light', bg: '#FFFFFF', panel: '#F9FAFB', field: '#FFFFFF', text: '#1B1B1F', soft: '#707077', muted: '#918F97', border: '#DADBE3', line: '#EAECF0', accent: '#006EEF', error: '#CC2543', done: '#006D31', disabledBg: '#F2F4F7', disabledText: '#A8A8B2' },
-                { mode: 'Dark', bg: '#1B1B1F', panel: '#2F3033', field: '#2F3033', text: '#F9FAFB', soft: '#A8A8B2', muted: '#A8A8B2', border: '#56565B', line: '#434349', accent: '#4A9DFF', error: '#FF888E', done: '#92F2AB', disabledBg: '#434349', disabledText: '#707077' },
+                { mode: 'Light', bg: '#FFFFFF', panel: '#F9FAFB', field: '#FFFFFF', text: '#2F3033', soft: '#707077', muted: '#918F97', border: '#DADBE3', focus: '#56565B', done: '#918F97', line: '#EAECF0', accent: '#006EEF', neutral: '#56565B', brand: '#D40000', success: '#006D31', error: '#CC2543', disabledBg: '#F2F4F7', disabledText: '#A8A8B2', disabledBorder: '#F2F4F7', checkInk: '#FFFFFF', selectText: '#2F3033' },
+                { mode: 'Dark', bg: '#1B1B1F', panel: '#2F3033', field: '#2F3033', text: '#F9FAFB', soft: '#A8A8B2', muted: '#A8A8B2', border: '#56565B', focus: '#DADBE3', done: '#918F97', line: '#434349', accent: '#7FBAFF', neutral: '#DADBE3', brand: '#FF888E', success: '#92F2AB', error: '#FF888E', disabledBg: '#434349', disabledText: '#707077', disabledBorder: '#434349', checkInk: '#001028', selectText: '#F9FAFB' },
               ].map(theme => (
                 <div class="rounded-2xl border p-5 space-y-6" style={`background:${theme.bg}; border-color:${theme.line}`}>
                   <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.muted}`}>{theme.mode}</p>
@@ -911,49 +911,85 @@ const textStyleGroups = [
                   </div>
 
                   <div>
-                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>State</p>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>State / Status</p>
                     <div class="grid gap-3 sm:grid-cols-2">
                       <div>
                         <p class="text-[10px] font-semibold mb-1" style={`color:${theme.soft}`}>Default</p>
                         <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.border}`}>email@example.com</div>
                       </div>
                       <div>
-                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.accent}`}>Focused</p>
-                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.accent}; box-shadow:0 0 0 3px ${theme.mode === 'Light' ? 'rgba(0,110,239,0.12)' : 'rgba(74,157,255,0.18)'}`}>email@example.com</div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.focus}`}>Focused</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.soft}; border:1px solid ${theme.focus}`}>email@example.com</div>
                       </div>
                       <div>
                         <p class="text-[10px] font-semibold mb-1" style={`color:${theme.error}`}>Error</p>
-                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.mode === 'Light' ? '#FDEEF0' : '#5C0026'}; color:${theme.mode === 'Light' ? '#1B1B1F' : '#FFDADA'}; border:1px solid ${theme.error}`}>00000-000</div>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.error}`}>email@example.com</div>
                       </div>
                       <div>
-                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.done}`}>Done</p>
-                        <div class="h-10 rounded-lg px-3 flex items-center justify-between text-sm" style={`background:${theme.mode === 'Light' ? '#E6FAEF' : '#07461F'}; color:${theme.mode === 'Light' ? '#006D31' : '#E6FAEF'}; border:1px solid ${theme.done}`}>
-                          Oliveira Trust
-                          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
+                        <p class="text-[10px] font-semibold mb-1" style={`color:${theme.done}`}>Status=Done</p>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.field}; color:${theme.text}; border:1px solid ${theme.done}`}>email@example.com</div>
                       </div>
                       <div>
                         <p class="text-[10px] font-semibold mb-1" style={`color:${theme.disabledText}`}>Disabled</p>
-                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.disabledBg}; color:${theme.disabledText}; border:1px solid ${theme.line}`}>Campo desabilitado</div>
+                        <div class="h-10 rounded-lg px-3 flex items-center text-sm" style={`background:${theme.disabledBg}; color:${theme.disabledText}; border:1px solid ${theme.disabledBorder}`}>email@example.com</div>
                       </div>
                     </div>
                   </div>
 
                   <div>
                     <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.muted}`}>Select / Choice</p>
-                    <div class="grid gap-3 sm:grid-cols-2">
-                      <div class="flex h-11 items-center justify-between rounded-lg px-3 text-sm" style={`background:${theme.field}; border:1px solid ${theme.border}; color:${theme.text}`}>
-                        Pessoa Jurídica
+                    <div class="space-y-4">
+                      <div class="flex h-11 items-center justify-between rounded-lg px-3 text-sm" style={`background:${theme.field}; border:1px solid ${theme.border}; color:${theme.selectText}`}>
+                        Select default
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       </div>
-                      <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                          <span class="flex h-5 w-5 items-center justify-center rounded" style={`background:${theme.accent}`}><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5 4.3 8 9 3" stroke={theme.mode === 'Light' ? '#FFFFFF' : '#001028'} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                          <span class="text-xs" style={`color:${theme.soft}`}>Checkbox</span>
+
+                      <div>
+                        <p class="text-[10px] font-bold tracking-widest uppercase mb-2" style={`color:${theme.muted}`}>Checkbox</p>
+                        <div class="grid gap-2 sm:grid-cols-3">
+                          {[
+                            { label: 'Check=on', fill: theme.accent, mark: 'check' },
+                            { label: 'Check=indeterminate', fill: theme.accent, mark: 'minus' },
+                            { label: 'Check=off', fill: 'transparent', mark: 'none' },
+                            { label: 'Accent=neutral', fill: theme.neutral, mark: 'check' },
+                            { label: 'Accent=brand', fill: theme.brand, mark: 'check' },
+                            { label: 'Accent=sucess', fill: theme.success, mark: 'check' },
+                            { label: 'Disabled=on', fill: theme.disabledBg, mark: 'check', disabled: true },
+                            { label: 'Indeterminate disabled', fill: theme.disabledBg, mark: 'minus', disabled: true },
+                            { label: 'Off disabled', fill: theme.disabledBg, mark: 'none', disabled: true },
+                          ].map(item => (
+                            <div class="flex items-center gap-2 rounded-lg border px-2.5 py-2" style={`border-color:${theme.line}; background:${theme.mode === 'Light' ? '#FFFFFF' : theme.panel}`}>
+                              <span class="flex h-5 w-5 items-center justify-center rounded" style={`background:${item.fill}; border:1.5px solid ${item.disabled ? theme.disabledBorder : item.mark === 'none' ? theme.border : item.fill}`}>
+                                {item.mark === 'check' && <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5 4.3 8 9 3" stroke={item.disabled ? theme.disabledText : theme.checkInk} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+                                {item.mark === 'minus' && <span class="h-0.5 w-2.5 rounded-full" style={`background:${item.disabled ? theme.disabledText : theme.checkInk}`}></span>}
+                              </span>
+                              <span class="text-[10px] leading-tight" style={`color:${item.disabled ? theme.disabledText : theme.soft}`}>{item.label}</span>
+                            </div>
+                          ))}
                         </div>
-                        <div class="flex items-center gap-2">
-                          <span class="flex h-5 w-5 items-center justify-center rounded-full" style={`border:1.5px solid ${theme.accent}`}><span class="h-2.5 w-2.5 rounded-full" style={`background:${theme.accent}`}></span></span>
-                          <span class="text-xs" style={`color:${theme.soft}`}>Radio button</span>
+                      </div>
+
+                      <div>
+                        <p class="text-[10px] font-bold tracking-widest uppercase mb-2" style={`color:${theme.muted}`}>Radio button</p>
+                        <div class="grid gap-2 sm:grid-cols-2">
+                          {[
+                            { label: 'Accent=default, Simple, On=true', accent: theme.accent, variant: 'simple', on: true },
+                            { label: 'Accent=neutral, Simple, On=true', accent: theme.neutral, variant: 'simple', on: true },
+                            { label: 'Accent=brand, Simple, On=true', accent: theme.brand, variant: 'simple', on: true },
+                            { label: 'Accent=sucess, Simple, On=true', accent: theme.success, variant: 'simple', on: true },
+                            { label: 'Variant=check, On=true', accent: theme.accent, variant: 'check', on: true },
+                            { label: 'Variant=check, On=false', accent: theme.accent, variant: 'check', on: false },
+                            { label: 'Simple, On=false', accent: theme.accent, variant: 'simple', on: false },
+                            { label: 'Disabled, On=false', accent: theme.disabledText, variant: 'simple', on: false, disabled: true },
+                          ].map(item => (
+                            <div class="flex items-center gap-2 rounded-lg border px-2.5 py-2" style={`border-color:${theme.line}; background:${theme.mode === 'Light' ? '#FFFFFF' : theme.panel}`}>
+                              <span class="flex h-5 w-5 items-center justify-center rounded-full" style={`border:1.5px solid ${item.disabled ? theme.disabledText : item.accent}; background:${item.variant === 'check' && item.on ? item.accent : 'transparent'}`}>
+                                {item.variant === 'simple' && item.on && <span class="h-2.5 w-2.5 rounded-full" style={`background:${item.accent}`}></span>}
+                                {item.variant === 'check' && item.on && <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5 4.3 8 9 3" stroke={theme.checkInk} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+                              </span>
+                              <span class="text-[10px] leading-tight" style={`color:${item.disabled ? theme.disabledText : theme.soft}`}>{item.label}</span>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -967,40 +1003,164 @@ const textStyleGroups = [
         <!-- Feedback -->
         <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
           <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div>
+            <div class="xl:sticky xl:top-24 xl:self-start">
               <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Feedback</p>
               <h3 class="text-2xl font-bold text-neutral-900 mb-3">Badges, chips e alertas</h3>
-              <p class="text-sm text-neutral-500 leading-relaxed">Aplicações compactas de status e comunicação, usando os tokens semânticos de appearance.</p>
+              <p class="text-sm text-neutral-500 leading-relaxed">Chips, badges e alerts organizados pelas propriedades reais do Figma: variant, accent, shape, size, disabled e icon.</p>
             </div>
 
             <div class="grid gap-4 lg:grid-cols-2">
-              <div class="rounded-2xl border border-[#EAECF0] bg-white p-5 space-y-5">
-                <p class="text-xs font-bold tracking-widest uppercase text-neutral-500">Light</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#006EEF; color:#FFFFFF; border-radius:999px">primary</span>
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#006D31; color:#FFFFFF; border-radius:999px">success</span>
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#F3AF00; color:#473101; border-radius:999px">warning</span>
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#CC2543; color:#FFFFFF; border-radius:999px">error</span>
-                </div>
-                <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#E6FAEF">
-                  <div class="w-4 h-4 rounded-full mt-0.5" style="background:#006D31"></div>
-                  <div><p class="text-xs font-semibold" style="color:#006D31">Sucesso</p><p class="text-[11px]" style="color:#006D31">Transferência realizada.</p></div>
-                </div>
-              </div>
+              {[
+                {
+                  mode: 'Light',
+                  bg: '#FFFFFF',
+                  panel: '#F9FAFB',
+                  text: '#1B1B1F',
+                  sub: '#707077',
+                  border: '#EAECF0',
+                  disabledBg: '#F2F4F7',
+                  disabledText: '#A8A8B2',
+                  accents: {
+                    primary: { mid: '#006EEF', soft: '#EDF5FF', ink: '#006EEF', on: '#FFFFFF' },
+                    info: { mid: '#007EBF', soft: '#E8F6FF', ink: '#007EBF', on: '#FFFFFF' },
+                    success: { mid: '#006D31', soft: '#E6FAEF', ink: '#006D31', on: '#FFFFFF' },
+                    warning: { mid: '#F3AF00', soft: '#FEF7E5', ink: '#744600', on: '#473101' },
+                    error: { mid: '#CC2543', soft: '#FDEEF0', ink: '#CC2543', on: '#FFFFFF' },
+                    purple: { mid: '#7047EB', soft: '#F0EBFF', ink: '#7047EB', on: '#FFFFFF' },
+                    pink: { mid: '#C8297A', soft: '#FCECF4', ink: '#C8297A', on: '#FFFFFF' },
+                    neutral: { mid: '#56565B', soft: '#F2F4F7', ink: '#56565B', on: '#FFFFFF' },
+                    brand: { mid: '#D40000', soft: '#FFF0EF', ink: '#D40000', on: '#FFFFFF' },
+                  },
+                },
+                {
+                  mode: 'Dark',
+                  bg: '#1B1B1F',
+                  panel: '#2F3033',
+                  text: '#F9FAFB',
+                  sub: '#A8A8B2',
+                  border: '#434349',
+                  disabledBg: '#434349',
+                  disabledText: '#707077',
+                  accents: {
+                    primary: { mid: '#4A9DFF', soft: '#001A41', ink: '#D8ECFF', on: '#001028' },
+                    info: { mid: '#60C7FF', soft: '#00293D', ink: '#C7EEFF', on: '#001928' },
+                    success: { mid: '#92F2AB', soft: '#07461F', ink: '#E6FAEF', on: '#00290D' },
+                    warning: { mid: '#FFCD5E', soft: '#463200', ink: '#FFF1C7', on: '#271900' },
+                    error: { mid: '#FF888E', soft: '#5C0026', ink: '#FFDADA', on: '#42001C' },
+                    purple: { mid: '#BFA7FF', soft: '#26185B', ink: '#EEE8FF', on: '#1B0D4A' },
+                    pink: { mid: '#FF9BCD', soft: '#4B0C2E', ink: '#FFE0EF', on: '#3A0623' },
+                    neutral: { mid: '#A8A8B2', soft: '#434349', ink: '#F9FAFB', on: '#1B1B1F' },
+                    brand: { mid: '#FF888E', soft: '#5C0026', ink: '#FFDADA', on: '#42001C' },
+                  },
+                },
+              ].map(theme => (
+                <div class="rounded-2xl border p-5 space-y-6" style={`background:${theme.bg}; border-color:${theme.border}`}>
+                  <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>{theme.mode}</p>
 
-              <div class="rounded-2xl border p-5 space-y-5" style="background:#1B1B1F; border-color:#434349">
-                <p class="text-xs font-bold tracking-widest uppercase" style="color:#A8A8B2">Dark</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#4A9DFF; color:#001028; border-radius:999px">primary</span>
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#92F2AB; color:#00290D; border-radius:999px">success</span>
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#FFCD5E; color:#271900; border-radius:999px">warning</span>
-                  <span class="px-2.5 py-1 text-[10px] font-bold" style="background:#FF888E; color:#42001C; border-radius:999px">error</span>
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Chips</p>
+                    <div class="space-y-4">
+                      <div>
+                        <p class="text-[10px] font-semibold mb-2" style={`color:${theme.sub}`}>Shape / Size</p>
+                        <div class="flex flex-wrap items-center gap-2">
+                          <span class="inline-flex h-8 items-center px-3 text-xs font-semibold" style={`background:${theme.accents.primary.mid}; color:${theme.accents.primary.on}; border-radius:8px`}>Shape=default</span>
+                          <span class="inline-flex h-8 items-center px-3 text-xs font-semibold rounded-full" style={`background:${theme.accents.primary.mid}; color:${theme.accents.primary.on}`}>Shape=rounded-pill</span>
+                          <span class="inline-flex h-7 items-center px-2.5 text-[11px] font-semibold" style={`background:${theme.accents.primary.mid}; color:${theme.accents.primary.on}; border-radius:8px`}>Size=sm</span>
+                          <span class="inline-flex h-10 items-center px-4 text-sm font-semibold" style={`background:${theme.accents.primary.mid}; color:${theme.accents.primary.on}; border-radius:10px`}>Size=lg</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <p class="text-[10px] font-semibold mb-2" style={`color:${theme.sub}`}>Variant / Accent</p>
+                        <div class="grid gap-2">
+                          {['mid', 'soft', 'outline', 'outline_neutral'].map(variant => (
+                            <div class="flex flex-wrap gap-2">
+                              {['primary', 'info', 'success', 'warning', 'error', 'purple', 'pink', 'neutral'].map(accent => {
+                                const color = theme.accents[accent];
+                                const chipStyle = variant === 'mid'
+                                  ? `background:${color.mid}; color:${color.on}; border:1px solid ${color.mid}`
+                                  : variant === 'soft'
+                                    ? `background:${color.soft}; color:${color.ink}; border:1px solid ${color.soft}`
+                                    : variant === 'outline'
+                                      ? `background:transparent; color:${color.ink}; border:1px solid ${color.mid}`
+                                      : `background:transparent; color:${color.ink}; border:1px solid ${theme.border}`;
+                                return <span class="inline-flex h-7 items-center px-2.5 text-[10px] font-semibold" style={`${chipStyle}; border-radius:8px`}>{accent}</span>;
+                              })}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex h-8 items-center px-3 text-xs font-semibold" style={`background:${theme.disabledBg}; color:${theme.disabledText}; border:1px solid ${theme.disabledBg}; border-radius:8px`}>Disabled=on soft</span>
+                        <span class="inline-flex h-8 items-center px-3 text-xs font-semibold" style={`background:transparent; color:${theme.disabledText}; border:1px solid ${theme.disabledBg}; border-radius:8px`}>Disabled=on outline</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Badges</p>
+                    <div class="space-y-3">
+                      <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold" style={`background:${theme.accents.primary.mid}; color:${theme.accents.primary.on}`}>1</span>
+                        <span class="inline-flex h-2.5 w-2.5 rounded-full" style={`background:${theme.accents.primary.mid}`}></span>
+                      </div>
+                      <div class="flex flex-wrap gap-2">
+                        {[
+                          ['neutral-soft', theme.accents.neutral.soft, theme.accents.neutral.ink],
+                          ['neutral-mid', theme.accents.neutral.mid, theme.accents.neutral.on],
+                          ['brand', theme.accents.brand.mid, theme.accents.brand.on],
+                          ['info', theme.accents.info.mid, theme.accents.info.on],
+                          ['success', theme.accents.success.mid, theme.accents.success.on],
+                          ['warning', theme.accents.warning.mid, theme.accents.warning.on],
+                          ['error', theme.accents.error.mid, theme.accents.error.on],
+                          ['purple', theme.accents.purple.mid, theme.accents.purple.on],
+                        ].map(([label, bg, color]) => (
+                          <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold" style={`background:${bg}; color:${color}`}>{label}</span>
+                        ))}
+                      </div>
+                      <div class="flex flex-wrap gap-2">
+                        {[
+                          ['inverse-primary', theme.accents.primary.on, theme.accents.primary.mid],
+                          ['inverse-brand', theme.accents.brand.on, theme.accents.brand.mid],
+                          ['inverse-error', theme.accents.error.on, theme.accents.error.mid],
+                          ['inverse-success', theme.accents.success.on, theme.accents.success.mid],
+                        ].map(([label, bg, color]) => (
+                          <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold" style={`background:${bg}; color:${color}`}>{label}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Alerts</p>
+                    <div class="space-y-3">
+                      {['neutral', 'info', 'success', 'warning', 'error'].map(accent => (
+                        <div class="grid gap-3 md:grid-cols-2">
+                          {['soft', 'mid'].map(variant => {
+                            const color = theme.accents[accent];
+                            const alertStyle = variant === 'soft'
+                              ? `background:${color.soft}; color:${color.ink}; border:1px solid ${color.soft}`
+                              : `background:${color.mid}; color:${color.on}; border:1px solid ${color.mid}`;
+                            return (
+                              <div class="rounded-xl px-3.5 py-3" style={alertStyle}>
+                                <div class="flex items-start gap-2.5">
+                                  <span class="mt-0.5 flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold" style={`background:${variant === 'mid' ? color.on : color.mid}; color:${variant === 'mid' ? color.mid : color.on}`}>i</span>
+                                  <div class="min-w-0">
+                                    <p class="text-xs font-bold">Accent={accent}, Variant={variant}</p>
+                                    <p class="text-[11px] opacity-80">With icon e badge.</p>
+                                  </div>
+                                  <span class="ml-auto inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold" style={`background:${variant === 'mid' ? color.on : color.mid}; color:${variant === 'mid' ? color.mid : color.on}`}>1</span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div class="flex items-start gap-3 p-3.5 rounded-xl" style="background:#07461F">
-                  <div class="w-4 h-4 rounded-full mt-0.5" style="background:#92F2AB"></div>
-                  <div><p class="text-xs font-semibold" style="color:#E6FAEF">Sucesso</p><p class="text-[11px]" style="color:#E6FAEF">Transferência realizada.</p></div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </article>
@@ -1008,7 +1168,7 @@ const textStyleGroups = [
         <!-- Tabela -->
         <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
           <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div>
+            <div class="xl:sticky xl:top-24 xl:self-start">
               <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Data Table</p>
               <h3 class="text-2xl font-bold text-neutral-900 mb-3">Tabela</h3>
               <p class="text-sm text-neutral-500 leading-relaxed">Linhas alternadas, seleção, status e alinhamento numérico.</p>
@@ -1044,33 +1204,195 @@ const textStyleGroups = [
         <!-- Navegação e controles -->
         <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
           <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div>
+            <div class="xl:sticky xl:top-24 xl:self-start">
               <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Navigation</p>
-              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Tabs, paginação e switches</h3>
-              <p class="text-sm text-neutral-500 leading-relaxed">Controles de navegação e seleção em versões clara e escura.</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Paginação e switches</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Paginação e switches atualizados pelos component sets do Figma, com accent, variant, selected, state e on/off.</p>
             </div>
 
             <div class="grid gap-4 lg:grid-cols-2">
               {[
-                { theme: 'Light', bg: '#FFFFFF', soft: '#F9FAFB', border: '#DADBE3', text: '#1B1B1F', sub: '#707077', accent: '#006EEF' },
-                { theme: 'Dark', bg: '#1B1B1F', soft: '#2F3033', border: '#56565B', text: '#F9FAFB', sub: '#A8A8B2', accent: '#4A9DFF' },
+                { theme: 'Light', bg: '#FFFFFF', field: '#FFFFFF', fieldText: '#2F3033', soft: '#F9FAFB', hoverBg: '#FFFFFF', hoverText: '#2F3033', border: '#DADBE3', line: '#EAECF0', text: '#2F3033', sub: '#707077', primary: '#006EEF', primaryHover: '#005BC0', primaryText: '#FFFFFF', neutral: '#2F3033', neutralText: '#FFFFFF', off: '#707077', disabledTrack: '#F2F4F7', disabledThumb: '#A8A8B2', success: '#006D31' },
+                { theme: 'Dark', bg: '#1B1B1F', field: '#2F3033', fieldText: '#F9FAFB', soft: '#2F3033', hoverBg: '#434349', hoverText: '#F9FAFB', border: '#56565B', line: '#434349', text: '#F9FAFB', sub: '#A8A8B2', primary: '#7FBAFF', primaryHover: '#4A9DFF', primaryText: '#001029', neutral: '#F9FAFB', neutralText: '#1B1B1F', off: '#56565B', disabledTrack: '#434349', disabledThumb: '#707077', success: '#92F2AB' },
               ].map(theme => (
-                <div class="rounded-2xl border p-5 space-y-5" style={`background:${theme.bg}; border-color:${theme.border}`}>
+                <div class="rounded-2xl border p-5 space-y-6" style={`background:${theme.bg}; border-color:${theme.line}`}>
                   <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>{theme.theme}</p>
-                  <div class="flex gap-0" style={`border-bottom:1px solid ${theme.border}`}>
-                    {['Visão Geral', 'Docs', 'Histórico'].map((tab, i) => (
-                      <button class="px-3 py-2 text-xs font-medium" style={i === 0 ? `color:${theme.accent}; border-bottom:2px solid ${theme.accent}; margin-bottom:-1px` : `color:${theme.sub}; border-bottom:2px solid transparent; margin-bottom:-1px`}>{tab}</button>
-                    ))}
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Pagination</p>
+                    <div class="space-y-3">
+                      {[
+                        { accent: 'Default', variant: 'Short', tone: theme.primary, toneHover: theme.primaryHover, toneText: theme.primaryText, pages: ['2', '3', '4', '5'], selected: 0 },
+                        { accent: 'Neutral', variant: 'Short', tone: theme.neutral, toneHover: theme.neutral, toneText: theme.neutralText, pages: ['2', '3', '4', '5'], selected: 0 },
+                        { accent: 'Default', variant: 'Long', tone: theme.primary, toneHover: theme.primaryHover, toneText: theme.primaryText, pages: ['2', '3', '4', '5', '6', '7'], selected: 1 },
+                      ].map(pagination => (
+                        <div class="rounded-xl border p-3" style={`border-color:${theme.line}; background:${theme.theme === 'Light' ? '#FFFFFF' : theme.soft}`}>
+                          <div class="mb-2 flex items-center justify-between gap-3">
+                            <p class="text-[10px] font-semibold" style={`color:${theme.sub}`}>Accent={pagination.accent}, Variant={pagination.variant}</p>
+                            <div class="flex h-8 items-center gap-1 rounded-lg px-2 text-[10px]" style={`background:${theme.field}; color:${theme.fieldText}; border:1px solid ${theme.border}`}>
+                              <span>Page</span>
+                              <strong>1</strong>
+                              <span>of 10</span>
+                              <span>▾</span>
+                            </div>
+                          </div>
+                          <div class="flex flex-wrap items-center gap-1">
+                            <button class="h-8 min-w-8 px-2 text-xs font-semibold" style={`border-radius:8px; color:${theme.sub}; background:transparent`}>‹</button>
+                            {pagination.pages.map((page, i) => (
+                              <button class="h-8 min-w-8 px-2 text-xs font-semibold" style={`border-radius:8px; ${i === pagination.selected ? `background:${pagination.tone}; color:${pagination.toneText}; border:1px solid ${pagination.toneHover}` : i === pagination.selected + 1 ? `background:${theme.hoverBg}; color:${theme.hoverText}; border:1px solid ${theme.border}` : `background:transparent; color:${theme.text}; border:1px solid ${theme.border}`}`}>{page}</button>
+                            ))}
+                            {pagination.variant === 'Long' && <span class="px-1 text-xs" style={`color:${theme.sub}`}>...</span>}
+                            <button class="h-8 min-w-8 px-2 text-xs font-semibold" style={`border-radius:8px; color:${theme.sub}; background:transparent`}>›</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div class="flex items-center gap-1">
-                    {['1', '2', '3', '...'].map((p, i) => (
-                      <button class="w-8 h-8 text-xs font-medium" style={`border-radius:8px; ${i === 1 ? `background:${theme.accent}; color:${theme.theme === 'Light' ? '#FFFFFF' : '#001028'}` : `background:${theme.soft}; color:${theme.text}; border:1px solid ${theme.border}`}`}>{p}</button>
-                    ))}
+
+                  <div>
+                    <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style={`color:${theme.sub}`}>Switch</p>
+                    <div class="grid gap-2 sm:grid-cols-2">
+                      {[
+                        { label: 'Accent=default, On=true', track: theme.primary, thumb: theme.theme === 'Light' ? '#FFFFFF' : '#001029', icon: theme.primary, on: true },
+                        { label: 'Accent=sucess, On=true', track: theme.success, thumb: theme.theme === 'Light' ? '#FFFFFF' : '#00290D', icon: theme.success, on: true },
+                        { label: 'Accent=neutral, On=true', track: theme.neutral, thumb: theme.theme === 'Light' ? '#FFFFFF' : '#2F3033', icon: theme.neutral, on: true },
+                        { label: 'Accent=disabled, On=true', track: theme.disabledTrack, thumb: theme.disabledThumb, icon: theme.disabledTrack, on: true, disabled: true },
+                        { label: 'Accent=default, On=false', track: theme.off, thumb: theme.theme === 'Light' ? '#FFFFFF' : '#1B1B1F', icon: theme.sub, on: false },
+                        { label: 'Accent=disabled, On=false', track: theme.disabledTrack, thumb: theme.disabledThumb, icon: theme.disabledTrack, on: false, disabled: true },
+                      ].map(item => (
+                        <div class="flex items-center justify-between gap-3 rounded-xl border px-3 py-2.5" style={`border-color:${theme.line}; background:${theme.theme === 'Light' ? '#FFFFFF' : theme.soft}`}>
+                          <span class="text-[10px] leading-tight" style={`color:${item.disabled ? theme.sub : theme.text}`}>{item.label}</span>
+                          <div class="relative h-5 w-9 rounded-full shrink-0" style={`background:${item.track}`}>
+                            <div class="absolute top-0.5 flex h-4 w-4 items-center justify-center rounded-full" style={`left:${item.on ? '18px' : '2px'}; background:${item.thumb}; border:1px solid ${item.track}`}>
+                              {item.on ? (
+                                <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4 7l4-4" stroke={item.icon} stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              ) : (
+                                <span class="h-1.5 w-1.5 rounded-full" style={`background:${item.icon}`}></span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs" style={`color:${theme.sub}`}>Autenticação 2FA</span>
-                    <div class="flex items-center px-0.5 rounded-full" style={`width:40px; height:22px; background:${theme.accent}`}>
-                      <div class="w-4 h-4 rounded-full bg-white" style="transform:translateX(18px)"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Drawer e modal -->
+        <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
+          <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
+            <div class="xl:sticky xl:top-24 xl:self-start">
+              <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Overlay</p>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-3">Drawer e modal</h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">Componentes de superfície elevada com header, conteúdo e footer, organizados por size e tipo de ação conforme o Figma.</p>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-2">
+              {[
+                { theme: 'Light', bg: '#FFFFFF', canvas: '#F2F4F7', surface: '#FFFFFF', text: '#1B1B1F', sub: '#707077', border: '#EAECF0', line: '#DADBE3', primary: '#006EEF', primaryText: '#FFFFFF', soft: '#F9FAFB', success: '#006D31', error: '#CC2543' },
+                { theme: 'Dark', bg: '#1B1B1F', canvas: '#0F1012', surface: '#2F3033', text: '#F9FAFB', sub: '#A8A8B2', border: '#434349', line: '#56565B', primary: '#4A9DFF', primaryText: '#001028', soft: '#434349', success: '#92F2AB', error: '#FF888E' },
+              ].map(theme => (
+                <div class="rounded-2xl border p-5 space-y-6" style={`background:${theme.bg}; border-color:${theme.border}`}>
+                  <p class="text-xs font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>{theme.theme}</p>
+
+                  <div>
+                    <div class="mb-3 flex items-center justify-between gap-3">
+                      <p class="text-[10px] font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>Drawer</p>
+                      <code class="text-[10px] font-mono" style={`color:${theme.sub}`}>Size=sm / md / lg</code>
+                    </div>
+
+                    <div class="grid gap-3">
+                      {[
+                        { size: 'sm', width: '42%', footer: 'Ttype=cta' },
+                        { size: 'md', width: '58%', footer: 'Ttype=link' },
+                        { size: 'lg', width: '74%', footer: 'Ttype=checkbox' },
+                      ].map(drawer => (
+                        <div class="relative h-48 overflow-hidden rounded-xl border" style={`background:${theme.canvas}; border-color:${theme.border}`}>
+                          <div class="absolute inset-y-0 right-0 flex flex-col border-l" style={`width:${drawer.width}; background:${theme.surface}; border-color:${theme.border}`}>
+                            <div class="flex items-start justify-between gap-3 p-3.5" style={`border-bottom:1px solid ${theme.border}`}>
+                              <div>
+                                <p class="text-xs font-bold" style={`color:${theme.text}`}>Here goes your drawer title</p>
+                                <p class="mt-1 text-[10px]" style={`color:${theme.sub}`}>Here goes your drawer subtitle</p>
+                              </div>
+                              <button class="flex h-7 w-7 items-center justify-center rounded-lg" style={`background:${theme.soft}; color:${theme.sub}`}>x</button>
+                            </div>
+                            <div class="flex-1 space-y-2 p-3.5">
+                              {['Overview', 'Documents', 'Settings'].map((item, i) => (
+                                <div class="flex items-center justify-between rounded-lg px-2.5 py-2 text-[11px]" style={`background:${i === 0 ? theme.soft : 'transparent'}; color:${theme.text}`}>
+                                  <span>{item}</span>
+                                  <span style={`color:${theme.sub}`}>›</span>
+                                </div>
+                              ))}
+                            </div>
+                            <div class="p-3.5" style={`border-top:1px solid ${theme.border}`}>
+                              <p class="mb-2 text-[10px] font-semibold" style={`color:${theme.sub}`}>Size={drawer.size}, {drawer.footer}</p>
+                              {drawer.footer === 'Ttype=checkbox' ? (
+                                <label class="flex items-center gap-2 text-[11px]" style={`color:${theme.sub}`}>
+                                  <span class="h-4 w-4 rounded border" style={`border-color:${theme.line}`}></span>
+                                  Save preference
+                                </label>
+                              ) : drawer.footer === 'Ttype=link' ? (
+                                <div class="flex items-center justify-between">
+                                  <a class="text-[11px] font-semibold" style={`color:${theme.primary}`}>Link action</a>
+                                  <button class="h-8 px-3 text-[11px] font-semibold" style={`background:${theme.primary}; color:${theme.primaryText}; border-radius:8px`}>Button</button>
+                                </div>
+                              ) : (
+                                <div class="grid grid-cols-2 gap-2">
+                                  <button class="h-8 text-[11px] font-semibold" style={`background:${theme.soft}; color:${theme.text}; border:1px solid ${theme.border}; border-radius:8px`}>Cancel</button>
+                                  <button class="h-8 text-[11px] font-semibold" style={`background:${theme.primary}; color:${theme.primaryText}; border-radius:8px`}>Confirm</button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="mb-3 flex items-center justify-between gap-3">
+                      <p class="text-[10px] font-bold tracking-widest uppercase" style={`color:${theme.sub}`}>Modal</p>
+                      <code class="text-[10px] font-mono" style={`color:${theme.sub}`}>Size=sm / md / lg</code>
+                    </div>
+
+                    <div class="space-y-3">
+                      {[
+                        { size: 'sm', footer: 'Ttype=cta-full', width: '62%', iconBg: theme.theme === 'Light' ? '#D8ECFF' : '#002E68', iconColor: theme.primary },
+                        { size: 'md', footer: 'Ttype=cta', width: '76%', iconBg: theme.theme === 'Light' ? '#E6FAEF' : '#07461F', iconColor: theme.success },
+                        { size: 'lg', footer: 'Ttype=informations', width: '90%', iconBg: theme.theme === 'Light' ? '#FDEEF0' : '#5C0026', iconColor: theme.error },
+                      ].map(modal => (
+                        <div class="flex min-h-52 items-center justify-center rounded-xl border p-4" style={`background:${theme.canvas}; border-color:${theme.border}`}>
+                          <div class="rounded-2xl border" style={`width:${modal.width}; background:${theme.theme === 'Light' ? '#FFFFFF' : '#1B1B1F'}; border-color:${theme.border}; box-shadow:0 48px 96px rgba(0,0,0,0.16)`}>
+                            <div class="relative p-5 pb-3">
+                              <button class="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-lg" style={`background:${theme.soft}; color:${theme.sub}`}>x</button>
+                              <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold" style={`background:${modal.iconBg}; color:${modal.iconColor}`}>i</div>
+                              <div class="min-w-0 pr-8">
+                                <p class="text-sm font-bold" style={`color:${theme.text}`}>Here goes your modal title</p>
+                                <p class="mt-1 text-[11px]" style={`color:${theme.sub}`}>Here goes your modal subtitle</p>
+                              </div>
+                            </div>
+                            <div class="px-5 pb-5">
+                              <p class="text-[11px] leading-relaxed" style={`color:${theme.sub}`}>Modal content area with body text and contextual information.</p>
+                            </div>
+                            <div class="p-5 pt-0">
+                              <p class="mb-2 text-[10px] font-semibold" style={`color:${theme.sub}`}>Size={modal.size}, {modal.footer}</p>
+                              {modal.footer === 'Ttype=cta-full' ? (
+                                <button class="h-9 w-full text-xs font-semibold" style={`background:${theme.primary}; color:${theme.primaryText}; border-radius:8px`}>Confirmar</button>
+                              ) : modal.footer === 'Ttype=informations' ? (
+                                <div class="rounded-lg px-3 py-2 text-[11px]" style={`background:${theme.soft}; color:${theme.sub}`}>Footer with information</div>
+                              ) : (
+                                <div class="grid grid-cols-2 gap-2">
+                                  <button class="h-9 text-xs font-semibold" style={`background:${theme.soft}; color:${theme.text}; border:1px solid ${theme.border}; border-radius:8px`}>Cancelar</button>
+                                  <button class="h-9 text-xs font-semibold" style={`background:${theme.primary}; color:${theme.primaryText}; border-radius:8px`}>Confirmar</button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -1082,7 +1404,7 @@ const textStyleGroups = [
         <!-- Avatars, loading e modal -->
         <article class="rounded-2xl border border-[#EAECF0] bg-white p-8">
           <div class="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)]">
-            <div>
+            <div class="xl:sticky xl:top-24 xl:self-start">
               <p class="text-[10px] font-bold tracking-widest uppercase text-[#D40000] mb-3">Patterns</p>
               <h3 class="text-2xl font-bold text-neutral-900 mb-3">Avatar, loading e modal</h3>
               <p class="text-sm text-neutral-500 leading-relaxed">Aplicações de suporte para feedback visual, composição e confirmação de ação.</p>
