@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import ContatoFooter from '../components/ContatoFooter.astro'
+const base = import.meta.env.BASE_URL
 ---
 
 <Layout
@@ -16,7 +17,7 @@ import ContatoFooter from '../components/ContatoFooter.astro'
         <div>
           <h1 class="mb-6">
             <img
-              src="/clubz-logo.svg"
+              src={`${base}clubz-logo.svg`}
               alt="Clubz"
               class="h-auto max-w-full"
               style="width:clamp(96px, 12vw, 130px)"
@@ -177,12 +178,12 @@ import ContatoFooter from '../components/ContatoFooter.astro'
 
       <!-- Tier cards from Figma -->
       <div class="mb-8">
-        <img src="/clubz-tiers.png" alt="Identidade visual dos níveis Clubz" class="w-full" style="max-width:100%; mix-blend-mode:multiply" />
+        <img src={`${base}clubz-tiers.png`} alt="Identidade visual dos níveis Clubz" class="w-full" style="max-width:100%; mix-blend-mode:multiply" />
       </div>
 
       <div>
         <img
-          src="/ilustracoes.png"
+          src={`${base}ilustracoes.png`}
           alt="Ilustrações desenvolvidas para a identidade visual do Novo Clubz"
           class="w-full"
           style="max-width:100%; height:auto"
@@ -588,28 +589,28 @@ import ContatoFooter from '../components/ContatoFooter.astro'
 
         <div class="flex flex-col items-center gap-12">
           <img
-            src="/para_conquistar.png"
+            src={`${base}para_conquistar.png`}
             alt="Componentes para conquistar os níveis Prata, Ouro e Diamante do aplicativo Clubz"
             class="w-full max-w-[968px]"
             style="height:auto"
             loading="lazy"
           />
           <img
-            src="/home-tiers.png"
+            src={`${base}home-tiers.png`}
             alt="Tela inicial do aplicativo Clubz com os níveis disponíveis"
             class="w-full"
             style="height:auto"
             loading="lazy"
           />
           <img
-            src="/fluxo_compra.png"
+            src={`${base}fluxo_compra.png`}
             alt="Fluxo de compra do aplicativo Clubz"
             class="w-full"
             style="height:auto"
             loading="lazy"
           />
           <img
-            src="/lp_desk.png"
+            src={`${base}lp_desk.png`}
             alt="Landing page desktop do Clubz"
             style="height:auto; max-width:100%"
             loading="lazy"
@@ -650,7 +651,7 @@ import ContatoFooter from '../components/ContatoFooter.astro'
   <section class="py-32" style="background:#0B2743;">
     <div class="max-w-[1600px] mx-auto px-6 text-center">
       <div class="flex items-center justify-center mb-8">
-        <img src="/moedas.png" alt="Moedas Clubz" style="height:auto; max-width:100%" loading="lazy" />
+        <img src={`${base}moedas.png`} alt="Moedas Clubz" style="height:auto; max-width:100%" loading="lazy" />
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 max-w-full mx-auto">
         Do discovery ao produto no ar
