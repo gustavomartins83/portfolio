@@ -1,0 +1,53 @@
+<svg width="900" height="675" viewBox="0 0 900 675" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa de insights de pesquisa do Clubz</title>
+  <desc id="desc">Composição visual com insights sobre economia, cuidado e upgrade de vida para pets.</desc>
+  <rect width="900" height="675" rx="32" fill="#F5E9C4"/>
+  <rect x="32" y="32" width="836" height="611" rx="28" fill="#FDF9F5"/>
+  <path d="M88 181C88 118.04 139.04 67 202 67H698C760.96 67 812 118.04 812 181V494C812 556.96 760.96 608 698 608H202C139.04 608 88 556.96 88 494V181Z" fill="#D4E8F5"/>
+  <path d="M88 181C88 118.04 139.04 67 202 67H698C760.96 67 812 118.04 812 181V494C812 556.96 760.96 608 698 608H202C139.04 608 88 556.96 88 494V181Z" stroke="#0B2743" stroke-opacity=".08" stroke-width="2"/>
+
+  <rect x="122" y="104" width="242" height="56" rx="28" fill="#0B2743"/>
+  <text x="150" y="140" fill="#F5DFA0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">DOSES DA VIDA REAL</text>
+
+  <circle cx="681" cy="154" r="54" fill="#F5DFA0"/>
+  <path d="M653 155C653 139.536 665.536 127 681 127C696.464 127 709 139.536 709 155C709 170.464 696.464 183 681 183C665.536 183 653 170.464 653 155Z" fill="#0B2743"/>
+  <path d="M666 157L676 167L697 143" stroke="#F5DFA0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="122" y="225" fill="#0B2743" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">
+    <tspan x="122" dy="0">Cuidar bem</tspan>
+    <tspan x="122" dy="62">pode ser econômico</tspan>
+    <tspan x="122" dy="62">e acessível.</tspan>
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect x="470" y="260" width="292" height="132" rx="24" fill="#F5DFA0"/>
+    <text x="500" y="309" fill="#6B4500" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800">Desconto =</text>
+    <text x="500" y="345" fill="#6B4500" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800">upgrade de vida</text>
+    <text x="500" y="381" fill="#6B4500" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800">para o pet.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="132" y="445" width="324" height="112" rx="24" fill="#0B2743"/>
+    <circle cx="181" cy="501" r="25" fill="#F5DFA0"/>
+    <path d="M177 499C177 491.268 183.268 485 191 485C198.732 485 205 491.268 205 499C205 506.732 198.732 513 191 513H177V499Z" fill="#1D3F98"/>
+    <path d="M171 501H206" stroke="#0B2743" stroke-width="6" stroke-linecap="round"/>
+    <text x="226" y="486" fill="#F5DFA0" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Investimento no</text>
+    <text x="226" y="516" fill="#F5DFA0" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">cuidado, não em custo.</text>
+    <text x="226" y="545" fill="#FDF9F5" fill-opacity=".72" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Oferecer mais sem estourar o orçamento.</text>
+  </g>
+
+  <g opacity=".9">
+    <rect x="548" y="450" width="168" height="92" rx="46" fill="#FDF9F5"/>
+    <path d="M596 492H670" stroke="#0B2743" stroke-width="14" stroke-linecap="round"/>
+    <path d="M632 456V528" stroke="#0B2743" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="560" cy="450" r="11" fill="#1D3F98"/>
+    <circle cx="729" cy="536" r="15" fill="#F5DFA0"/>
+    <circle cx="756" cy="427" r="8" fill="#0B2743"/>
+  </g>
+
+  <defs>
+    <filter id="shadow" x="102" y="240" width="690" height="347" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#0B2743" flood-opacity=".14"/>
+    </filter>
+  </defs>
+</svg>

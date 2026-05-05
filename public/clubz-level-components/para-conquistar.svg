@@ -1,0 +1,77 @@
+<svg width="920" height="370" viewBox="0 0 920 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo { font-family: Arial Black, Impact, sans-serif; font-size: 43px; font-weight: 900; fill: #fdf9f5; stroke: #1d1d1d; stroke-width: 4px; paint-order: stroke fill; letter-spacing: -1px; }
+    .badge { font-family: Arial, sans-serif; font-size: 14px; font-weight: 800; }
+    .item { font-family: Arial, sans-serif; font-size: 14px; font-weight: 400; }
+    .item-strong { font-weight: 800; }
+    .button { font-family: Arial, sans-serif; font-size: 12px; font-weight: 800; }
+  </style>
+
+  <rect x="1" y="17" width="294" height="352" rx="15" fill="#F0F4F7" stroke="#526F89" stroke-width="2"/>
+  <text x="148" y="38" text-anchor="middle" class="logo">CLUBZ</text>
+  <rect x="121" y="28" width="62" height="29" rx="4" fill="#526F89"/>
+  <text x="152" y="48" text-anchor="middle" fill="#fff" class="badge">PRATA</text>
+
+  <path d="M28 83l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="86" fill="#222" class="item">Descontos e CashPetz</text>
+  <path d="M28 109l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="112" fill="#222" class="item"><tspan class="item-strong">10% OFF</tspan> em todas as compras</text>
+  <path d="M28 135l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="44" y="138" fill="#222" class="item"><tspan class="item-strong">10% OFF</tspan> no Banho &amp; Tosa</text>
+  <rect x="57" y="270" width="181" height="20" rx="10" fill="#CFE7F7"/>
+  <text x="148" y="284" text-anchor="middle" fill="#155DA4" class="button">Gratuito para Assinantes Petz</text>
+  <rect x="24" y="306" width="248" height="40" rx="7" fill="#526F89"/>
+  <rect x="51" y="319" width="11" height="12" rx="2" stroke="#fff" stroke-width="2"/>
+  <path d="M54 319v-4a3 3 0 016 0v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="56.5" cy="326" r="1.3" fill="#fff"/>
+  <text x="75" y="331" fill="#fff" class="button">Desbloquear por 12x de R$ 7,90</text>
+
+  <rect x="313" y="17" width="294" height="352" rx="15" fill="#FFF9E8" stroke="#F5C400" stroke-width="2"/>
+  <text x="460" y="38" text-anchor="middle" class="logo">CLUBZ</text>
+  <rect x="434" y="28" width="59" height="29" rx="4" fill="#F5C400"/>
+  <text x="463.5" y="48" text-anchor="middle" fill="#1d1d1d" class="badge">OURO</text>
+
+  <path d="M340 83l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="356" y="86" fill="#222" class="item">Descontos e CashPetz</text>
+  <path d="M340 109l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="356" y="112" fill="#222" class="item"><tspan class="item-strong">10% OFF</tspan> em todas as compras</text>
+  <path d="M340 135l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="356" y="138" fill="#222" class="item"><tspan class="item-strong">20% OFF</tspan> no Banho &amp; Tosa</text>
+  <path d="M340 161l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="356" y="164" fill="#222" class="item"><tspan class="item-strong">5%</tspan> de CashPetz a cada compra</text>
+  <path d="M340 187l3 3 6-7" stroke="#414548" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="356" y="190" fill="#222" class="item">Conteúdo exclusivo</text>
+  <rect x="336" y="306" width="248" height="40" rx="7" fill="#F5C400"/>
+  <rect x="363" y="319" width="11" height="12" rx="2" stroke="#1d1d1d" stroke-width="2"/>
+  <path d="M366 319v-4a3 3 0 016 0v4" stroke="#1d1d1d" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="368.5" cy="326" r="1.3" fill="#1d1d1d"/>
+  <text x="381" y="331" fill="#1d1d1d" class="button">Desbloquear por 12x de R$ 12,90</text>
+
+  <rect x="625" y="17" width="294" height="352" rx="15" fill="#0D2B46"/>
+  <text x="772" y="38" text-anchor="middle" class="logo">CLUBZ</text>
+  <rect x="729" y="28" width="88" height="29" rx="4" fill="#0F4D83"/>
+  <text x="773" y="48" text-anchor="middle" fill="#fff" class="badge">DIAMANTE</text>
+
+  <path d="M652 83l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="86" fill="#fff" class="item">Descontos e CashPetz</text>
+  <path d="M652 109l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="112" fill="#fff" class="item"><tspan class="item-strong">10% OFF</tspan> em todas as compras</text>
+  <path d="M652 135l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="138" fill="#fff" class="item"><tspan class="item-strong">30% OFF</tspan> no Banho &amp; Tosa</text>
+  <path d="M652 161l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="164" fill="#fff" class="item"><tspan class="item-strong">5%</tspan> de CashPetz a cada compra</text>
+  <path d="M652 187l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="182" fill="#fff" class="item"><tspan class="item-strong">30%</tspan> de CashPetz em consultas,</text>
+  <text x="668" y="199" fill="#fff" class="item">vacinas e exames</text>
+  <path d="M652 223l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="226" fill="#fff" class="item">Sem taxa de serviço</text>
+  <path d="M652 249l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="252" fill="#fff" class="item">Conteúdo exclusivo</text>
+  <path d="M652 275l3 3 6-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="668" y="278" fill="#fff" class="item"><tspan class="item-strong">Frete Grátis</tspan></text>
+  <rect x="648" y="306" width="248" height="40" rx="7" fill="#fff"/>
+  <rect x="675" y="319" width="11" height="12" rx="2" stroke="#4A4A4A" stroke-width="2"/>
+  <path d="M678 319v-4a3 3 0 016 0v4" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="680.5" cy="326" r="1.3" fill="#4A4A4A"/>
+  <text x="701" y="331" fill="#4A4A4A" class="button">Desbloquear por 12x de R$ 24,90</text>
+</svg>

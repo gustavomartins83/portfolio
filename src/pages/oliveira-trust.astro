@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import ContatoFooter from '../components/ContatoFooter.astro'
 
 const displayTextStyles = [
   { label: 'Display XL', name: 'Display/display-xl', node: '1606:31851', size: '72px', weight: '700', lh: '72px', sample: 'Oliveira Trust' },
@@ -2220,45 +2221,7 @@ const textStyleGroups = [
     </div>
   </section>
 
-  <!-- Contato compacto -->
-  <section id="contato" class="py-20 bg-neutral-900">
-    <div class="max-w-[1600px] mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-center gap-10">
-        <div class="md:w-80 shrink-0">
-          <h2 class="text-3xl font-bold text-white leading-snug mb-4">
-            Tem um projeto que<br />merece <em class="not-italic text-[#0891B2]">bom design?</em>
-          </h2>
-          <p class="text-base text-neutral-500 leading-relaxed">Aceito projetos selecionados por trimestre. Vamos conversar.</p>
-        </div>
-        <form name="contato-ot" method="POST" data-netlify="true" class="flex flex-col gap-3 md:w-96 w-full">
-          <input type="hidden" name="form-name" value="contato-ot" />
-          <div class="grid grid-cols-2 gap-3">
-            <input id="ot-nome" name="nome" type="text" required placeholder="Nome"
-              class="px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-[#0891B2] transition-colors" />
-            <input id="ot-email" name="email" type="email" required placeholder="E-mail"
-              class="px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-[#0891B2] transition-colors" />
-          </div>
-          <textarea id="ot-mensagem" name="mensagem" required rows="3"
-            placeholder="Conte sobre o projeto..."
-            class="px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-neutral-600 focus:outline-none focus:border-[#0891B2] transition-colors resize-none"></textarea>
-          <button type="submit"
-            class="py-3 bg-[#0891B2] text-white text-sm font-medium rounded-lg hover:bg-[#0670A0] transition-colors">
-            Enviar mensagem →
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
+  <ContatoFooter formName="contato-ot" />
 
-  <!-- Navegação entre projetos -->
-  <section class="py-16 bg-white border-t border-[#EAECF0]">
-    <div class="max-w-[1600px] mx-auto px-6 flex items-center justify-between">
-      <a href="/" class="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors flex items-center gap-2">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Voltar ao portfólio
-      </a>
-      <p class="text-xs text-neutral-300">Oliveira Trust · Design System · 2023</p>
-    </div>
-  </section>
 
 </Layout>

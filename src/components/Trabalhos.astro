@@ -11,32 +11,23 @@ const projetos = [
     cor: 'text-white',
     large: true,
     url: '/oliveira-trust',
-    thumb: true,
+    thumb: 'ot',
   },
   {
     numero: '02',
-    empresa: 'Funcional Health Tech',
-    titulo: 'Design System',
-    descricao: 'Sistema de design para ecossistema de saúde conectando indústria, pacientes, farmácias e operadoras.',
-    tags: ['Design System', 'Health Tech', 'Tokens'],
-    resultado: '13M+ vidas impactadas',
-    bg: 'bg-neutral-100',
-    cor: 'text-neutral-900',
+    empresa: 'Petz',
+    titulo: 'Clubz',
+    descricao: 'Programa de benefícios com quatro níveis — Bronze, Prata, Ouro e Diamante — integrado ao super app.',
+    tags: ['Discovery', 'UX/UI Design', 'End-to-End'],
+    resultado: 'Clube líder do setor',
+    bg: 'bg-[#0B2743]',
+    cor: 'text-white',
     large: false,
+    url: '/petz-clubz',
+    thumb: 'thumb_clubz',
   },
   {
     numero: '03',
-    empresa: 'Petz',
-    titulo: 'Clubz',
-    descricao: 'Programa de benefícios com quatro níveis — Bronze, Silver, Gold e Diamond — integrado ao super app.',
-    tags: ['UI Design', 'Loyalty', 'Mobile'],
-    resultado: 'Clube líder do setor',
-    bg: 'bg-[#0891B2]',
-    cor: 'text-white',
-    large: false,
-  },
-  {
-    numero: '04',
     empresa: 'Petz',
     titulo: 'Super App',
     descricao: 'Redesign completo do super app unificando compras, agendamentos, planos de saúde pet e o Clubz em uma única experiência.',
@@ -47,7 +38,7 @@ const projetos = [
     large: true,
   },
   {
-    numero: '05',
+    numero: '04',
     empresa: 'Funcional Health Tech',
     titulo: 'App Multi',
     descricao: 'App para o cartão corporativo Mastercard de benefícios — alimentação, mobilidade, prêmios e mais.',
@@ -58,7 +49,7 @@ const projetos = [
     large: false,
   },
   {
-    numero: '06',
+    numero: '05',
     empresa: 'Izenu',
     titulo: 'App',
     descricao: 'Plataforma de streaming musical e rede social para países lusófonos — conectando artistas e fãs da CPLP.',
@@ -69,7 +60,7 @@ const projetos = [
     large: false,
   },
   {
-    numero: '07',
+    numero: '06',
     empresa: 'Badesul',
     titulo: 'Internet Banking',
     descricao: 'Nova interface do internet banking do Badesul — simplificando operações com foco em acessibilidade e confiança.',
@@ -80,7 +71,7 @@ const projetos = [
     large: true,
   },
   {
-    numero: '08',
+    numero: '07',
     empresa: 'Ypê',
     titulo: 'App',
     descricao: 'Aplicativo de fidelidade com missões, sorteios, lista de compras e a assistente virtual Yara com IA generativa.',
@@ -93,18 +84,24 @@ const projetos = [
 ]
 
 const colEsq = [projetos[0], projetos[2], projetos[4], projetos[6]]
-const colDir  = [projetos[1], projetos[3], projetos[5], projetos[7]]
+const colDir  = [projetos[1], projetos[3], projetos[5]]
 
 const alturas = {
   '01': '520px',
-  '02': '400px',
-  '03': '480px',
-  '04': '560px',
-  '05': '580px',
-  '06': '320px',
-  '07': '380px',
-  '08': '480px',
+  '02': '480px',
+  '03': '560px',
+  '04': '580px',
+  '05': '320px',
+  '06': '380px',
+  '07': '480px',
 } as Record<string, string>
+
+const oliveiraTrustHeroMetrics = [
+  { label: 'Base primitiva', valor: 'Tailwind CSS' },
+  { label: 'Plataforma', valor: 'Web · Mobile' },
+  { label: 'Tokens', valor: '400+' },
+  { label: 'Componentes', valor: '80+' },
+]
 ---
 
 <section id="trabalhos" class="py-24">
@@ -133,77 +130,48 @@ const alturas = {
               style={`height:${alturas[projeto.numero] ?? '400px'}`}
               onclick={projeto.url ? `window.location.href='${projeto.url}'` : undefined}
             >
-              {projeto.thumb && (
-                <div class="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl" aria-hidden="true">
-                  {/* BG */}
-                  <div class="absolute inset-0" style="background:#0C0C0E"></div>
+              {projeto.thumb === 'ot' && (
+                <div class="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl" style="isolation:isolate" aria-hidden="true">
+                  <div class="ot-hero-thumb">
+                    <div class="ot-hero-thumb__tiles">
+                      {Array.from({ length: 72 }).map((_, i) => (
+                        <span style={`opacity:${0.18 + (i % 7) * 0.09}`}></span>
+                      ))}
+                    </div>
 
-                  {/* Isometric mosaic — real Figma screenshots, ângulo deitado */}
-                  <div class="absolute hidden md:block" style="inset:0;overflow:hidden">
-                    <div style="
-                      position:absolute;
-                      inset:-55% -10% -55% -10%;
-                      transform:perspective(1400px) rotateX(48deg) rotateZ(-22deg);
-                      transform-origin:50% 42%;
-                    ">
-                      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px;height:100%">
-
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/colors.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 0;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/typography.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 8%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/modal.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/inputs.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 10%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/alerts.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block" />
-                        </div>
-
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/buttons.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 15%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/table.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 20%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/avatar.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 10%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/toggle.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/chips.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 15%;display:block" />
-                        </div>
-
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/pagination.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/stepper.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 20%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/modal.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/inputs.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 40%;display:block" />
-                        </div>
-                        <div style="border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7)">
-                          <img src="/ds/typography.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0 75%;display:block" />
-                        </div>
-
+                    <div class="ot-hero-thumb__cover">
+                      <div class="ot-hero-thumb__cover-copy">
+                        <span>Design System · Oliveira Trust</span>
+                        <strong>OT.DS</strong>
                       </div>
+                    </div>
+
+                    <div class="ot-hero-thumb__metrics">
+                      {oliveiraTrustHeroMetrics.map((metric) => (
+                        <div>
+                          <span>{metric.label}</span>
+                          <strong>{metric.valor}</strong>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Vinheta lateral esquerda */}
-                  <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(12,12,14,0.6) 0%,transparent 40%)"></div>
-                  {/* Fade bottom */}
-                  <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(12,12,14,0.97) 0%,rgba(12,12,14,0.6) 28%,rgba(12,12,14,0.08) 55%,transparent 72%)"></div>
+                  <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(12,12,14,0.68) 0%,rgba(12,12,14,0.18) 34%,transparent 62%)"></div>
+                  <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(40,0,0,0.36) 0%,transparent 42%)"></div>
+                </div>
+              )}
+
+              {projeto.thumb === 'thumb_clubz' && (
+                <div class="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl" aria-hidden="true">
+                  {/* Moedas exportadas do Figma em 3× — transparência real */}
+                  <img
+                    src="/thumb_clubz.png"
+                    alt=""
+                    class="clubz-thumb__moedas"
+                  />
+
+                  {/* Fade inferior em azul Clubz */}
+                  <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,67,1) 0%, rgba(11,39,67,0.60) 18%, transparent 38%);"></div>
                 </div>
               )}
 
@@ -250,3 +218,161 @@ const alturas = {
 
   </div>
 </section>
+
+<style>
+  .ot-hero-thumb {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.22), transparent 28%),
+      linear-gradient(135deg, #280000 0%, #7a0000 48%, #d40000 100%);
+  }
+
+  .ot-hero-thumb::before {
+    content: "";
+    position: absolute;
+    inset: -18% -10% auto auto;
+    width: 54%;
+    height: 54%;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    filter: blur(44px);
+  }
+
+  .ot-hero-thumb__tiles {
+    position: absolute;
+    inset: 20px 24px 24px;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(6, 62px);
+    gap: 8px;
+    opacity: 1;
+  }
+
+  .ot-hero-thumb__tiles span {
+    display: block;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .ot-hero-thumb__cover {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 34%;
+    width: 70%;
+    aspect-ratio: 16 / 5;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 28px 70px rgba(40, 0, 0, 0.36);
+    transform: translate(-50%, -50%);
+  }
+
+  .ot-hero-thumb__cover-copy {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .ot-hero-thumb__cover-copy span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .ot-hero-thumb__cover-copy strong {
+    color: rgba(255, 255, 255, 0.26);
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -0.06em;
+  }
+
+  .ot-hero-thumb__metrics {
+    position: absolute;
+    z-index: 4;
+    right: 40px;
+    bottom: 36px;
+    display: grid;
+    width: 42%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .ot-hero-thumb__metrics div {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    padding: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .ot-hero-thumb__metrics span {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .ot-hero-thumb__metrics strong {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 767px) {
+    .ot-hero-thumb__cover,
+    .ot-hero-thumb__metrics {
+      display: none;
+    }
+  }
+
+  /* ── Clubz thumb ────────────────────────────────────── */
+  .clubz-thumb__moedas {
+    position: absolute;
+    width: 170%;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    transform-origin: center 40%;
+    top: -2%;
+    height: auto;
+    filter: saturate(1.1) brightness(1.04) drop-shadow(0 12px 32px rgba(0,0,0,0.35));
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  article:hover .clubz-thumb__moedas {
+    transform: translateX(-50%) scale(1.07);
+  }
+
+  /* ── OT thumb zoom ──────────────────────────────────── */
+  .ot-hero-thumb {
+    transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+  }
+
+  article:hover .ot-hero-thumb {
+    transform: scale(1.06);
+  }
+
+  @media (max-width: 767px) {
+    .clubz-thumb__moedas {
+      width: 220%;
+      top: -2%;
+    }
+  }
+
+</style>

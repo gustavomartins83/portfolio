@@ -1,0 +1,667 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ContatoFooter from '../components/ContatoFooter.astro'
+---
+
+<Layout
+  title="Petz Clubz — Gustavo Campos"
+  description="O redesign do Clube de Benefícios da Petz — do conceito ao protótipo, com pesquisa, fluxos, wireframes e sistema de níveis."
+  whiteNav={true}
+>
+
+  <!-- Hero do Projeto -->
+  <section class="pt-32 pb-0" style="background:#F5E9C4;">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-end pb-20">
+        <div>
+          <h1 class="mb-6">
+            <img
+              src="/clubz-logo.svg"
+              alt="Clubz"
+              class="h-auto max-w-full"
+              style="width:clamp(96px, 12vw, 130px)"
+              width="264"
+              height="69"
+            />
+          </h1>
+          <p class="text-sm font-bold tracking-widest uppercase mb-4" style="color:#1D3F98; opacity:0.5">O Clube de Benefícios da Petz</p>
+          <p class="text-lg leading-relaxed max-w-md" style="color:#1D3F98; opacity:0.70">
+            Redesign completo do clube de benefícios — do zero ao produto final, cobrindo pesquisa, definição de regras de negócio junto ao time de produto, fluxos, wireframes, ilustrações e protótipos do aplicativo.
+          </p>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          {[
+            { label: 'Papel', valor: 'UI/UX Designer' },
+            { label: 'Empresa', valor: 'Petz' },
+            { label: 'Plataforma', valor: 'Web · iOS · Android' },
+            { label: 'Método', valor: 'Discovery · Agile' },
+            { label: 'Entregas', valor: 'Fluxos · Wireframes · Protótipos' },
+            { label: 'Resultado', valor: 'Novo Clubz lançado' },
+          ].map(m => (
+            <div class="p-3 rounded-lg" style="background:rgba(29,63,152,0.08); border:1px solid rgba(29,63,152,0.15)">
+              <p class="text-[10px] font-bold tracking-widest uppercase mb-1" style="color:rgba(29,63,152,0.45)">{m.label}</p>
+              <p class="font-semibold text-sm leading-tight" style="color:#0D2B6E">{m.valor}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contexto -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="grid md:grid-cols-[1fr_2fr] gap-16">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#1D3F98">Contexto</p>
+          <h2 class="text-3xl font-bold leading-tight" style="color:#0D2B6E">O que é o Clubz?</h2>
+        </div>
+        <div class="space-y-5 text-[15px] leading-relaxed" style="color:#1D3F98; opacity:0.70">
+          <p>O <strong style="color:#0D2B6E; opacity:1">Clubz</strong> é o clube de benefícios da Petz — o maior pet shop do Brasil. O projeto nasceu da necessidade de unificar e evoluir uma longa trajetória de programas de fidelidade e benefícios que a empresa vinha construindo.</p>
+          <p>Ao longo dos anos, a estratégia foi se reinventando: começou com descontos exclusivos para lojas físicas, passou por campanhas de ofertas no app e chegou ao primeiro Clubz — uma seção dedicada dentro do aplicativo que agregava benefícios, cashback e cupons para todo o ecossistema Petz.</p>
+          <p>O desafio foi levar o produto a um novo patamar: um <strong style="color:#0D2B6E">sistema de níveis</strong> com benefícios exclusivos, contratação dentro do app e uma experiência mais clara e motivadora para os tutores de pets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minha participação -->
+  <section class="py-24" style="background:#F5E9C4;">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#1D3F98">Meu papel</p>
+        <h2 class="text-4xl font-bold leading-tight mb-4" style="color:#0D2B6E">Do discovery ao protótipo</h2>
+        <p class="max-w-xl text-[15px] leading-relaxed" style="color:#1D3F98; opacity:0.65">
+          Participei de todo o ciclo do produto — da pesquisa com usuários reais até a entrega dos artefatos de design prontos para desenvolvimento.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {
+            num: '01',
+            title: 'Pesquisa & Discovery',
+            desc: 'Participei das sessões de pesquisa com o time de Research para entender a percepção dos tutores sobre o programa de benefícios — o que valorizavam, o que confundia e o que esperavam de um clube de assinatura.',
+            tags: ['Entrevistas', 'Análise de dados', 'Insights'],
+            bg: '#D4E8F5',
+            accent: '#1D3F98',
+          },
+          {
+            num: '02',
+            title: 'Negócio & Produto',
+            desc: 'Colaborei diretamente com os times de negócio e produto na definição das regras de negócio: estrutura de níveis (Bronze, Prata, Ouro, Diamante), modelo de contratação, condições de uso e integração com o ecossistema Petz.',
+            tags: ['Regras de negócio', 'Alinhamento produto', 'Viabilidade'],
+            bg: '#F5DFA0',
+            accent: '#6B4500',
+          },
+          {
+            num: '03',
+            title: 'Design & Prototipagem',
+            desc: 'Criei toda a concepção visual e funcional: fluxos de usuário, wireframes, ilustrações dos níveis e protótipos navegáveis de alta fidelidade para validação e handoff para engenharia.',
+            tags: ['Fluxos', 'Wireframes', 'Ilustrações', 'Protótipos'],
+            bg: '#D4E8F5',
+            accent: '#1D3F98',
+          },
+        ].map(card => (
+          <div class="rounded-2xl p-8 flex flex-col gap-6" style={`background:${card.bg}`}>
+            <div class="flex items-start justify-between">
+              <span class="text-4xl font-bold" style={`color:${card.accent}; opacity:0.15`}>{card.num}</span>
+            </div>
+            <div>
+              <h3 class="text-base font-bold mb-2" style={`color:${card.accent}`}>{card.title}</h3>
+              <p class="text-sm leading-relaxed" style={`color:${card.accent}; opacity:0.70`}>{card.desc}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {card.tags.map(tag => (
+                <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={`background:${card.accent}; color:white`}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pesquisa -->
+  <section class="py-24" style="background:#0B2743;">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="grid md:grid-cols-[1fr_1fr] gap-28 items-center">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#F5DFA0">Pesquisa</p>
+          <h2 class="text-4xl font-bold text-white leading-tight mb-6">Entendendo os tutores</h2>
+          <p class="text-[15px] leading-relaxed mb-8" style="color:rgba(255,255,255,0.60)">
+            Antes de qualquer pixel, participei das sessões de pesquisa qualitativa conduzidas pelo time de Research. O objetivo era entender como os tutores percebiam os benefícios existentes, o que os motivava a ativar ofertas e quais eram as maiores fricções na jornada de fidelização.
+          </p>
+          <div class="space-y-4">
+            {[
+              'Tutores não entendiam a diferença entre CashPetz, Cupons e Ofertas Ativáveis — três mecânicas distintas dentro do mesmo espaço visual.',
+              'A palavra "benefício" carregava expectativa de algo gratuito. A ideia de "pagar por um clube" precisava ser comunicada com valor tangível e claro.',
+              'Pets são família — o argumento emocional de "cuidar melhor do seu pet pagando menos" ressoava mais do que comparativos de preço.',
+            ].map((txt, i) => (
+              <div class="flex gap-4 items-start">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:rgba(245,223,160,0.20)">
+                  <span class="text-sm font-bold" style="color:#F5DFA0">{i + 1}</span>
+                </div>
+                <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.60)">{txt}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          {[
+            { src: 'tweet-1.png', offset: '-translate-x-6' },
+            { src: 'tweet-2.png', offset: 'translate-x-6' },
+            { src: 'tweet-3.png', offset: '-translate-x-6' },
+          ].map(({ src, offset }) => (
+            <div class={`rounded-xl overflow-hidden ${offset}`} style="width:440px; box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 1px 4px rgba(0,0,0,0.15)">
+              <img src={`/${src}`} alt="Comentário de tutor no Twitter sobre o Clubz" class="w-full block" style="height:auto" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Identidade Visual -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#1D3F98">Ilustrações</p>
+        <h2 class="text-4xl font-bold leading-tight mb-4" style="color:#0D2B6E">Identidade visual dos níveis</h2>
+        <p class="max-w-xl text-[15px] leading-relaxed" style="color:#1D3F98; opacity:0.65">
+          Cada nível ganhou uma identidade própria — ícone, cor e tipografia criados para comunicar o valor e o status de forma imediata dentro do app e nas comunicações externas.
+        </p>
+      </div>
+
+      <!-- Tier cards from Figma -->
+      <div class="mb-8">
+        <img src="/clubz-tiers.png" alt="Identidade visual dos níveis Clubz" class="w-full" style="max-width:100%; mix-blend-mode:multiply" />
+      </div>
+
+      <div>
+        <img
+          src="/ilustracoes.png"
+          alt="Ilustrações desenvolvidas para a identidade visual do Novo Clubz"
+          class="w-full"
+          style="max-width:100%; height:auto"
+          loading="lazy"
+        />
+        
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Processo de Design -->
+  <section class="py-24" style="background:#F5F5F5;">
+    <div class="max-w-[1600px] mx-auto px-6">
+
+      <div class="mb-16">
+        <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#1D3F98">Processo de design</p>
+        <h2 class="text-4xl font-bold leading-tight mb-4" style="color:#0D2B6E">Da estrutura ao protótipo</h2>
+        <p class="max-w-xl text-[15px] leading-relaxed" style="color:#1D3F98; opacity:0.65">
+          Com os insights de pesquisa e as regras de negócio consolidadas junto ao time de produto, o processo seguiu quatro etapas — do briefing estruturado até os protótipos navegáveis prontos para validação.
+        </p>
+      </div>
+
+      <!-- Etapas -->
+      <div class="grid md:grid-cols-4 gap-4 mb-20">
+        {[
+          { num: '01', label: 'Briefing', desc: 'Mapeamento dos planos atuais e futuros — estrutura de níveis, mecânicas de benefícios e regras consolidadas com produto e negócios.' },
+          { num: '02', label: 'Arquitetura', desc: 'Definição da arquitetura de informação do app — Home Clubz como hub central, conectando pontos de contato, mensagens, cupons e web.' },
+          { num: '03', label: 'Wireframes', desc: 'Evolução para wireframes digitais de média fidelidade com componentes reutilizáveis, pronto para handoff.' },
+          { num: '04', label: 'Protótipos', desc: 'Protótipos navegáveis de alta fidelidade para validação com stakeholders e handoff para engenharia.' },
+        ].map(step => (
+          <div class="rounded-2xl p-6 flex flex-col gap-4" style="background:rgba(29,63,152,0.06); border:1px solid rgba(29,63,152,0.10)">
+            <span class="text-5xl font-bold leading-none" style="color:#1D3F98; opacity:0.10">{step.num}</span>
+            <h3 class="text-base font-bold" style="color:#0D2B6E">{step.label}</h3>
+            <p class="text-sm leading-relaxed" style="color:#1D3F98; opacity:0.60">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Arquitetura de informação -->
+      <div class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1 h-7 rounded-full" style="background:#1D3F98; opacity:0.25"></div>
+          <h3 class="text-lg font-bold" style="color:#0D2B6E">Arquitetura de informação</h3>
+        </div>
+
+        <div class="rounded-2xl overflow-x-auto" style="background:white; border:1px solid rgba(29,63,152,0.10)">
+          <div class="p-10" style="min-width:900px">
+
+            <!-- Linha 1: HOME CLUBZ + seções principais -->
+            <div class="flex items-start gap-0">
+
+              <!-- HOME CLUBZ coluna -->
+              <div class="flex flex-col items-center" style="min-width:160px">
+                <div class="rounded-lg px-5 py-2.5 w-full text-center" style="background:#1D3F98">
+                  <p class="text-[10px] font-bold tracking-widest uppercase text-white">Home Clubz</p>
+                </div>
+                <!-- filhos do hub -->
+                <div class="w-px flex-1 mt-1" style="background:rgba(29,63,152,0.20); min-height:16px"></div>
+                <div class="w-full flex flex-col gap-2 mt-1">
+                  {['Saldo', 'Desafios / Compre e Ganhe', 'Tiers: Prata · Ouro · Diamante', 'Total Recebido de CashPetz'].map(item => (
+                    <div class="rounded px-3 py-2 text-center" style="background:rgba(29,63,152,0.05); border:1px solid rgba(29,63,152,0.12)">
+                      <p class="text-[9px] font-semibold leading-tight" style="color:#1D3F98">{item}</p>
+                    </div>
+                  ))}
+                  <!-- Tiers filhos -->
+                  <div class="flex gap-1 px-1">
+                    {['Prata', 'Ouro', 'Diamante'].map(t => (
+                      <div class="flex-1 rounded px-1 py-1.5 text-center" style="background:rgba(29,63,152,0.04); border:1px dashed rgba(29,63,152,0.12)">
+                        <p class="text-[8px] font-semibold" style="color:rgba(29,63,152,0.50)">{t}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div class="flex gap-1 px-1">
+                    {['Fluxo compra recorrente', 'Checkout apartado'].map(t => (
+                      <div class="flex-1 rounded px-1 py-1.5 text-center" style="background:rgba(29,63,152,0.03); border:1px dashed rgba(29,63,152,0.10)">
+                        <p class="text-[8px] font-medium leading-tight" style="color:rgba(29,63,152,0.40)">{t}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conector horizontal principal -->
+              <div class="flex flex-col justify-start" style="padding-top:14px; width:32px; flex-shrink:0">
+                <div class="h-px w-full" style="background:rgba(29,63,152,0.20)"></div>
+              </div>
+
+              <!-- Linha vertical central + 5 seções -->
+              <div class="flex-1 flex flex-col">
+                <!-- Linha horizontal sobre as 5 seções -->
+                <div style="height:14px; display:flex; align-items:flex-end">
+                  <div class="w-full h-px" style="background:rgba(29,63,152,0.20)"></div>
+                </div>
+                <!-- 5 colunas -->
+                <div class="grid grid-cols-4 gap-3 pt-0">
+                  {[
+                    {
+                      title: 'Pontos de Contato',
+                      items: ['Home (banner slide-up / content na rolagem)', 'PDP', 'Checkout'],
+                    },
+                    {
+                      title: 'Mensageria (Welcome)',
+                      items: ['Email', 'WhatsApp', 'SMS', 'Push'],
+                    },
+                    {
+                      title: 'Card de Ofertas',
+                      items: ['Interface + Comportamentos', 'Protótipo Home App'],
+                    },
+                    {
+                      title: 'Cuponeira',
+                      items: ['Estudo + Benchmark', 'Onde e como acomodar?', 'Interface + Comportamentos'],
+                    },
+                  ].map(col => (
+                    <div class="flex flex-col items-center gap-2">
+                      <!-- conector vertical descendo do traço -->
+                      <div class="w-px" style="height:12px; background:rgba(29,63,152,0.20)"></div>
+                      <!-- cabeçalho da seção -->
+                      <div class="rounded-lg px-2 py-2 w-full text-center" style="background:#3D5EBF">
+                        <p class="text-[9px] font-bold leading-tight uppercase tracking-wide text-white">{col.title}</p>
+                      </div>
+                      <!-- sub-itens -->
+                      {col.items.length > 0 && (
+                        <div class="w-full flex flex-col gap-1.5 mt-0.5">
+                          {col.items.map(item => (
+                            <div class="rounded px-2 py-1.5 text-center" style="background:rgba(29,63,152,0.05); border:1px solid rgba(29,63,152,0.12)">
+                              <p class="text-[8px] font-medium leading-tight" style="color:#1D3F98">{item}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Wireframes digitais -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1 h-7 rounded-full" style="background:#1D3F98; opacity:0.25"></div>
+          <h3 class="text-lg font-bold" style="color:#0D2B6E">Wireframes digitais — média fidelidade</h3>
+        </div>
+
+        <div class="rounded-2xl overflow-x-auto" style="background:#f8f8f8; border:1px solid #e0e0e0">
+          <div class="flex items-end justify-center gap-5 py-14 px-10" style="min-width:1060px">
+
+            <!-- 1: Home Petz + Clubz -->
+            <div style="flex-shrink:0; align-self:flex-end">
+              <div style="width:148px; height:320px; border-radius:20px; overflow:hidden; border:1.5px solid #bbb; box-shadow:0 4px 18px rgba(0,0,0,0.13); background:white; display:flex; flex-direction:column">
+                <div style="height:8px;background:#f0f0f0;display:flex;justify-content:space-between;align-items:center;padding:0 10px;flex-shrink:0">
+                  <div style="height:2px;width:18px;background:#bbb;border-radius:2px"></div>
+                  <div style="height:2px;width:10px;background:#ccc;border-radius:2px"></div>
+                </div>
+                <div style="padding:5px 10px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;flex-shrink:0">
+                  <div style="display:flex;flex-direction:column;gap:1.5px">{[0,1,2].map(()=><div style="height:1.5px;width:11px;background:#555;border-radius:1px"></div>)}</div>
+                  <div style="font-size:9px;font-weight:800;color:#333">Petz</div>
+                  <div style="display:flex;gap:2px">{[0,1].map(()=><div style="width:3px;height:3px;background:#aaa;border-radius:50%"></div>)}</div>
+                </div>
+                <div style="padding:8px 10px 10px;background:#444;flex-shrink:0">
+                  <div style="font-size:6.5px;font-weight:800;color:rgba(255,255,255,0.50);letter-spacing:.08em;margin-bottom:1px">CLUBZ</div>
+                  <div style="font-size:6px;color:rgba(255,255,255,0.35);margin-bottom:2px">Saldo CashPetz</div>
+                  <div style="font-size:13px;font-weight:800;color:white">R$150,00</div>
+                </div>
+                <div style="padding:6px 10px 3px;flex-shrink:0">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                    <div style="font-size:7px;font-weight:700;color:#555">Desafios</div>
+                    <div style="font-size:8px;color:#aaa">→</div>
+                  </div>
+                  <div style="display:flex;gap:5px">
+                    {[0,1].map(()=>(
+                      <div style="flex:1;height:40px;background:#f0f0f0;border:1px solid #ddd;border-radius:4px;position:relative">
+                        <svg width="100%" height="100%" style="position:absolute;inset:0" preserveAspectRatio="none"><line x1="0" y1="0" x2="100%" y2="100%" stroke="#ccc" stroke-width="0.8"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="#ccc" stroke-width="0.8"/></svg>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style="padding:5px 10px 3px;flex-shrink:0"><div style="font-size:6.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.04em">Tenha mais vantagens</div></div>
+                <div style="margin:2px 8px;padding:6px 8px;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;flex-shrink:0">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
+                    <div style="font-size:7px;font-weight:700;color:#444">Clubz Básico</div>
+                    <div style="font-size:5.5px;padding:1px 4px;background:#ddd;border-radius:2px;color:#666">Plano atual</div>
+                  </div>
+                  <div style="font-size:6px;color:#888">Você economizou R$15,00</div>
+                </div>
+                <div style="margin:4px 8px;padding:6px 8px;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+                  <div style="font-size:7px;font-weight:700;color:#444">Clubz Prata</div>
+                  <div style="width:16px;height:16px;background:#e0e0e0;border-radius:4px;display:flex;align-items:center;justify-content:center"><div style="font-size:9px;color:#888">›</div></div>
+                </div>
+                <div style="flex:1"></div>
+                <div style="height:20px;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;padding:0 8px;flex-shrink:0">
+                  {[0,1,2,3].map(()=><div style="width:16px;height:3px;background:#e0e0e0;border-radius:2px"></div>)}
+                </div>
+              </div>
+              
+            </div>
+
+            <!-- 2: Home Clubz Básico (assinante) -->
+            <div style="flex-shrink:0; align-self:flex-end">
+              <div style="width:148px; height:320px; border-radius:20px; overflow:hidden; border:1.5px solid #bbb; box-shadow:0 4px 18px rgba(0,0,0,0.13); background:white; display:flex; flex-direction:column">
+                <div style="height:8px;background:#333;display:flex;justify-content:space-between;align-items:center;padding:0 10px;flex-shrink:0">
+                  <div style="height:2px;width:18px;background:rgba(255,255,255,0.30);border-radius:2px"></div>
+                  <div style="height:2px;width:10px;background:rgba(255,255,255,0.20);border-radius:2px"></div>
+                </div>
+                <div style="padding:8px 10px 10px;background:#333;flex-shrink:0">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+                    <div style="font-size:7px;font-weight:800;color:white">CLUBZ BÁSICO</div>
+                    <div style="display:flex;gap:2px">{[0,1].map(()=><div style="width:2.5px;height:2.5px;background:rgba(255,255,255,0.45);border-radius:50%"></div>)}</div>
+                  </div>
+                  <div style="font-size:6px;color:rgba(255,255,255,0.45);margin-bottom:1px">Saldo completo</div>
+                  <div style="font-size:13px;font-weight:800;color:white;margin-bottom:4px">R$350,00</div>
+                  <div style="display:inline-block;padding:2px 6px;background:rgba(255,255,255,0.15);border-radius:8px">
+                    <div style="font-size:6px;color:rgba(255,255,255,0.65)">Você economizou R$15,00</div>
+                  </div>
+                </div>
+                <div style="padding:5px 10px 3px;flex-shrink:0">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+                    <div style="font-size:7px;font-weight:700;color:#555">Desafios</div>
+                    <div style="font-size:8px;color:#aaa">→</div>
+                  </div>
+                  <div style="display:flex;gap:4px">
+                    {[0,1].map(()=>(
+                      <div style="flex:1;height:32px;background:#f0f0f0;border:1px solid #ddd;border-radius:4px;position:relative">
+                        <svg width="100%" height="100%" style="position:absolute;inset:0" preserveAspectRatio="none"><line x1="0" y1="0" x2="100%" y2="100%" stroke="#ccc" stroke-width="0.8"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="#ccc" stroke-width="0.8"/></svg>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style="padding:3px 10px 2px;flex-shrink:0"><div style="font-size:6.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.04em">Tenha mais vantagens</div></div>
+                <div style="margin:2px 8px;border:1px solid #ddd;border-radius:5px;overflow:hidden;flex-shrink:0">
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:#ebebeb">
+                    {['Prata','Ouro','Diamante'].map((t,i)=>(
+                      <div style={`padding:3px 2px;text-align:center;${i<2?'border-right:1px solid #ddd':''}`}>
+                        <div style="font-size:5.5px;font-weight:700;color:#555">{t}</div>
+                      </div>
+                    ))}
+                  </div>
+                  {[0,1,2,3,4].map(()=>(
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid #eee">
+                      {[0,1,2].map((_,j)=>(
+                        <div style={`padding:2.5px;text-align:center;${j<2?'border-right:1px solid #eee':''}`}>
+                          <div style="font-size:7px;color:#777">✓</div>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <div style="flex:1"></div>
+                <div style="margin:0 8px 8px;padding:5px;background:#333;border-radius:5px;text-align:center;flex-shrink:0">
+                  <div style="height:4.5px;width:45%;background:rgba(255,255,255,0.35);border-radius:2px;margin:0 auto"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3: Mais Vantagens carrossel -->
+            <div style="flex-shrink:0; align-self:flex-end">
+              <div style="width:148px; height:320px; border-radius:20px; overflow:hidden; border:1.5px solid #bbb; box-shadow:0 4px 18px rgba(0,0,0,0.13); background:white; display:flex; flex-direction:column">
+                <div style="height:8px;background:#f0f0f0;display:flex;justify-content:space-between;align-items:center;padding:0 10px;flex-shrink:0">
+                  <div style="height:2px;width:18px;background:#bbb;border-radius:2px"></div>
+                  <div style="height:2px;width:10px;background:#ccc;border-radius:2px"></div>
+                </div>
+                <div style="position:relative;height:138px;background:#ececec;flex-shrink:0">
+                  <svg width="100%" height="100%" style="position:absolute;inset:0" preserveAspectRatio="none"><line x1="0" y1="0" x2="100%" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/></svg>
+                </div>
+                <div style="padding:6px 10px 3px;flex-shrink:0"><div style="font-size:6.5px;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:.04em">Mais vantagens</div></div>
+                <div style="padding:0 8px;display:flex;gap:5px;overflow:hidden;flex-shrink:0">
+                  <div style="min-width:96px;padding:7px;background:#f5f5f5;border:1px solid #ddd;border-radius:6px">
+                    <div style="font-size:7px;font-weight:700;color:#444;margin-bottom:2px">Clubz Prata</div>
+                    <div style="height:3px;width:65%;background:#ddd;border-radius:2px;margin-bottom:7px"></div>
+                    <div style="padding:4px 7px;background:#333;border-radius:4px;text-align:center">
+                      <div style="font-size:6.5px;font-weight:700;color:white">Assinar</div>
+                    </div>
+                  </div>
+                  <div style="min-width:36px;padding:7px;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;opacity:0.40">
+                    <div style="height:3px;width:100%;background:#ccc;border-radius:2px;margin-bottom:3px"></div>
+                    <div style="height:3px;width:70%;background:#ccc;border-radius:2px"></div>
+                  </div>
+                </div>
+                <div style="flex:1"></div>
+                <div style="height:20px;border-top:1px solid #eee;display:flex;justify-content:space-around;align-items:center;padding:0 8px;flex-shrink:0">
+                  {[0,1,2,3].map(()=><div style="width:16px;height:3px;background:#e0e0e0;border-radius:2px"></div>)}
+                </div>
+              </div>
+            </div>
+
+            <!-- 4: Seleção com tabs -->
+            <div style="flex-shrink:0; align-self:flex-end">
+              <div style="width:148px; height:320px; border-radius:20px; overflow:hidden; border:1.5px solid #bbb; box-shadow:0 4px 18px rgba(0,0,0,0.13); background:white; display:flex; flex-direction:column">
+                <div style="height:8px;background:#f0f0f0;display:flex;justify-content:space-between;align-items:center;padding:0 10px;flex-shrink:0">
+                  <div style="height:2px;width:18px;background:#bbb;border-radius:2px"></div>
+                  <div style="height:2px;width:10px;background:#ccc;border-radius:2px"></div>
+                </div>
+                <div style="position:relative;height:138px;background:#ececec;flex-shrink:0">
+                  <svg width="100%" height="100%" style="position:absolute;inset:0" preserveAspectRatio="none"><line x1="0" y1="0" x2="100%" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/></svg>
+                </div>
+                <div style="padding:6px 10px 3px;flex-shrink:0"><div style="font-size:6.5px;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:.04em">Mais vantagens</div></div>
+                <div style="padding:0 8px;display:flex;gap:2px;flex-shrink:0">
+                  <div style="flex:1;padding:3px 2px;background:#333;border-radius:3px;text-align:center"><div style="font-size:6px;font-weight:700;color:white">Prata</div></div>
+                  <div style="flex:1;padding:3px 2px;background:#f0f0f0;border:1px solid #ddd;border-radius:3px;text-align:center"><div style="font-size:6px;color:#888">Ouro</div></div>
+                  <div style="flex:1;padding:3px 2px;background:#f0f0f0;border:1px solid #ddd;border-radius:3px;text-align:center"><div style="font-size:6px;color:#888">Diamante</div></div>
+                </div>
+                <div style="margin:4px 8px;padding:4px 5px;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;display:flex;gap:3px;align-items:center;flex-shrink:0">
+                  <div style="font-size:8px;color:#999;line-height:1;flex-shrink:0">ⓘ</div>
+                  <div style="height:3px;flex:1;background:#ddd;border-radius:2px"></div>
+                </div>
+                {[0,1,2].map(()=>(
+                  <div style="padding:3px 10px;display:flex;align-items:center;gap:5px;flex-shrink:0">
+                    <div style="font-size:8px;color:#888;line-height:1;flex-shrink:0">✓</div>
+                    <div style="height:3px;flex:1;background:#e0e0e0;border-radius:2px"></div>
+                  </div>
+                ))}
+                <div style="flex:1"></div>
+                <div style="margin:0 8px 8px;padding:5px;background:#333;border-radius:5px;text-align:center;flex-shrink:0">
+                  <div style="height:4.5px;width:45%;background:rgba(255,255,255,0.35);border-radius:2px;margin:0 auto"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5: Lista de planos -->
+            <div style="flex-shrink:0; align-self:flex-end">
+              <div style="width:148px; height:320px; border-radius:20px; overflow:hidden; border:1.5px solid #bbb; box-shadow:0 4px 18px rgba(0,0,0,0.13); background:white; display:flex; flex-direction:column">
+                <div style="height:8px;background:#f0f0f0;display:flex;justify-content:space-between;align-items:center;padding:0 10px;flex-shrink:0">
+                  <div style="height:2px;width:18px;background:#bbb;border-radius:2px"></div>
+                  <div style="height:2px;width:10px;background:#ccc;border-radius:2px"></div>
+                </div>
+                <div style="position:relative;height:138px;background:#ececec;flex-shrink:0">
+                  <svg width="100%" height="100%" style="position:absolute;inset:0" preserveAspectRatio="none"><line x1="0" y1="0" x2="100%" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/></svg>
+                </div>
+                <div style="padding:6px 10px 4px;flex-shrink:0"><div style="font-size:6.5px;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:.04em">Mais vantagens</div></div>
+                <div style="padding:0 8px;display:flex;flex-direction:column;gap:3px;flex-shrink:0">
+                  <div style="padding:5px 7px;background:#f5f5f5;border:1px solid #ddd;border-radius:5px;display:flex;align-items:center;gap:4px">
+                    <div style="width:7px;height:7px;border:1.5px solid #bbb;border-radius:50%;flex-shrink:0"></div>
+                    <div style="font-size:6.5px;font-weight:600;color:#555;flex:1">Clubz Prata</div>
+                    <div style="height:3px;width:12px;background:#ccc;border-radius:2px"></div>
+                  </div>
+                  <div style="padding:5px 7px;background:#333;border-radius:5px;display:flex;align-items:center;gap:4px">
+                    <div style="width:7px;height:7px;background:rgba(255,255,255,0.55);border-radius:50%;flex-shrink:0"></div>
+                    <div style="font-size:6.5px;font-weight:700;color:white;flex:1">Clubz Ouro</div>
+                    <div style="padding:1px 4px;background:rgba(255,255,255,0.20);border-radius:2px"><div style="font-size:5px;color:rgba(255,255,255,0.80)">Mais</div></div>
+                  </div>
+                  <div style="padding:5px 7px;background:#f5f5f5;border:1px solid #ddd;border-radius:5px;display:flex;align-items:center;gap:4px">
+                    <div style="width:7px;height:7px;border:1.5px solid #bbb;border-radius:50%;flex-shrink:0"></div>
+                    <div style="font-size:6.5px;font-weight:600;color:#555;flex:1">Clubz Diamante</div>
+                    <div style="height:3px;width:12px;background:#ccc;border-radius:2px"></div>
+                  </div>
+                </div>
+                <div style="flex:1"></div>
+                <div style="margin:0 8px 8px;padding:5px;background:#333;border-radius:5px;text-align:center;flex-shrink:0">
+                  <div style="height:4.5px;width:45%;background:rgba(255,255,255,0.35);border-radius:2px;margin:0 auto"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6: Detalhe Clubz Ouro -->
+            <div style="flex-shrink:0; align-self:flex-end">
+              <div style="width:148px; height:320px; border-radius:20px; overflow:hidden; border:1.5px solid #bbb; box-shadow:0 4px 18px rgba(0,0,0,0.13); background:white; display:flex; flex-direction:column">
+                <div style="height:8px;background:#f0f0f0;display:flex;justify-content:space-between;align-items:center;padding:0 10px;flex-shrink:0">
+                  <div style="height:2px;width:18px;background:#bbb;border-radius:2px"></div>
+                  <div style="height:2px;width:10px;background:#ccc;border-radius:2px"></div>
+                </div>
+                <div style="position:relative;height:138px;background:#ececec;flex-shrink:0">
+                  <svg width="100%" height="100%" style="position:absolute;inset:0" preserveAspectRatio="none"><line x1="0" y1="0" x2="100%" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/><line x1="100%" y1="0" x2="0" y2="100%" stroke="#c8c8c8" stroke-width="1.2"/></svg>
+                </div>
+                <div style="padding:6px 10px 4px;flex-shrink:0"><div style="font-size:6.5px;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:.04em">Mais vantagens</div></div>
+                <div style="margin:0 8px;padding:8px;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;flex-shrink:0">
+                  <div style="font-size:7px;font-weight:800;color:#444;margin-bottom:6px">CLUBZ OURO</div>
+                  {[0,1,2].map(()=>(
+                    <div style="display:flex;align-items:center;gap:5px;margin-bottom:5px">
+                      <div style="font-size:8px;color:#888;line-height:1;flex-shrink:0">✓</div>
+                      <div style="height:3px;flex:1;background:#ddd;border-radius:2px"></div>
+                    </div>
+                  ))}
+                </div>
+                <div style="flex:1"></div>
+                <div style="margin:0 8px 8px;padding:5px;background:#333;border-radius:5px;text-align:center;flex-shrink:0">
+                  <div style="height:4.5px;width:45%;background:rgba(255,255,255,0.35);border-radius:2px;margin:0 auto"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Protótipos -->
+      <div class="mt-20">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1 h-7 rounded-full" style="background:#1D3F98; opacity:0.25"></div>
+          <h3 class="text-lg font-bold" style="color:#0D2B6E">Protótipos</h3>
+        </div>
+
+        <div class="mb-12">
+          <p class="max-w-2xl text-[15px] leading-relaxed" style="color:#1D3F98; opacity:0.65">
+            No novo Clubz, o tutor escolhe o nível que faz mais sentido para ele — sem ordem obrigatória, sem progressão forçada. Cada plano tem um pacote próprio de benefícios, com uma experiência mais clara, motivadora e com valor tangível desde o primeiro acesso.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center gap-12">
+          <img
+            src="/para_conquistar.png"
+            alt="Componentes para conquistar os níveis Prata, Ouro e Diamante do aplicativo Clubz"
+            class="w-full max-w-[968px]"
+            style="height:auto"
+            loading="lazy"
+          />
+          <img
+            src="/home-tiers.png"
+            alt="Tela inicial do aplicativo Clubz com os níveis disponíveis"
+            class="w-full"
+            style="height:auto"
+            loading="lazy"
+          />
+          <img
+            src="/fluxo_compra.png"
+            alt="Fluxo de compra do aplicativo Clubz"
+            class="w-full"
+            style="height:auto"
+            loading="lazy"
+          />
+          <img
+            src="/lp_desk.png"
+            alt="Landing page desktop do Clubz"
+            style="height:auto; max-width:100%"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+      <div class="grid md:grid-cols-[1fr_2fr] gap-16">
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#1D3F98">FAQ</p>
+          <h2 class="text-3xl font-bold leading-tight" style="color:#0D2B6E">Dúvidas resolvidas no design</h2>
+          <p class="text-sm leading-relaxed mt-4" style="color:#1D3F98; opacity:0.55">Questões que emergiram da pesquisa e foram respondidas diretamente nas escolhas de UX.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          {[
+            { p: 'Preciso pagar todo mês?', r: 'Não. O pagamento é feito 1x, podendo parcelar em até 12x sem juros ou pagar à vista com 5% OFF. Essa decisão foi fundamental para reduzir a fricção percebida no ato da contratação.' },
+            { p: 'Posso contratar fora do app?', r: 'O desbloqueio de níveis é feito exclusivamente pelo aplicativo — decisão de negócio que foi comunicada de forma proativa no fluxo de descoberta do Clubz.' },
+            { p: 'Qual o melhor nível?', r: 'O Diamante é o mais completo, mas o design permite que o usuário compare todos os níveis e escolha o que mais combina com as necessidades do seu pet — sem pressão.' },
+            { p: 'Os benefícios têm limite de uso?', r: 'Os benefícios são ilimitados e ficam vinculados ao CPF. Esse diferencial foi destacado visualmente como um dos principais argumentos de valor do clube.' },
+          ].map(item => (
+            <div class="rounded-2xl p-6" style="background:white; border:1px solid #D4E8F5">
+              <p class="font-bold text-sm mb-3" style="color:#0D2B6E">{item.p}</p>
+              <p class="text-sm leading-relaxed" style="color:#1D3F98; opacity:0.65">{item.r}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fechamento -->
+  <section class="py-32" style="background:#0B2743;">
+    <div class="max-w-[1600px] mx-auto px-6 text-center">
+      <div class="flex items-center justify-center mb-8">
+        <img src="/moedas.png" alt="Moedas Clubz" style="height:auto; max-width:100%" loading="lazy" />
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 max-w-full mx-auto">
+        Do discovery ao produto no ar
+      </h2>
+      <p class="text-[15px] leading-relaxed max-w-2xl mx-auto" style="color:rgba(255,255,255,0.50)">
+        Um projeto de ponta a ponta que uniu pesquisa, estratégia de produto e design<br />para criar uma experiência de benefícios que faz sentido para quem tem pet.
+      </p>
+    </div>
+  </section>
+
+
+  <ContatoFooter formName="contato-clubz" />
+
+</Layout>
