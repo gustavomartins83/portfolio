@@ -65,14 +65,14 @@ const etapas = [
   <div class="max-w-[1600px] mx-auto px-6">
 
     <div class="mb-16">
-      <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
+      <p data-reveal class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
         Processo
       </p>
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
+        <h2 data-reveal data-delay="80" class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
           Como eu<br />trabalho.
         </h2>
-        <p class="hidden md:block text-sm text-neutral-400 max-w-xs text-right leading-relaxed">
+        <p data-reveal data-delay="160" class="hidden md:block text-sm text-neutral-400 max-w-xs text-right leading-relaxed">
           Utilizo o método <strong class="text-neutral-600 font-semibold">Double Diamond</strong> do British Design Council — alternando entre pensamento divergente e convergente para chegar à solução certa.
         </p>
       </div>
@@ -80,8 +80,8 @@ const etapas = [
 
     <!-- Cards -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {etapas.map((etapa) => (
-        <div class="group flex flex-col gap-4 p-5 bg-white rounded-xl border border-neutral-100 hover:border-[#0891B2]/20 hover:shadow-sm transition-all">
+      {etapas.map((etapa, i) => (
+        <div data-reveal data-delay={i * 90} class="group flex flex-col gap-4 p-5 bg-white rounded-xl border border-neutral-100 hover:border-[#0891B2]/20 hover:shadow-sm transition-all">
           <div class="text-neutral-300 group-hover:text-[#0891B2] transition-colors w-20 h-20" set:html={etapa.icone} />
           <div>
             <p class="text-[10px] font-bold tracking-widest uppercase text-[#0891B2] mb-0.5">{etapa.label}</p>

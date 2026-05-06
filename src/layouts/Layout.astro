@@ -36,25 +36,62 @@ const {
     <Footer />
 
     <script>
-      import Lenis from 'lenis'
+      let lenis: import('lenis').default | null = null
 
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      })
+      // Lenis em iOS pode bloquear o scroll em alguns cenarios; mantemos nativo em touch.
+      const canUseLenis =
+        window.matchMedia('(pointer: fine)').matches &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-      function raf(time: number) {
-        lenis.raf(time)
+      if (canUseLenis) {
+        const { default: Lenis } = await import('lenis')
+
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        })
+        const activeLenis = lenis
+
+        function raf(time: number) {
+          activeLenis.raf(time)
+          requestAnimationFrame(raf)
+        }
         requestAnimationFrame(raf)
       }
-      requestAnimationFrame(raf)
+
+      // Scroll reveal — bidirecional
+      const revealTimers = new WeakMap<Element, ReturnType<typeof setTimeout>>()
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target
+          const existing = revealTimers.get(el)
+          if (existing) clearTimeout(existing)
+
+          if (entry.isIntersecting) {
+            const delay = Number(el.getAttribute('data-delay') ?? 0)
+            const id = setTimeout(() => el.classList.add('is-visible'), delay)
+            revealTimers.set(el, id)
+          } else {
+            el.classList.remove('is-visible')
+          }
+        })
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+
+      document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el))
 
       // Smooth anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
           e.preventDefault()
-          const target = document.querySelector((anchor as HTMLAnchorElement).getAttribute('href') ?? '')
-          if (target) lenis.scrollTo(target as HTMLElement, { offset: -64 })
+          const target = document.querySelector(anchor.getAttribute('href') ?? '')
+          if (!(target instanceof HTMLElement)) return
+
+          if (lenis) {
+            lenis.scrollTo(target, { offset: -64 })
+          } else {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
         })
       })
     </script>

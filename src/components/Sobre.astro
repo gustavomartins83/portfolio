@@ -7,7 +7,7 @@
     <div class="grid md:grid-cols-2 gap-16 items-start mb-16">
 
       <!-- Foto -->
-      <div class="relative flex justify-center items-end">
+      <div data-reveal="left" class="relative flex justify-center items-end">
         <img
           src="https://gustavocamposdesign.com/wp-content/uploads/2020/08/foto_site-1.png"
           alt="Gustavo Campos"
@@ -18,13 +18,13 @@
 
       <!-- Texto -->
       <div>
-        <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
+        <p data-reveal class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
           Sobre
         </p>
-        <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight mb-8">
+        <h2 data-reveal data-delay="80" class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight mb-8">
           Design com<br />propósito.
         </h2>
-        <div class="space-y-5 text-neutral-500 leading-relaxed text-[15px]">
+        <div data-reveal data-delay="160" class="space-y-5 text-neutral-500 leading-relaxed text-[15px]">
           <p>
             Graduado em Design Gráfico com MBA em Gestão de Marketing pelo Ibmec e cursando MBA em Inovação Orientada à Inteligência Artificial e Experiência do Usuário, tenho mais de 15 anos de experiência na área digital com foco em UX, interface do usuário e produtos digitais para as mais diversas plataformas.
           </p>
@@ -65,8 +65,8 @@
           descricao: 'Identidade visual, peças digitais e campanhas com consistência em múltiplos canais.',
           icone: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 20h9"/><path d="M4.5 20.5l7-7"/></svg>`,
         },
-      ].map((item) => (
-        <div class="flex flex-col gap-4 p-5 bg-white rounded-xl border border-neutral-100 hover:border-[#0891B2]/20 hover:shadow-sm transition-all group">
+      ].map((item, _i) => (
+        <div data-reveal data-delay={`${_i * 80}`} class="flex flex-col gap-4 p-5 bg-white rounded-xl border border-neutral-100 hover:border-[#0891B2]/20 hover:shadow-sm transition-all group">
           <div class="text-neutral-300 group-hover:text-[#0891B2] transition-colors" set:html={item.icone} />
           <div>
             <h3 class="text-sm font-bold text-neutral-900 mb-1 group-hover:text-[#0891B2] transition-colors">{item.titulo}</h3>

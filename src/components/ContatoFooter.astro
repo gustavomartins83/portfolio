@@ -5,13 +5,13 @@ const { formName = 'contato-projeto' } = Astro.props
 <section id="contato" class="py-20 bg-neutral-900">
   <div class="max-w-[1600px] mx-auto px-6">
     <div class="flex flex-col md:flex-row items-center justify-center gap-10">
-      <div class="md:w-80 shrink-0">
+      <div data-reveal class="md:w-80 shrink-0">
         <h2 class="text-3xl font-bold text-white leading-snug mb-4">
           Tem um projeto que<br />merece <em class="not-italic text-[#0891B2]">bom design?</em>
         </h2>
         <p class="text-base text-neutral-500 leading-relaxed">Aceito projetos selecionados por trimestre. Vamos conversar.</p>
       </div>
-      <form name={formName} method="POST" data-netlify="true" class="flex flex-col gap-3 md:w-96 w-full">
+      <form data-reveal data-delay="140" name={formName} method="POST" data-netlify="true" class="flex flex-col gap-3 md:w-96 w-full">
         <input type="hidden" name="form-name" value={formName} />
         <div class="grid grid-cols-2 gap-3">
           <input name="nome" type="text" required placeholder="Nome"

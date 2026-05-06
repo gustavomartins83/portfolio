@@ -96,36 +96,116 @@ const alturas = {
   '07': '480px',
 } as Record<string, string>
 
-const oliveiraTrustHeroMetrics = [
-  { label: 'Base primitiva', valor: 'Tailwind CSS' },
-  { label: 'Plataforma', valor: 'Web · Mobile' },
-  { label: 'Tokens', valor: '400+' },
-  { label: 'Componentes', valor: '80+' },
-]
 ---
 
-<section id="trabalhos" class="py-24">
+<section id="trabalhos" class="pt-[72px] pb-24 md:py-24">
   <div class="max-w-[1600px] mx-auto px-6">
 
     <div class="flex items-end justify-between mb-16">
       <div>
-        <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
+        <p data-reveal class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-3">
           Trabalhos
         </p>
-        <h2 class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
+        <h2 data-reveal data-delay="80" class="text-4xl md:text-5xl font-bold text-neutral-900 leading-tight">
           Projetos<br />selecionados
         </h2>
       </div>
-      <p class="hidden md:block text-sm text-neutral-400 max-w-xs text-right leading-relaxed">
+      <p data-reveal data-delay="160" class="hidden md:block text-sm text-neutral-400 max-w-xs text-right leading-relaxed">
         Cada projeto reflete um problema real resolvido com estratégia, pesquisa e execução.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+    <div class="flex flex-col gap-4 md:hidden">
+      {projetos.map((projeto, i) => (
+        <article
+          data-reveal
+          data-delay={i * 90}
+          class={`group relative ${projeto.bg} rounded-2xl overflow-hidden cursor-pointer`}
+          style="height:360px"
+          onclick={projeto.url ? `window.location.href='${projeto.url}'` : undefined}
+        >
+          {projeto.thumb === 'ot' && (
+            <div class="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl" style="isolation:isolate" aria-hidden="true">
+              <div class="ot-hero-thumb">
+                <div class="ot-hero-thumb__tiles">
+                  {Array.from({ length: 72 }).map((_, i) => (
+                    <span style={`opacity:${0.18 + (i % 7) * 0.09}`}></span>
+                  ))}
+                </div>
+
+                <div class="ot-hero-thumb__cover">
+                  <div class="ot-hero-thumb__cover-copy">
+                    <span>Design System · Oliveira Trust</span>
+                    <strong>OT.DS</strong>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(12,12,14,0.68) 0%,rgba(12,12,14,0.18) 34%,transparent 62%)"></div>
+              <div class="absolute inset-0" style="background:linear-gradient(to right,rgba(40,0,0,0.36) 0%,transparent 42%)"></div>
+            </div>
+          )}
+
+          {projeto.thumb === 'thumb_clubz' && (
+            <div class="absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl" aria-hidden="true">
+              {/* Moedas exportadas do Figma em 3× — transparência real */}
+              <img
+                src={`${import.meta.env.BASE_URL}thumb_clubz.png`}
+                alt=""
+                class="clubz-thumb__moedas"
+              />
+
+              {/* Fade inferior em azul Clubz */}
+              <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,67,1) 0%, rgba(11,39,67,0.60) 18%, transparent 38%);"></div>
+            </div>
+          )}
+
+          <div class="relative flex flex-col justify-between p-8 md:p-10 h-full" style={`min-height: inherit`}>
+
+            {/* Topo */}
+            <div class="flex items-start justify-between">
+              <span class={`text-xs font-bold tracking-widest ${projeto.cor} opacity-30`}>
+                {projeto.numero}
+              </span>
+            </div>
+
+            {/* Base */}
+            <div>
+              <p class={`text-xs font-semibold tracking-widest uppercase mb-2 ${projeto.cor} opacity-50`}>
+                {projeto.empresa}
+              </p>
+              <h3 class={`font-bold mb-5 leading-tight group-hover:opacity-70 transition-opacity ${projeto.cor} ${projeto.large ? 'text-2xl md:text-4xl' : 'text-xl md:text-2xl'}`}>
+                {projeto.titulo}
+              </h3>
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex flex-wrap gap-2">
+                  {projeto.tags.map(tag => (
+                    <span class={`text-xs font-medium px-3 py-1 rounded-full border ${projeto.cor} opacity-50 border-current`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div class={`w-9 h-9 rounded-full border ${projeto.cor} border-current opacity-30 group-hover:opacity-80 transition-all flex items-center justify-center shrink-0`}>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" class={projeto.cor}>
+                    <path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="hidden md:grid md:grid-cols-2 gap-4 items-start">
       {[colEsq, colDir].map((col) => (
         <div class="flex flex-col gap-4">
-          {col.map((projeto) => (
+          {col.map((projeto, i) => (
             <article
+              data-reveal
+              data-delay={i * 90}
               class={`group relative ${projeto.bg} rounded-2xl overflow-hidden cursor-pointer`}
               style={`height:${alturas[projeto.numero] ?? '400px'}`}
               onclick={projeto.url ? `window.location.href='${projeto.url}'` : undefined}
@@ -146,14 +226,6 @@ const oliveiraTrustHeroMetrics = [
                       </div>
                     </div>
 
-                    <div class="ot-hero-thumb__metrics">
-                      {oliveiraTrustHeroMetrics.map((metric) => (
-                        <div>
-                          <span>{metric.label}</span>
-                          <strong>{metric.valor}</strong>
-                        </div>
-                      ))}
-                    </div>
                   </div>
 
                   <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(12,12,14,0.68) 0%,rgba(12,12,14,0.18) 34%,transparent 62%)"></div>
@@ -299,63 +371,37 @@ const oliveiraTrustHeroMetrics = [
     letter-spacing: -0.06em;
   }
 
-  .ot-hero-thumb__metrics {
-    position: absolute;
-    z-index: 4;
-    right: 40px;
-    bottom: 36px;
-    display: grid;
-    width: 42%;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .ot-hero-thumb__metrics div {
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.12);
-    padding: 12px;
-    backdrop-filter: blur(8px);
-  }
-
-  .ot-hero-thumb__metrics span {
-    display: block;
-    margin-bottom: 5px;
-    color: rgba(255, 255, 255, 0.52);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .ot-hero-thumb__metrics strong {
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
   @media (max-width: 767px) {
-    .ot-hero-thumb__cover,
-    .ot-hero-thumb__metrics {
-      display: none;
+    .ot-hero-thumb__cover {
+      width: 78%;
+      top: 42%;
+      border-radius: 14px;
+    }
+
+    .ot-hero-thumb__cover-copy span {
+      font-size: 8px;
+    }
+
+    .ot-hero-thumb__cover-copy strong {
+      font-size: 44px;
     }
   }
 
   /* ── Clubz thumb ────────────────────────────────────── */
   .clubz-thumb__moedas {
     position: absolute;
-    width: 170%;
-    left: 50%;
-    transform: translateX(-50%) scale(1);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
     transform-origin: center 40%;
-    top: -2%;
-    height: auto;
-    filter: saturate(1.1) brightness(1.04) drop-shadow(0 12px 32px rgba(0,0,0,0.35));
+    filter: saturate(1.1) brightness(1.04);
     transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   article:hover .clubz-thumb__moedas {
-    transform: translateX(-50%) scale(1.07);
+    transform: scale(1.07);
   }
 
   /* ── OT thumb zoom ──────────────────────────────────── */
@@ -368,11 +414,5 @@ const oliveiraTrustHeroMetrics = [
     transform: scale(1.06);
   }
 
-  @media (max-width: 767px) {
-    .clubz-thumb__moedas {
-      width: 220%;
-      top: -2%;
-    }
-  }
 
 </style>

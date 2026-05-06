@@ -20,7 +20,7 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
   <div class="max-w-[1600px] mx-auto px-6">
 
     <!-- Label fora do grid -->
-    <p class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-6">
+    <p data-reveal class="text-sm font-medium tracking-widest uppercase text-[#0891B2] mb-6">
       Contato
     </p>
 
@@ -30,17 +30,17 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
       <!-- Esquerda: título + links -->
       <div class="flex flex-col justify-between gap-12">
         <div>
-          <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1] tracking-tight mb-8">
+          <h2 data-reveal data-delay="80" class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1] tracking-tight mb-8">
             Tem um projeto<br />
             que merece<br />
             <em class="not-italic text-[#0891B2]">bom design?</em>
           </h2>
-          <p class="text-base text-neutral-500 leading-relaxed">
+          <p data-reveal data-delay="160" class="text-base text-neutral-500 leading-relaxed">
             Aceito um número limitado de projetos por trimestre. Se você tem um produto, plataforma ou desafio de design — vamos conversar.
           </p>
         </div>
 
-        <div class="space-y-4">
+        <div data-reveal data-delay="240" class="space-y-4">
           <a
             href="mailto:gustavomartins.rio2012@gmail.com"
             class="flex items-center gap-2 text-sm font-semibold text-white hover:text-[#0891B2] transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#0891B2] after:transition-all after:duration-300 hover:after:w-full w-fit"
@@ -71,7 +71,7 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
       </div>
 
       <!-- Direita: formulário -->
-      <form name="contato" method="POST" data-netlify="true" class="space-y-4 self-start">
+      <form data-reveal="right" data-delay="120" name="contato" method="POST" data-netlify="true" class="space-y-4 self-start">
         <input type="hidden" name="form-name" value="contato" />
         <div>
           <label class="block text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2" for="nome">Nome</label>
@@ -106,7 +106,7 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
 
     <!-- Design System -->
     <div>
-      <div class="flex items-baseline justify-between mb-8">
+      <div data-reveal class="flex items-baseline justify-between mb-8">
         <p class="text-xs font-semibold tracking-widest uppercase text-neutral-600">
           Design System <span class="font-normal text-neutral-700 ml-1">v1.0</span>
         </p>
@@ -116,7 +116,7 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
       <div class="grid md:grid-cols-3 gap-4">
 
         <!-- Cores -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+        <div data-reveal data-delay="0" class="bg-white/5 rounded-2xl p-6 border border-white/10">
           <p class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-5">Cores</p>
           <div class="space-y-3">
             {tokens.map(token => (
@@ -130,7 +130,7 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
         </div>
 
         <!-- Tipografia -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+        <div data-reveal data-delay="90" class="bg-white/5 rounded-2xl p-6 border border-white/10">
           <p class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-5">Tipografia</p>
           <div class="space-y-5">
             {typefaces.map(t => (
@@ -146,7 +146,7 @@ const radii = ['4px', '8px', '12px', '16px', '999px']
         </div>
 
         <!-- Raios + Motion -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col gap-8">
+        <div data-reveal data-delay="180" class="bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col gap-8">
           <div>
             <p class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-5">Raios</p>
             <div class="flex items-end gap-3">
