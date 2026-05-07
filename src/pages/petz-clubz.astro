@@ -126,7 +126,7 @@ const base = import.meta.env.BASE_URL
   <!-- Pesquisa -->
   <section class="py-24" style="background:#0B2743;">
     <div class="max-w-[1600px] mx-auto px-6">
-      <div class="grid md:grid-cols-[1fr_1fr] gap-28 items-center">
+      <div class="grid md:grid-cols-[1fr_1fr] gap-10 md:gap-28 items-center">
         <div>
           <p class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#F5DFA0">Pesquisa</p>
           <h2 class="text-4xl font-bold text-white leading-tight mb-6">Entendendo os tutores</h2>
@@ -149,14 +149,14 @@ const base = import.meta.env.BASE_URL
           </div>
         </div>
 
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col items-center md:items-stretch gap-6 overflow-x-hidden md:overflow-visible">
           {[
-            { src: 'tweet-1.png', offset: '-translate-x-6' },
-            { src: 'tweet-2.png', offset: 'translate-x-6' },
-            { src: 'tweet-3.png', offset: '-translate-x-6' },
+            { src: 'tweet-1.png', offset: '-translate-x-3 md:-translate-x-6' },
+            { src: 'tweet-2.png', offset: 'translate-x-3 md:translate-x-6' },
+            { src: 'tweet-3.png', offset: '-translate-x-3 md:-translate-x-6' },
           ].map(({ src, offset }) => (
-            <div class={`rounded-xl overflow-hidden ${offset}`} style="width:440px; box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 1px 4px rgba(0,0,0,0.15)">
-              <img src={`${base}${src}`} alt="Comentário de tutor no Twitter sobre o Clubz" class="w-full block" style="height:auto" />
+            <div class={`rounded-xl overflow-hidden w-full max-w-[320px] md:w-[400px] md:max-w-[400px] ${offset}`} style="box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 1px 4px rgba(0,0,0,0.15)">
+              <img src={`${base}${src}`} alt="Comentário de tutor no Twitter sobre o Clubz" class="block w-full" style="height:auto" />
             </div>
           ))}
         </div>
@@ -588,24 +588,63 @@ const base = import.meta.env.BASE_URL
         </div>
 
         <div class="flex flex-col items-center gap-12">
-          <img
-            src={`${base}para_conquistar.png`}
-            alt="Componentes para conquistar os níveis Prata, Ouro e Diamante do aplicativo Clubz"
-            class="w-full max-w-[968px]"
-            style="height:auto"
-            loading="lazy"
-          />
+          <div class="clubz-mobile-carousel w-full overflow-x-auto md:overflow-visible [-webkit-overflow-scrolling:touch]" data-clubz-mobile-carousel>
+            <div class="w-[968px] md:w-full md:max-w-[968px] mx-auto">
+              <img
+                src={`${base}para_conquistar.png`}
+                alt="Componentes para conquistar os níveis Prata, Ouro e Diamante do aplicativo Clubz"
+                data-clubz-mobile-carousel-image
+                class="block w-[968px] max-w-none md:w-full"
+                style="height:auto"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="w-full md:hidden">
+            <div class="grid grid-cols-2 gap-3">
+              {[
+                { label: 'Bronze',   x: '0%',     size: '400%' },
+                { label: 'Prata',    x: '34.51%', size: '400%' },
+                { label: 'Ouro',     x: '69%',    size: '400%' },
+                { label: 'Diamante', x: '103.6%',  size: '400%' },
+              ].map(({ label, x, size }) => (
+                <div
+                  role="img"
+                  aria-label={`Screenshot ${label} do Clubz`}
+                  class="rounded-xl"
+                  style={`aspect-ratio:439.5/829; background-image:url(${base}home-tiers.png); background-repeat:no-repeat; background-size:${size} 100%; background-position:${x} 0%;`}
+                ></div>
+              ))}
+            </div>
+          </div>
           <img
             src={`${base}home-tiers.png`}
             alt="Tela inicial do aplicativo Clubz com os níveis disponíveis"
-            class="w-full"
+            class="hidden md:block w-full"
             style="height:auto"
             loading="lazy"
           />
+          <div class="w-full md:hidden">
+            <div class="grid grid-cols-2 gap-3">
+              {[
+                { label: 'Tela 1', x: '0%'     },
+                { label: 'Tela 2', x: '34.51%' },
+                { label: 'Tela 3', x: '69%'    },
+                { label: 'Tela 4', x: '103.6%' },
+              ].map(({ label, x }) => (
+                <div
+                  role="img"
+                  aria-label={`${label} do fluxo de compra Clubz`}
+                  class="rounded-xl"
+                  style={`aspect-ratio:439.5/830; background-image:url(${base}fluxo_compra.png); background-repeat:no-repeat; background-size:400% 100%; background-position:${x} 0%;`}
+                ></div>
+              ))}
+            </div>
+          </div>
           <img
             src={`${base}fluxo_compra.png`}
             alt="Fluxo de compra do aplicativo Clubz"
-            class="w-full"
+            class="hidden md:block w-full"
             style="height:auto"
             loading="lazy"
           />
@@ -664,5 +703,57 @@ const base = import.meta.env.BASE_URL
 
 
   <ContatoFooter formName="contato-clubz" />
+
+  <style>
+    @media (max-width: 767px) {
+      .clubz-mobile-carousel {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .clubz-mobile-carousel::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  </style>
+
+  <script>
+    const centerClubzCarousel = () => {
+      const carousel = document.querySelector('[data-clubz-mobile-carousel]')
+      if (!carousel) return
+
+      const canScroll = carousel.scrollWidth > carousel.clientWidth
+      if (!canScroll) return
+
+      carousel.scrollLeft = (carousel.scrollWidth - carousel.clientWidth) / 2
+    }
+
+    const mq = window.matchMedia('(max-width: 767px)')
+
+    const centerWithRetries = () => {
+      if (!mq.matches) return
+      requestAnimationFrame(centerClubzCarousel)
+      setTimeout(centerClubzCarousel, 120)
+      setTimeout(centerClubzCarousel, 320)
+    }
+
+    const onMobileChange = () => {
+      if (!mq.matches) return
+      centerWithRetries()
+    }
+
+    const carouselImage = document.querySelector('[data-clubz-mobile-carousel-image]')
+    if (carouselImage instanceof HTMLImageElement) {
+      if (carouselImage.complete) {
+        centerWithRetries()
+      } else {
+        carouselImage.addEventListener('load', centerWithRetries, { once: true })
+      }
+    }
+
+    onMobileChange()
+    window.addEventListener('load', onMobileChange)
+    window.addEventListener('resize', onMobileChange)
+  </script>
 
 </Layout>

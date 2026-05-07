@@ -78,7 +78,7 @@ const textStyleGroups = [
   </section>
 
   <!-- Cover -->
-  <div style="background: linear-gradient(180deg, #D40000 0%, #280000 100%);">
+  <div class="hidden md:block" style="background: linear-gradient(180deg, #D40000 0%, #280000 100%);">
     <div class="max-w-[1600px] mx-auto px-6 py-12">
       <div class="aspect-[16/5] rounded-2xl overflow-hidden relative flex items-center justify-center" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12)">
         <!-- Grid of squares with varying opacity -->
@@ -587,8 +587,17 @@ const textStyleGroups = [
                   ) : (
                     <div class="h-16 rounded-xl border border-neutral-100 mb-2 transition-transform group-hover:-translate-y-1" style={`background:${c.hex}`}></div>
                   )}
-                  <code class="text-[9px] text-neutral-500 font-mono block truncate">{c.token}</code>
-                  <code class="text-[9px] text-neutral-400 font-mono">{c.dark ? `${c.hex} / ${c.dark}` : c.hex}</code>
+                  {['colors/brand', 'colors/primary', 'colors/neutral'].includes(grupo.path) ? (
+                    <>
+                      <code class="hidden md:block text-[9px] text-neutral-500 font-mono truncate">{c.token}</code>
+                      <code class="hidden md:inline text-[9px] text-neutral-400 font-mono">{c.dark ? `${c.hex} / ${c.dark}` : c.hex}</code>
+                    </>
+                  ) : (
+                    <>
+                      <code class="text-[9px] text-neutral-500 font-mono block truncate">{c.token}</code>
+                      <code class="text-[9px] text-neutral-400 font-mono">{c.dark ? `${c.hex} / ${c.dark}` : c.hex}</code>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -645,7 +654,7 @@ const textStyleGroups = [
               </div>
             </div>
 
-            <aside class="rounded-3xl border border-[#EAECF0] bg-white p-7 shadow-[0_20px_50px_rgba(15,23,42,0.08)] xl:sticky xl:top-24">
+            <aside class="hidden xl:block rounded-3xl border border-[#EAECF0] bg-white p-7 shadow-[0_20px_50px_rgba(15,23,42,0.08)] xl:sticky xl:top-24">
               <div class="flex items-center justify-between mb-6">
                 <p class="text-2xl font-bold text-neutral-900">Local styles</p>
                 <div class="w-9 h-9 rounded-full border border-[#EAECF0] flex items-center justify-center text-neutral-500">
@@ -1341,7 +1350,12 @@ const textStyleGroups = [
                           <div class="flex flex-wrap items-center gap-1">
                             <button class="h-8 min-w-8 px-2 text-xs font-semibold" style={`border-radius:8px; color:${theme.sub}; background:transparent`}>‹</button>
                             {pagination.pages.map((page, i) => (
-                              <button class="h-8 min-w-8 px-2 text-xs font-semibold" style={`border-radius:8px; ${i === pagination.selected ? `background:${pagination.tone}; color:${pagination.toneText}; border:1px solid ${pagination.toneHover}` : i === pagination.selected + 1 ? `background:${theme.hoverBg}; color:${theme.hoverText}; border:1px solid ${theme.border}` : `background:transparent; color:${theme.text}; border:1px solid ${theme.border}`}`}>{page}</button>
+                              <button
+                                class={`h-8 min-w-8 px-2 text-xs font-semibold ${pagination.variant === 'Long' && (page === '6' || page === '7') ? 'hidden md:block' : ''}`}
+                                style={`border-radius:8px; ${i === pagination.selected ? `background:${pagination.tone}; color:${pagination.toneText}; border:1px solid ${pagination.toneHover}` : i === pagination.selected + 1 ? `background:${theme.hoverBg}; color:${theme.hoverText}; border:1px solid ${theme.border}` : `background:transparent; color:${theme.text}; border:1px solid ${theme.border}`}`}
+                              >
+                                {page}
+                              </button>
                             ))}
                             {pagination.variant === 'Long' && <span class="px-1 text-xs" style={`color:${theme.sub}`}>...</span>}
                             <button class="h-8 min-w-8 px-2 text-xs font-semibold" style={`border-radius:8px; color:${theme.sub}; background:transparent`}>›</button>
@@ -1466,8 +1480,8 @@ const textStyleGroups = [
                         { size: 'md', footer: 'Ttype=cta', width: '76%', iconBg: theme.theme === 'Light' ? '#E6FAEF' : '#07461F', iconColor: theme.success },
                         { size: 'lg', footer: 'Ttype=informations', width: '90%', iconBg: theme.theme === 'Light' ? '#FDEEF0' : '#5C0026', iconColor: theme.error },
                       ].map(modal => (
-                        <div class="flex min-h-52 items-center justify-center rounded-xl border p-4" style={`background:${theme.canvas}; border-color:${theme.border}`}>
-                          <div class="rounded-2xl border" style={`width:${modal.width}; background:${theme.theme === 'Light' ? '#FFFFFF' : '#1B1B1F'}; border-color:${theme.border}; box-shadow:0 48px 96px rgba(0,0,0,0.16)`}>
+                        <div class="flex min-h-52 items-center justify-center rounded-xl border p-2 md:p-4" style={`background:${theme.canvas}; border-color:${theme.border}`}>
+                          <div class="w-[calc(100%-16px)] md:w-[var(--modal-width)] rounded-2xl border" style={`--modal-width:${modal.width}; background:${theme.theme === 'Light' ? '#FFFFFF' : '#1B1B1F'}; border-color:${theme.border}; box-shadow:0 48px 96px rgba(0,0,0,0.16)`}>
                             <div class="relative p-5 pb-3">
                               <button class="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full" style={`color:${theme.sub}`}><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M14.5 5.5L5.5 14.5M5.5 5.5l9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                               <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold" style={`background:${modal.iconBg}; color:${modal.iconColor}`}>i</div>
@@ -1544,11 +1558,14 @@ const textStyleGroups = [
                       <div class="rounded-xl flex items-center justify-center w-full h-20 overflow-hidden" style="background:#F9FAFB">
                         <div class="flex items-center shrink-0">
                           {(['#A8A8B2','#8FBCF7','#9FD9B7','#F5C97A'] as string[]).map((bg, i) => (
-                            <div class="rounded-full shrink-0 flex items-center justify-center" style={`background:${bg}; width:22px; height:22px; ${i > 0 ? 'margin-left:-7px;' : ''} border:2px solid #F9FAFB; box-sizing:content-box`}>
+                            <div class={`rounded-full shrink-0 items-center justify-center ${i === 3 ? 'hidden md:flex' : 'flex'}`} style={`background:${bg}; width:22px; height:22px; ${i > 0 ? 'margin-left:-7px;' : ''} border:2px solid #F9FAFB; box-sizing:content-box`}>
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white" opacity="0.8"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="white" opacity="0.8"/></svg>
                             </div>
                           ))}
-                          <div class="rounded-full shrink-0 flex items-center justify-center text-[7px] font-bold" style="background:#D8ECFF; color:#005BC0; width:22px; height:22px; margin-left:-7px; border:2px solid #F9FAFB; box-sizing:content-box">+3</div>
+                          <div class="rounded-full shrink-0 flex items-center justify-center text-[7px] font-bold" style="background:#D8ECFF; color:#005BC0; width:22px; height:22px; margin-left:-7px; border:2px solid #F9FAFB; box-sizing:content-box">
+                            <span class="md:hidden">+5</span>
+                            <span class="hidden md:inline">+3</span>
+                          </div>
                         </div>
                       </div>
                       <span class="text-[9px] font-semibold text-neutral-500">Stacked</span>
@@ -1641,11 +1658,14 @@ const textStyleGroups = [
                       <div class="rounded-xl flex items-center justify-center w-full h-20 overflow-hidden" style="background:#2F3033">
                         <div class="flex items-center shrink-0">
                           {(['#56565B','#4A7DAA','#3A7A5A','#8A6A2A'] as string[]).map((bg, i) => (
-                            <div class="rounded-full shrink-0 flex items-center justify-center" style={`background:${bg}; width:22px; height:22px; ${i > 0 ? 'margin-left:-7px;' : ''} border:2px solid #2F3033; box-sizing:content-box`}>
+                            <div class={`rounded-full shrink-0 items-center justify-center ${i === 3 ? 'hidden md:flex' : 'flex'}`} style={`background:${bg}; width:22px; height:22px; ${i > 0 ? 'margin-left:-7px;' : ''} border:2px solid #2F3033; box-sizing:content-box`}>
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="rgba(255,255,255,0.6)"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="rgba(255,255,255,0.6)"/></svg>
                             </div>
                           ))}
-                          <div class="rounded-full shrink-0 flex items-center justify-center text-[7px] font-bold" style="background:#D8ECFF; color:#005BC0; width:22px; height:22px; margin-left:-7px; border:2px solid #2F3033; box-sizing:content-box">+3</div>
+                          <div class="rounded-full shrink-0 flex items-center justify-center text-[7px] font-bold" style="background:#D8ECFF; color:#005BC0; width:22px; height:22px; margin-left:-7px; border:2px solid #2F3033; box-sizing:content-box">
+                            <span class="md:hidden">+5</span>
+                            <span class="hidden md:inline">+3</span>
+                          </div>
                         </div>
                       </div>
                       <span class="text-[9px] font-semibold" style="color:#707077">Stacked</span>
@@ -2039,11 +2059,14 @@ const textStyleGroups = [
             <div class="flex items-center gap-2">
               {['GC', 'OT', 'MS', 'AL'].map((init, i) => (
                 <div
-                  class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                  class={`w-9 h-9 rounded-full items-center justify-center text-xs font-bold text-white ${i === 3 ? 'hidden md:flex' : 'flex'}`}
                   style={`${i === 0 ? 'background:#006EEF' : i === 1 ? 'background:#918F97' : i === 2 ? 'background:#4A9DFF' : 'background:#00A74E'}; ${i > 0 ? 'margin-left:-8px; outline:2px solid white' : ''}`}
                 >{init}</div>
               ))}
-              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style="background:#EAECF0; color:#707077; margin-left:-8px; outline:2px solid white">+8</div>
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style="background:#EAECF0; color:#707077; margin-left:-8px; outline:2px solid white">
+                <span class="md:hidden">+5</span>
+                <span class="hidden md:inline">+8</span>
+              </div>
             </div>
             <div class="space-y-2">
               {[

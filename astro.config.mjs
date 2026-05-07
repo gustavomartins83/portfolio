@@ -9,6 +9,12 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineConfig({
   site: 'https://gustavomartins83.github.io',
   base: isProd ? '/portfolio/' : '/',
+  server: {
+    host: true
+  },
+  preview: {
+    host: true
+  },
   vite: {
     plugins: [tailwindcss()]
   }
